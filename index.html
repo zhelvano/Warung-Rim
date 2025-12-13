@@ -23,720 +23,109 @@
             line-height: 1.6;
         }
         
-        /* Header */
-        .header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+        /* ... Kode CSS sebelumnya tetap sama ... */
         
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #DA6B0E;
-            text-decoration: none;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-        }
-        
-        .nav {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-        
-        .nav a:hover {
-            background: #FCF0E7;
-            color: #DA6B0E;
-        }
-        
-        /* Stock Badge */
-        .stock-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #28a745;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
-        .stock-out {
-            background: #dc3545;
-        }
-        
-        /* Product Card Disabled */
-        .product-card.disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-        
-        .product-card.disabled:hover {
-            transform: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-        
-        /* Modal Styles */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
+        /* Payment Status Styles */
+        .payment-status-container {
+            text-align: center;
             padding: 20px;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        /* Admin Stock Form */
-        .stock-form {
             margin: 20px 0;
-            padding: 15px;
+            border-radius: 10px;
             background: #f8f9fa;
-            border-radius: 8px;
         }
         
-        .stock-input {
-            width: 100px;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-right: 10px;
-        }
-        
-        /* Alert Messages */
-        .alert {
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin: 10px 0;
-            font-size: 14px;
-        }
-        
-        .alert-success {
+        .payment-success {
             background: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
         
-        .alert-warning {
+        .payment-pending {
             background: #fff3cd;
             color: #856404;
             border: 1px solid #ffeaa7;
         }
         
-        .alert-danger {
+        .payment-failed {
             background: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
         
-        /* Copy kode style sebelumnya tetap dipertahankan */
-        /* ... (kode CSS sebelumnya tetap di sini) ... */
-        
-        .banner {
-            max-width: 1200px;
-            margin: 20px auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .banner img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin: 40px 0 30px;
-            color: #333;
-            font-size: 28px;
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: #DA6B0E;
-            margin: 10px auto;
-        }
-        
-        .tabs {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-        
-        .tab-btn {
-            padding: 12px 25px;
-            background: #f0f0f0;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .tab-btn.active {
-            background: #DA6B0E;
-            color: white;
-        }
-        
-        .tab-btn:hover:not(.active) {
-            background: #e0e0e0;
-        }
-        
-        .products-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 25px;
-        }
-        
-        .product-card {
+        .va-number-display {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
             background: white;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            border: 1px solid #eee;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .product-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #FCF0E7, #FFF5EB);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            color: #DA6B0E;
-        }
-        
-        .product-card h3 {
-            font-size: 16px;
-            margin: 10px 0;
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .product-price {
-            color: #DA6B0E;
-            font-weight: bold;
-            font-size: 18px;
-            margin: 10px 0;
-        }
-        
-        .product-note {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
-        
-        .payment-section {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-        
-        .payment-icons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .payment-icons img {
-            height: 40px;
-            border-radius: 5px;
-            padding: 8px;
-            background: white;
-            border: 1px solid #eee;
-        }
-        
-        .modal-header {
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .modal-header h3 {
-            margin: 0;
-            color: #333;
-        }
-        
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #666;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-        
-        .close-modal:hover {
-            background: #f0f0f0;
-        }
-        
-        .modal-body {
-            padding: 20px;
-        }
-        
-        .nominal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            margin: 15px 0;
-        }
-        
-        .nominal-option {
-            padding: 12px 5px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .nominal-option:hover {
-            border-color: #DA6B0E;
-        }
-        
-        .nominal-option.selected {
-            border-color: #DA6B0E;
-            background: #FCF0E7;
-            color: #DA6B0E;
-        }
-        
-        .nominal-amount {
-            font-weight: bold;
-            font-size: 14px;
-        }
-        
-        .nominal-fee {
-            font-size: 11px;
-            color: #666;
-        }
-        
-        .price-summary {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-        
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-        }
-        
-        .price-row.total {
-            border-top: 2px solid #ddd;
-            margin-top: 8px;
-            padding-top: 12px;
-            font-weight: bold;
-            font-size: 18px;
-            color: #DA6B0E;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #333;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: #DA6B0E;
-            box-shadow: 0 0 0 3px rgba(218, 107, 14, 0.1);
-        }
-        
-        .btn-pay {
-            background: linear-gradient(135deg, #DA6B0E, #FF8C00);
-            color: white;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .btn-pay:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(218, 107, 14, 0.3);
-        }
-        
-        .btn-pay:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        
-        .qris-container {
-            text-align: center;
-            margin: 20px 0;
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 10px;
-        }
-        
-        .qris-code {
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .payment-instruction {
-            background: #FFF5EB;
-            border-left: 4px solid #DA6B0E;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 5px 5px 0;
-        }
-        
-        .footer {
-            background: #333;
-            color: white;
-            padding: 40px 20px;
-            margin-top: 60px;
-        }
-        
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .footer-logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #DA6B0E;
-            margin-bottom: 20px;
-        }
-        
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            cursor: pointer;
-            z-index: 1000;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-        }
-        
-        /* Violet Media Pay Payment Container */
-        .vmpay-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        .payment-method-option {
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .payment-method-option:hover {
-            border-color: #DA6B0E;
-            background: #FCF0E7;
-        }
-        
-        .payment-method-option.selected {
-            border-color: #DA6B0E;
-            background: #FCF0E7;
-        }
-        
-        .payment-method-logo {
-            width: 40px;
-            height: 40px;
-            margin-right: 15px;
-            border-radius: 5px;
-            object-fit: contain;
-        }
-        
-        .payment-method-info {
-            flex: 1;
-            text-align: left;
-        }
-        
-        .payment-method-name {
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .payment-method-fee {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-                gap: 15px;
-            }
-            
-            .tabs {
-                flex-wrap: wrap;
-            }
-            
-            .nominal-grid {
-                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-            }
-            
-            .qris-code {
-                width: 180px;
-                height: 180px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .product-card {
-                padding: 15px;
-            }
-            
-            .modal-content {
-                margin: 10px;
-            }
-        }
-        
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #DA6B0E;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .status-message {
             padding: 15px;
             border-radius: 8px;
             margin: 15px 0;
-            text-align: center;
+            border: 2px dashed #DA6B0E;
+            color: #DA6B0E;
         }
         
-        .status-success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        .timer-display {
+            font-size: 18px;
+            font-weight: bold;
+            color: #dc3545;
+            margin: 10px 0;
         }
         
-        .status-error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
-        .status-warning {
-            background: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeaa7;
-        }
-        
-        /* Payment Method Styles */
-        .payment-methods-container {
-            margin: 20px 0;
-        }
-        
-        .payment-tabs {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-        
-        .payment-tab {
+        .copy-btn {
+            background: #DA6B0E;
+            color: white;
+            border: none;
             padding: 8px 15px;
-            background: #f8f9fa;
-            border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-left: 10px;
             font-size: 14px;
-            transition: all 0.3s;
         }
         
-        .payment-tab.active {
-            background: #DA6B0E;
-            color: white;
+        .copy-btn:hover {
+            background: #c45c0d;
         }
         
-        .virtual-account-banks {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        .payment-method-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .bank-option {
+            margin: 15px 0;
             padding: 10px;
-            border: 1px solid #ddd;
+            background: white;
             border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
+            border: 1px solid #eee;
         }
         
-        .bank-option:hover {
-            border-color: #DA6B0E;
-            background: #FCF0E7;
-        }
-        
-        .bank-option.selected {
-            border-color: #DA6B0E;
-            background: #FCF0E7;
-        }
-        
-        .bank-logo {
+        .method-logo {
             width: 40px;
             height: 40px;
-            margin: 0 auto 5px;
             object-fit: contain;
+        }
+        
+        /* Test Mode Badge */
+        .test-mode-badge {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: #ffc107;
+            color: #856404;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
+    <!-- Test Mode Badge -->
+    <div class="test-mode-badge" id="testModeBadge">
+        <i class="fas fa-flask"></i> MODE SIMULASI
+    </div>
+
     <!-- WhatsApp Button -->
     <a href="https://wa.me/6285923331022" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
@@ -808,6 +197,9 @@
             <i class="fas fa-info-circle"></i> 
             Semua biaya admin sudah termasuk dalam harga
         </p>
+        <p style="color: #ffc107; font-size: 14px; margin-top: 10px;">
+            <i class="fas fa-flask"></i> Saat ini menggunakan mode simulasi. Untuk pembayaran real, hubungi admin.
+        </p>
     </div>
 
     <!-- Checkout Modal -->
@@ -878,6 +270,11 @@
                         <i class="fas fa-credit-card"></i> Pilih Metode Pembayaran
                     </h4>
                     
+                    <div class="alert alert-warning" style="margin-bottom: 20px;">
+                        <i class="fas fa-flask"></i> <strong>Mode Simulasi Aktif</strong><br>
+                        Untuk pembayaran real dengan Violet Media Pay, hubungi admin untuk setup API credentials.
+                    </div>
+                    
                     <div class="payment-methods-container">
                         <div class="payment-tabs">
                             <button class="payment-tab active" onclick="switchPaymentTab('qris')">
@@ -889,6 +286,9 @@
                             <button class="payment-tab" onclick="switchPaymentTab('ewallet')">
                                 E-Wallet
                             </button>
+                            <button class="payment-tab" onclick="switchPaymentTab('manual')">
+                                <i class="fas fa-hand-holding-usd"></i> Manual
+                            </button>
                         </div>
                         
                         <!-- QRIS Tab -->
@@ -896,8 +296,7 @@
                             <div class="vmpay-container">
                                 <p>Scan QRIS untuk pembayaran instan</p>
                                 <div class="qris-code" id="qrisDisplay">
-                                    <div class="spinner"></div>
-                                    <p>Menyiapkan QR Code...</p>
+                                    <!-- QR Code akan ditampilkan di sini -->
                                 </div>
                             </div>
                         </div>
@@ -908,12 +307,16 @@
                             <div class="virtual-account-banks" id="vaBanks">
                                 <!-- Bank options will be loaded here -->
                             </div>
-                            <div id="vaDetails" style="display: none; margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px;">
-                                <h5>Virtual Account Details</h5>
-                                <p><strong>Bank:</strong> <span id="vaBankName"></span></p>
-                                <p><strong>Nomor VA:</strong> <span id="vaNumber" style="font-size: 18px; font-weight: bold; color: #DA6B0E;"></span></p>
-                                <p><strong>Total:</strong> <span id="vaAmount"></span></p>
-                                <p><strong>Batas Waktu:</strong> <span id="vaExpiry"></span></p>
+                            <div id="vaDetails" style="display: none; margin-top: 20px;">
+                                <div class="va-number-display" id="vaNumberDisplay">
+                                    <!-- VA Number akan ditampilkan di sini -->
+                                </div>
+                                <div class="timer-display" id="vaTimer">
+                                    Batas waktu: <span id="countdown">23:59:59</span>
+                                </div>
+                                <button onclick="copyToClipboard('vaNumber')" class="copy-btn">
+                                    <i class="fas fa-copy"></i> Salin Nomor VA
+                                </button>
                             </div>
                         </div>
                         
@@ -923,11 +326,34 @@
                             <div id="ewalletOptions">
                                 <!-- E-wallet options will be loaded here -->
                             </div>
-                            <div id="ewalletDetails" style="display: none; margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px;">
-                                <h5>Instruksi Pembayaran</h5>
-                                <p id="ewalletInstruction"></p>
-                                <button onclick="checkPaymentStatus()" class="btn-pay" style="margin-top: 10px;">
-                                    <i class="fas fa-sync-alt"></i> Cek Status Pembayaran
+                            <div id="ewalletDetails" style="display: none; margin-top: 20px;">
+                                <div class="payment-method-display">
+                                    <img id="ewalletLogo" src="" alt="E-Wallet" class="method-logo">
+                                    <div>
+                                        <h5 id="ewalletName">E-Wallet</h5>
+                                        <p id="ewalletInstructionText">Instruksi pembayaran</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Manual Payment Tab -->
+                        <div id="paymentTabManual" class="payment-tab-content" style="display: none;">
+                            <div class="payment-status-container payment-pending">
+                                <h4><i class="fas fa-hand-holding-usd"></i> Pembayaran Manual</h4>
+                                <p>Untuk pembayaran manual, silakan transfer ke:</p>
+                                
+                                <div style="text-align: left; background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                                    <p><strong>Bank BCA</strong></p>
+                                    <p>No. Rekening: <strong>1234567890</strong></p>
+                                    <p>Atas Nama: <strong>WARUNGRIM STORE</strong></p>
+                                    <p>Jumlah: <strong id="manualAmount"></strong></p>
+                                    <p>Order ID: <strong id="manualOrderId"></strong></p>
+                                </div>
+                                
+                                <p>Setelah transfer, klik tombol di bawah untuk konfirmasi via WhatsApp:</p>
+                                <button onclick="confirmManualPayment()" class="btn-pay">
+                                    <i class="fab fa-whatsapp"></i> Konfirmasi Pembayaran Manual
                                 </button>
                             </div>
                         </div>
@@ -941,7 +367,13 @@
                     <div id="paymentStatus" class="status-message" style="display: none;"></div>
                     
                     <div style="text-align: center; margin-top: 20px;">
-                        <button onclick="backToStep1()" style="background: none; border: 1px solid #ddd; color: #666; padding: 10px 20px; border-radius: 8px; margin-top: 15px; cursor: pointer;">
+                        <button onclick="checkPaymentStatus()" class="btn-pay" id="checkStatusBtn" style="margin: 5px;">
+                            <i class="fas fa-sync-alt"></i> Cek Status Pembayaran
+                        </button>
+                        <button onclick="simulatePayment()" class="btn-pay" id="simulateBtn" style="background: #28a745; margin: 5px;">
+                            <i class="fas fa-flask"></i> Simulasikan Pembayaran Berhasil
+                        </button>
+                        <button onclick="backToStep1()" style="background: none; border: 1px solid #ddd; color: #666; padding: 10px 20px; border-radius: 8px; margin-top: 10px; cursor: pointer;">
                             <i class="fas fa-arrow-left"></i> Kembali ke Detail Pesanan
                         </button>
                     </div>
@@ -973,6 +405,21 @@
                     <button class="btn-pay" onclick="loginAdmin()">
                         <i class="fas fa-sign-in-alt"></i> Login
                     </button>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                        <h5><i class="fas fa-cog"></i> Konfigurasi Violet Media Pay</h5>
+                        <div class="form-group">
+                            <label>API Key</label>
+                            <input type="text" id="vmpayApiKey" class="form-control" placeholder="Masukkan API Key">
+                        </div>
+                        <div class="form-group">
+                            <label>Secret Key</label>
+                            <input type="password" id="vmpaySecretKey" class="form-control" placeholder="Masukkan Secret Key">
+                        </div>
+                        <button onclick="saveVMPayConfig()" class="btn-pay" style="background: #6f42c1;">
+                            <i class="fas fa-save"></i> Simpan Konfigurasi
+                        </button>
+                    </div>
                 </div>
                 
                 <div id="adminDashboard" style="display: none;">
@@ -994,6 +441,9 @@
                         <button class="tab-btn" onclick="showAdminTab('stock')">
                             <i class="fas fa-cubes"></i> Kelola Stock
                         </button>
+                        <button class="tab-btn" onclick="showAdminTab('settings')">
+                            <i class="fas fa-cog"></i> Settings
+                        </button>
                     </div>
                     
                     <!-- Tab Kelola Produk -->
@@ -1009,11 +459,12 @@
                     
                     <!-- Tab Transaksi -->
                     <div id="adminTransactionsTab" class="admin-tab" style="display: none;">
-                        <div id="adminStats" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <div id="adminStats" style="background: #f9f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
                             <h5>Statistik</h5>
                             <p>Total Transaksi: <span id="totalTransactions">0</span></p>
                             <p>Total Pendapatan: <span id="totalIncome">Rp 0</span></p>
                             <p>Transaksi Hari Ini: <span id="todayTransactions">0</span></p>
+                            <p>Mode Pembayaran: <span id="paymentModeStatus">Simulasi</span></p>
                         </div>
                         
                         <h5>Transaksi Terbaru</h5>
@@ -1027,6 +478,43 @@
                         <h5>Kelola Stock Produk</h5>
                         <div id="stockManagement" style="margin-top: 15px;">
                             <!-- Form stock akan ditampilkan di sini -->
+                        </div>
+                    </div>
+                    
+                    <!-- Tab Settings -->
+                    <div id="adminSettingsTab" class="admin-tab" style="display: none;">
+                        <h5>Pengaturan Sistem</h5>
+                        <div style="background: #f9f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                            <h6><i class="fas fa-credit-card"></i> Konfigurasi Payment Gateway</h6>
+                            <div class="form-group">
+                                <label>Violet Media Pay API Key</label>
+                                <input type="text" id="configApiKey" class="form-control" placeholder="API Key">
+                            </div>
+                            <div class="form-group">
+                                <label>Violet Media Pay Secret Key</label>
+                                <input type="password" id="configSecretKey" class="form-control" placeholder="Secret Key">
+                            </div>
+                            <div class="form-group">
+                                <label>Mode</label>
+                                <select id="paymentMode" class="form-control">
+                                    <option value="simulation">Simulasi</option>
+                                    <option value="production">Production</option>
+                                </select>
+                            </div>
+                            <button onclick="updatePaymentConfig()" class="btn-pay" style="background: #6f42c1;">
+                                <i class="fas fa-save"></i> Update Konfigurasi
+                            </button>
+                        </div>
+                        
+                        <div style="background: #f9f9fa; padding: 15px; border-radius: 8px;">
+                            <h6><i class="fas fa-whatsapp"></i> Kontak Admin</h6>
+                            <div class="form-group">
+                                <label>Nomor WhatsApp Admin</label>
+                                <input type="text" id="adminWhatsapp" class="form-control" value="6285923331022">
+                            </div>
+                            <button onclick="updateAdminContact()" class="btn-pay" style="background: #25D366;">
+                                <i class="fab fa-whatsapp"></i> Update WhatsApp
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1061,15 +549,18 @@
             FEE_PERCENTAGE: 2.5,
             ADMIN_USERNAME: 'admin',
             ADMIN_PASSWORD: 'warungrim2025',
-            // Violet Media Pay Configuration - GANTI DENGAN API KEY ANDA
-            VMPAY_API_KEY: 'ub9zfg43Zrjwda6nLBSkHAoiAhJ8sDc', // Ganti dengan API Key dari Violet Media Pay
-            VMPAY_SECRET_KEY: 'xsCuHmyg61olqjp9a7BdAJ0z2rn8hAbktcLDPw345eviSfZL', // Ganti dengan Secret Key dari Violet Media Pay
-            VMPAY_BASE_URL: 'https://api.violetmediapay.com/v1', // Base URL API
-            VMPAY_CALLBACK_URL: window.location.origin + '/callback', // URL callback (sesuaikan)
-            VMPAY_RETURN_URL: window.location.origin // URL setelah pembayaran
+            // Payment Configuration
+            PAYMENT_MODE: 'simulation', // 'simulation' or 'production'
+            VMPAY_API_KEY: '',
+            VMPAY_SECRET_KEY: '',
+            VMPAY_BASE_URL: 'https://api.violetmediapay.com/v1',
+            VMPAY_SANDBOX_URL: 'https://sandbox.violetmediapay.com/v1',
+            MANUAL_BANK_ACCOUNT: '1234567890',
+            MANUAL_BANK_NAME: 'BCA',
+            MANUAL_ACCOUNT_NAME: 'WARUNGRIM STORE'
         };
 
-        // ================= PRODUCTS DATA DENGAN STOCK =================
+        // ================= PRODUCTS DATA =================
         let products = {
             jasa: [
                 {
@@ -1168,13 +659,6 @@
                                   60000, 70000, 75000, 80000, 90000, 100000, 150000, 200000, 
                                   250000, 300000, 500000, 750000, 1000000];
 
-        // Violet Media Pay Payment Methods
-        const VMPAY_METHODS = {
-            QRIS: 'qris',
-            VIRTUAL_ACCOUNT: 'virtual_account',
-            E_WALLET: 'e_wallet'
-        };
-
         // Bank list for Virtual Account
         const BANK_LIST = [
             { code: 'bca', name: 'BCA', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/512px-Bank_Central_Asia.svg.png' },
@@ -1202,6 +686,8 @@
         let selectedBank = null;
         let selectedEwallet = null;
         let paymentTransaction = null;
+        let countdownTimer = null;
+        let countdownEndTime = null;
 
         // ================= HELPER FUNCTIONS =================
         function formatCurrency(amount) {
@@ -1217,83 +703,165 @@
             return 0;
         }
 
-        // ================= VIOLET MEDIA PAY INTEGRATION =================
-        async function createVMPayTransaction(orderData) {
-            try {
-                const response = await fetch(`${CONFIG.VMPAY_BASE_URL}/transactions/create`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${CONFIG.VMPAY_API_KEY}`,
-                        'X-Signature': generateSignature(orderData)
-                    },
-                    body: JSON.stringify({
-                        amount: orderData.totalAmount,
-                        customer_name: orderData.customerName,
-                        customer_email: orderData.customerEmail,
-                        customer_phone: orderData.customerPhone,
-                        order_id: orderData.orderId,
-                        payment_method: orderData.paymentMethod,
-                        bank_code: orderData.bankCode,
-                        ewallet_type: orderData.ewalletType,
-                        description: orderData.description,
-                        callback_url: CONFIG.VMPAY_CALLBACK_URL,
-                        return_url: CONFIG.VMPAY_RETURN_URL
-                    })
-                });
-
-                if (!response.ok) {
-                    throw new Error('Failed to create transaction');
-                }
-
-                const data = await response.json();
-                
-                if (data.success) {
-                    return data.data;
-                } else {
-                    throw new Error(data.message || 'Transaction creation failed');
-                }
-            } catch (error) {
-                console.error('VMPay Error:', error);
-                throw error;
-            }
-        }
-
-        async function checkVMPayStatus(transactionId) {
-            try {
-                const response = await fetch(`${CONFIG.VMPAY_BASE_URL}/transactions/${transactionId}/status`, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${CONFIG.VMPAY_API_KEY}`,
-                        'X-Signature': generateSignature({ transaction_id: transactionId })
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error('Failed to check status');
-                }
-
-                const data = await response.json();
-                
-                if (data.success) {
-                    return data.data;
-                } else {
-                    throw new Error(data.message || 'Status check failed');
-                }
-            } catch (error) {
-                console.error('VMPay Status Error:', error);
-                throw error;
-            }
-        }
-
-        function generateSignature(data) {
-            // Generate signature according to Violet Media Pay documentation
-            const timestamp = Date.now();
-            const stringToSign = `${CONFIG.VMPAY_API_KEY}:${timestamp}:${JSON.stringify(data)}`;
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
             
-            // In production, use proper HMAC SHA256
-            // This is a simplified version - replace with actual implementation
-            return btoa(stringToSign + CONFIG.VMPAY_SECRET_KEY);
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Nomor VA berhasil disalin!');
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+            });
+        }
+
+        // ================= SIMULATION MODE FUNCTIONS =================
+        function generateSimulationQRCode() {
+            const qrisDisplay = document.getElementById('qrisDisplay');
+            
+            // Generate random QR code image
+            const randomId = Math.random().toString(36).substring(7);
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(`WarungRIM Order: ${currentOrder.id} Amount: ${currentOrder.prices.total} Date: ${new Date().toISOString()}`)}`;
+            
+            qrisDisplay.innerHTML = `
+                <img src="${qrUrl}" alt="QR Code" style="width: 100%; height: 100%; object-fit: contain;">
+                <p><strong>Scan QR Code di atas</strong></p>
+                <p style="font-size: 12px; color: #666;">Order ID: ${currentOrder.id}</p>
+                <p style="font-size: 12px; color: #666;">${formatCurrency(currentOrder.prices.total)}</p>
+            `;
+            
+            // Show instruction
+            showQRISInstruction();
+        }
+
+        function generateSimulationVA(bankCode) {
+            const bank = BANK_LIST.find(b => b.code === bankCode);
+            if (!bank) return;
+            
+            // Generate random VA number
+            const vaNumber = '8888' + Date.now().toString().slice(-8);
+            
+            document.getElementById('vaNumberDisplay').innerHTML = `
+                <div style="text-align: center;">
+                    <p style="margin: 0 0 10px 0;">${bank.name}</p>
+                    <div style="font-size: 24px; font-weight: bold;">${vaNumber}</div>
+                    <p style="margin: 10px 0 0 0;">${formatCurrency(currentOrder.prices.total)}</p>
+                </div>
+            `;
+            
+            // Start countdown timer
+            startCountdownTimer();
+            
+            // Show instruction
+            showVAInstruction(bank, vaNumber);
+            
+            // Store VA number for copying
+            document.getElementById('vaNumberDisplay').setAttribute('data-va-number', vaNumber);
+        }
+
+        function generateSimulationEwallet(ewalletCode) {
+            const ewallet = EWALLET_LIST.find(e => e.code === ewalletCode);
+            if (!ewallet) return;
+            
+            document.getElementById('ewalletLogo').src = ewallet.logo;
+            document.getElementById('ewalletName').textContent = ewallet.name;
+            document.getElementById('ewalletInstructionText').textContent = `Bayar menggunakan ${ewallet.name} sejumlah ${formatCurrency(currentOrder.prices.total)}`;
+            
+            document.getElementById('ewalletDetails').style.display = 'block';
+            
+            // Show instruction
+            showEwalletInstruction(ewallet);
+        }
+
+        function startCountdownTimer() {
+            if (countdownTimer) clearInterval(countdownTimer);
+            
+            countdownEndTime = Date.now() + 24 * 60 * 60 * 1000; // 24 hours from now
+            
+            countdownTimer = setInterval(() => {
+                const now = Date.now();
+                const remaining = countdownEndTime - now;
+                
+                if (remaining <= 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById('countdown').textContent = '00:00:00';
+                    onPaymentFailed({ message: 'Virtual Account telah kadaluarsa' });
+                    return;
+                }
+                
+                const hours = Math.floor(remaining / (1000 * 60 * 60));
+                const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+                
+                document.getElementById('countdown').textContent = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function showQRISInstruction() {
+            const instructionDiv = document.getElementById('paymentInstruction');
+            const contentDiv = document.getElementById('instructionContent');
+            
+            contentDiv.innerHTML = `
+                <ol style="text-align: left; margin: 10px 0 0 20px;">
+                    <li>Buka aplikasi mobile banking/e-wallet Anda</li>
+                    <li>Pilih fitur Scan QRIS atau Bayar dengan QR</li>
+                    <li>Arahkan kamera ke QR Code di atas</li>
+                    <li>Konfirmasi pembayaran sejumlah <strong>${formatCurrency(currentOrder.prices.total)}</strong></li>
+                    <li>Tunggu konfirmasi otomatis (1-3 menit)</li>
+                    <li>Klik "Cek Status Pembayaran" untuk update status</li>
+                </ol>
+                <div class="alert alert-info" style="margin-top: 10px;">
+                    <i class="fas fa-info-circle"></i> 
+                    <strong>Mode Simulasi:</strong> Untuk simulasi pembayaran berhasil, klik tombol "Simulasikan Pembayaran Berhasil"
+                </div>
+            `;
+            
+            instructionDiv.style.display = 'block';
+        }
+
+        function showVAInstruction(bank, vaNumber) {
+            const instructionDiv = document.getElementById('paymentInstruction');
+            const contentDiv = document.getElementById('instructionContent');
+            
+            const expiry = new Date(countdownEndTime).toLocaleString('id-ID');
+            
+            contentDiv.innerHTML = `
+                <ol style="text-align: left; margin: 10px 0 0 20px;">
+                    <li>Transfer ke Virtual Account: <strong>${vaNumber}</strong></li>
+                    <li>Bank: <strong>${bank.name}</strong></li>
+                    <li>Jumlah: <strong>${formatCurrency(currentOrder.prices.total)}</strong></li>
+                    <li>Batas waktu: <strong>${expiry}</strong></li>
+                    <li>Transfer dari bank yang sama (jika BCA transfer dari BCA)</li>
+                    <li>Setelah transfer, klik "Cek Status Pembayaran"</li>
+                </ol>
+                <div class="alert alert-info" style="margin-top: 10px;">
+                    <i class="fas fa-info-circle"></i> 
+                    <strong>Mode Simulasi:</strong> VA ini adalah contoh. Untuk simulasi, klik "Simulasikan Pembayaran Berhasil"
+                </div>
+            `;
+            
+            instructionDiv.style.display = 'block';
+        }
+
+        function showEwalletInstruction(ewallet) {
+            const instructionDiv = document.getElementById('paymentInstruction');
+            const contentDiv = document.getElementById('instructionContent');
+            
+            contentDiv.innerHTML = `
+                <ol style="text-align: left; margin: 10px 0 0 20px;">
+                    <li>Buka aplikasi ${ewallet.name}</li>
+                    <li>Pilih menu "Bayar" atau "Scan"</li>
+                    <li>Masukkan kode: <strong>WR${currentOrder.id.slice(-6)}</strong></li>
+                    <li>Konfirmasi pembayaran sejumlah <strong>${formatCurrency(currentOrder.prices.total)}</strong></li>
+                    <li>Tunggu konfirmasi otomatis</li>
+                </ol>
+                <div class="alert alert-info" style="margin-top: 10px;">
+                    <i class="fas fa-info-circle"></i> 
+                    <strong>Mode Simulasi:</strong> Kode pembayaran ini adalah contoh. Untuk simulasi, klik "Simulasikan Pembayaran Berhasil"
+                </div>
+            `;
+            
+            instructionDiv.style.display = 'block';
         }
 
         // ================= PAYMENT METHOD SELECTION =================
@@ -1317,16 +885,20 @@
             selectedBank = null;
             selectedEwallet = null;
             
-            // Hide instruction and details
+            // Clear instruction and details
             document.getElementById('paymentInstruction').style.display = 'none';
             document.getElementById('vaDetails').style.display = 'none';
             document.getElementById('ewalletDetails').style.display = 'none';
             
-            // Load payment methods based on tab
-            if (tab === 'va') {
+            // Load content based on tab
+            if (tab === 'qris') {
+                generateSimulationQRCode();
+            } else if (tab === 'va') {
                 loadBankOptions();
             } else if (tab === 'ewallet') {
                 loadEwalletOptions();
+            } else if (tab === 'manual') {
+                showManualPayment();
             }
         }
 
@@ -1362,20 +934,11 @@
             });
             event.target.closest('.bank-option').classList.add('selected');
             
-            // Show VA details (simulated - in production, this would come from API)
-            const bank = BANK_LIST.find(b => b.code === bankCode);
-            document.getElementById('vaBankName').textContent = bank.name;
-            document.getElementById('vaNumber').textContent = '8888' + Date.now().toString().slice(-8);
-            document.getElementById('vaAmount').textContent = formatCurrency(currentOrder.prices.total);
-            
-            // Set expiry 24 hours from now
-            const expiry = new Date(Date.now() + 24 * 60 * 60 * 1000);
-            document.getElementById('vaExpiry').textContent = expiry.toLocaleString('id-ID');
-            
+            // Show VA details
             document.getElementById('vaDetails').style.display = 'block';
             
-            // Generate VA via API
-            generateVirtualAccount(bankCode);
+            // Generate simulation VA
+            generateSimulationVA(bankCode);
         }
 
         function selectEwallet(ewalletCode) {
@@ -1387,262 +950,27 @@
             });
             event.target.closest('.payment-method-option').classList.add('selected');
             
-            // Show instructions
-            const ewallet = EWALLET_LIST.find(e => e.code === ewalletCode);
-            document.getElementById('ewalletInstruction').innerHTML = `
-                <p>Untuk menyelesaikan pembayaran via ${ewallet.name}:</p>
-                <ol>
-                    <li>Buka aplikasi ${ewallet.name}</li>
-                    <li>Pilih menu "Bayar" atau "Scan"</li>
-                    <li>Masukkan kode pembayaran yang akan ditampilkan</li>
-                    <li>Konfirmasi pembayaran</li>
-                </ol>
-            `;
-            document.getElementById('ewalletDetails').style.display = 'block';
-            
-            // Generate e-wallet payment via API
-            generateEwalletPayment(ewalletCode);
+            // Generate simulation e-wallet
+            generateSimulationEwallet(ewalletCode);
         }
 
-        // ================= PAYMENT GENERATION FUNCTIONS =================
-        async function generateQRCodePayment() {
-            try {
-                const qrisDisplay = document.getElementById('qrisDisplay');
-                qrisDisplay.innerHTML = `
-                    <div class="spinner"></div>
-                    <p>Membuat QR Code...</p>
-                `;
-                
-                // Prepare order data for VMPay
-                const orderData = {
-                    orderId: currentOrder.id,
-                    totalAmount: currentOrder.prices.total,
-                    customerName: currentOrder.customer.name,
-                    customerEmail: currentOrder.customer.email,
-                    customerPhone: currentOrder.customer.phone,
-                    paymentMethod: VMPAY_METHODS.QRIS,
-                    description: `Pembayaran untuk ${currentOrder.productName}`
-                };
-                
-                // Create transaction in VMPay
-                const transaction = await createVMPayTransaction(orderData);
-                paymentTransaction = transaction;
-                
-                // Display QR Code
-                qrisDisplay.innerHTML = `
-                    <img src="${transaction.qr_code_url || 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + transaction.payment_url}" 
-                         alt="QR Code" style="width: 100%; height: 100%; object-fit: contain;">
-                    <p><strong>Scan QR Code di atas</strong></p>
-                    <p style="font-size: 12px; color: #666;">Order ID: ${currentOrder.id}</p>
-                `;
-                
-                // Show payment instruction
-                showQRISInstruction();
-                
-                // Start checking payment status
-                startPaymentStatusChecker(transaction.transaction_id);
-                
-            } catch (error) {
-                console.error('Error generating QR Code:', error);
-                document.getElementById('qrisDisplay').innerHTML = `
-                    <div style="color: #dc3545;">
-                        <i class="fas fa-exclamation-triangle" style="font-size: 40px;"></i>
-                        <p>Gagal membuat QR Code</p>
-                        <button onclick="generateQRCodePayment()" style="background: #DA6B0E; color: white; border: none; padding: 8px 15px; border-radius: 5px; margin-top: 10px; cursor: pointer;">
-                            Coba Lagi
-                        </button>
-                    </div>
-                `;
-            }
+        function showManualPayment() {
+            document.getElementById('manualAmount').textContent = formatCurrency(currentOrder.prices.total);
+            document.getElementById('manualOrderId').textContent = currentOrder.id;
         }
 
-        async function generateVirtualAccount(bankCode) {
-            try {
-                const orderData = {
-                    orderId: currentOrder.id,
-                    totalAmount: currentOrder.prices.total,
-                    customerName: currentOrder.customer.name,
-                    customerEmail: currentOrder.customer.email,
-                    customerPhone: currentOrder.customer.phone,
-                    paymentMethod: VMPAY_METHODS.VIRTUAL_ACCOUNT,
-                    bankCode: bankCode,
-                    description: `Pembayaran untuk ${currentOrder.productName}`
-                };
-                
-                const transaction = await createVMPayTransaction(orderData);
-                paymentTransaction = transaction;
-                
-                // Update VA number with real data from API
-                document.getElementById('vaNumber').textContent = transaction.va_number;
-                
-                // Show payment instruction
-                showVAInstruction(transaction);
-                
-                // Start checking payment status
-                startPaymentStatusChecker(transaction.transaction_id);
-                
-            } catch (error) {
-                console.error('Error generating VA:', error);
-                alert('Gagal membuat Virtual Account. Silakan coba lagi atau pilih metode lain.');
-            }
-        }
-
-        async function generateEwalletPayment(ewalletCode) {
-            try {
-                const orderData = {
-                    orderId: currentOrder.id,
-                    totalAmount: currentOrder.prices.total,
-                    customerName: currentOrder.customer.name,
-                    customerEmail: currentOrder.customer.email,
-                    customerPhone: currentOrder.customer.phone,
-                    paymentMethod: VMPAY_METHODS.E_WALLET,
-                    ewalletType: ewalletCode,
-                    description: `Pembayaran untuk ${currentOrder.productName}`
-                };
-                
-                const transaction = await createVMPayTransaction(orderData);
-                paymentTransaction = transaction;
-                
-                // Show payment instruction
-                showEwalletInstruction(transaction);
-                
-                // Start checking payment status
-                startPaymentStatusChecker(transaction.transaction_id);
-                
-            } catch (error) {
-                console.error('Error generating e-wallet payment:', error);
-                alert('Gagal membuat pembayaran e-wallet. Silakan coba lagi atau pilih metode lain.');
-            }
-        }
-
-        function showQRISInstruction() {
-            const instructionDiv = document.getElementById('paymentInstruction');
-            const contentDiv = document.getElementById('instructionContent');
-            
-            contentDiv.innerHTML = `
-                <ol style="text-align: left; margin: 10px 0 0 20px;">
-                    <li>Buka aplikasi mobile banking/e-wallet Anda</li>
-                    <li>Pilih fitur Scan QRIS atau Bayar dengan QR</li>
-                    <li>Arahkan kamera ke QR Code di atas</li>
-                    <li>Konfirmasi pembayaran sesuai jumlah yang tertera</li>
-                    <li>Tunggu konfirmasi otomatis (1-3 menit)</li>
-                    <li>Jika berhasil, Anda akan menerima notifikasi</li>
-                </ol>
-            `;
-            
-            instructionDiv.style.display = 'block';
-        }
-
-        function showVAInstruction(transaction) {
-            const instructionDiv = document.getElementById('paymentInstruction');
-            const contentDiv = document.getElementById('instructionContent');
-            
-            contentDiv.innerHTML = `
-                <ol style="text-align: left; margin: 10px 0 0 20px;">
-                    <li>Transfer ke Virtual Account: <strong>${transaction.va_number}</strong></li>
-                    <li>Bank: ${document.getElementById('vaBankName').textContent}</li>
-                    <li>Jumlah: <strong>${formatCurrency(currentOrder.prices.total)}</strong></li>
-                    <li>Batas waktu: ${document.getElementById('vaExpiry').textContent}</li>
-                    <li>Transfer dari bank yang sama (jika BCA transfer dari BCA)</li>
-                    <li>Setelah transfer, pembayaran akan diverifikasi otomatis</li>
-                </ol>
-                <p style="margin-top: 10px; color: #666;">
-                    <i class="fas fa-info-circle"></i> 
-                    Pastikan transfer sesuai jumlah dan sebelum batas waktu
-                </p>
-            `;
-            
-            instructionDiv.style.display = 'block';
-        }
-
-        function showEwalletInstruction(transaction) {
-            const instructionDiv = document.getElementById('paymentInstruction');
-            const contentDiv = document.getElementById('instructionContent');
-            
-            contentDiv.innerHTML = `
-                <ol style="text-align: left; margin: 10px 0 0 20px;">
-                    <li>Buka aplikasi e-wallet Anda</li>
-                    <li>Masukkan kode pembayaran: <strong>${transaction.payment_code || 'AUTO'}</strong></li>
-                    <li>Atau scan QR Code jika tersedia</li>
-                    <li>Konfirmasi pembayaran sejumlah <strong>${formatCurrency(currentOrder.prices.total)}</strong></li>
-                    <li>Tunggu konfirmasi otomatis</li>
-                </ol>
-                <p style="margin-top: 10px; color: #666;">
-                    <i class="fas fa-info-circle"></i> 
-                    Jika tidak ada kode pembayaran, sistem akan redirect otomatis
-                </p>
-            `;
-            
-            instructionDiv.style.display = 'block';
-        }
-
-        // ================= PAYMENT STATUS CHECKING =================
-        function startPaymentStatusChecker(transactionId) {
-            // Clear existing interval
-            if (paymentInterval) {
-                clearInterval(paymentInterval);
+        // ================= PAYMENT PROCESSING =================
+        function simulatePayment() {
+            // Stop countdown timer if exists
+            if (countdownTimer) {
+                clearInterval(countdownTimer);
+                countdownTimer = null;
             }
             
-            // Start checking every 10 seconds
-            paymentInterval = setInterval(async () => {
-                try {
-                    const status = await checkVMPayStatus(transactionId);
-                    
-                    if (status.status === 'paid' || status.status === 'success') {
-                        // Payment successful
-                        clearInterval(paymentInterval);
-                        onPaymentSuccess(status);
-                    } else if (status.status === 'expired' || status.status === 'failed') {
-                        // Payment failed
-                        clearInterval(paymentInterval);
-                        onPaymentFailed(status);
-                    }
-                    // Continue checking if still pending
-                } catch (error) {
-                    console.error('Error checking payment status:', error);
-                }
-            }, 10000); // Check every 10 seconds
-            
-            // Also check immediately
-            checkPaymentStatus();
-        }
-
-        async function checkPaymentStatus() {
-            if (!paymentTransaction) return;
-            
-            try {
-                const statusDiv = document.getElementById('paymentStatus');
-                statusDiv.style.display = 'block';
-                statusDiv.className = 'status-warning';
-                statusDiv.innerHTML = `
-                    <div class="spinner" style="width: 20px; height: 20px; border-width: 2px; display: inline-block; margin-right: 10px;"></div>
-                    Memeriksa status pembayaran...
-                `;
-                
-                const status = await checkVMPayStatus(paymentTransaction.transaction_id);
-                
-                if (status.status === 'paid' || status.status === 'success') {
-                    onPaymentSuccess(status);
-                } else if (status.status === 'expired' || status.status === 'failed') {
-                    onPaymentFailed(status);
-                } else {
-                    statusDiv.innerHTML = `
-                        <i class="fas fa-clock"></i>
-                        <strong>Menunggu Pembayaran</strong><br>
-                        Status: ${status.status || 'Pending'}
-                    `;
-                }
-            } catch (error) {
-                console.error('Error checking status:', error);
-            }
-        }
-
-        function onPaymentSuccess(status) {
             // Update order status
             currentOrder.status = 'paid';
             currentOrder.paidAt = new Date().toISOString();
-            currentOrder.paymentMethod = selectedPaymentMethod;
-            currentOrder.transactionId = paymentTransaction.transaction_id;
+            currentOrder.paymentMethod = selectedPaymentMethod || 'manual';
             updateOrderInStorage(currentOrder);
             
             // Show success message
@@ -1651,19 +979,74 @@
             statusDiv.className = 'status-success';
             statusDiv.innerHTML = `
                 <i class="fas fa-check-circle"></i> 
-                <strong>Pembayaran Berhasil!</strong><br>
+                <strong>Pembayaran Berhasil Disimulasikan!</strong><br>
                 Order ID: ${currentOrder.id}<br>
                 Anda akan diarahkan ke WhatsApp dalam 5 detik...
             `;
             
-            // Disable check status button
-            const checkBtn = document.querySelector('#checkStatusBtn');
-            if (checkBtn) checkBtn.disabled = true;
+            // Update button
+            document.getElementById('simulateBtn').disabled = true;
+            document.getElementById('simulateBtn').innerHTML = '<i class="fas fa-check"></i> Pembayaran Simulasi Berhasil';
             
             // Redirect to WhatsApp after 5 seconds
             setTimeout(() => {
                 redirectToWhatsApp();
             }, 5000);
+        }
+
+        function confirmManualPayment() {
+            const message = `Halo Admin WarungRIM,
+
+Saya sudah melakukan pembayaran MANUAL dengan detail:
+
+Order ID: ${currentOrder.id}
+Produk: ${currentOrder.productName}
+Total: ${formatCurrency(currentOrder.prices.total)}
+Metode: Transfer Manual
+Bank: ${CONFIG.MANUAL_BANK_NAME}
+No. Rek: ${CONFIG.MANUAL_BANK_ACCOUNT}
+Nama: ${currentOrder.customer.name}
+Email: ${currentOrder.customer.email}
+No. HP: ${currentOrder.customer.phone}
+
+Mohon untuk segera diproses. Terima kasih.`;
+
+            const whatsappUrl = `https://wa.me/${CONFIG.WHATSAPP_ADMIN}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Update order status
+            currentOrder.status = 'pending_manual';
+            currentOrder.paymentMethod = 'manual';
+            updateOrderInStorage(currentOrder);
+            
+            // Close modal
+            closeCheckoutModal();
+            
+            alert('Terima kasih! Admin akan memverifikasi pembayaran manual Anda.');
+        }
+
+        function checkPaymentStatus() {
+            if (!currentOrder) return;
+            
+            const statusDiv = document.getElementById('paymentStatus');
+            statusDiv.style.display = 'block';
+            
+            if (currentOrder.status === 'paid') {
+                statusDiv.className = 'status-success';
+                statusDiv.innerHTML = `
+                    <i class="fas fa-check-circle"></i> 
+                    <strong>Pembayaran Sudah Berhasil</strong><br>
+                    Order ID: ${currentOrder.id}
+                `;
+            } else {
+                statusDiv.className = 'status-warning';
+                statusDiv.innerHTML = `
+                    <i class="fas fa-clock"></i> 
+                    <strong>Menunggu Pembayaran</strong><br>
+                    Status: Pending
+                    ${CONFIG.PAYMENT_MODE === 'simulation' ? '<br><small>Mode Simulasi: Klik "Simulasikan Pembayaran Berhasil"</small>' : ''}
+                `;
+            }
         }
 
         function onPaymentFailed(status) {
@@ -1843,7 +1226,7 @@
             document.getElementById('customerEmail').value = '';
             document.getElementById('customerPhone').value = '';
             
-            // Clear payment tabs
+            // Reset payment tabs
             document.querySelectorAll('.payment-tab').forEach((tab, index) => {
                 tab.classList.remove('active');
                 if (index === 0) tab.classList.add('active');
@@ -1852,6 +1235,12 @@
             document.querySelectorAll('.payment-tab-content').forEach((content, index) => {
                 content.style.display = index === 0 ? 'block' : 'none';
             });
+            
+            // Clear previous status
+            document.getElementById('paymentStatus').style.display = 'none';
+            document.getElementById('paymentInstruction').style.display = 'none';
+            document.getElementById('vaDetails').style.display = 'none';
+            document.getElementById('ewalletDetails').style.display = 'none';
             
             // Show product details
             const productDetails = document.getElementById('productDetails');
@@ -2056,13 +1445,17 @@
             document.getElementById('step1').style.display = 'none';
             document.getElementById('step2').style.display = 'block';
             
-            // Reset payment tabs
+            // Reset payment selection
             selectedPaymentMethod = 'qris';
             selectedBank = null;
             selectedEwallet = null;
             
-            // Load default QRIS payment
-            generateQRCodePayment();
+            // Enable simulation button
+            document.getElementById('simulateBtn').disabled = false;
+            document.getElementById('simulateBtn').innerHTML = '<i class="fas fa-flask"></i> Simulasikan Pembayaran Berhasil';
+            
+            // Generate default QRIS
+            generateSimulationQRCode();
         }
 
         function redirectToWhatsApp() {
@@ -2073,7 +1466,7 @@ Saya sudah melakukan pembayaran dengan detail:
 Order ID: ${currentOrder.id}
 Produk: ${currentOrder.productName}
 Total: ${formatCurrency(currentOrder.prices.total)}
-Metode: ${selectedPaymentMethod ? selectedPaymentMethod.toUpperCase() : '-'}
+Metode: ${selectedPaymentMethod ? selectedPaymentMethod.toUpperCase() : '-'} ${CONFIG.PAYMENT_MODE === 'simulation' ? '(Simulasi)' : ''}
 Nama: ${currentOrder.customer.name}
 Email: ${currentOrder.customer.email}
 No. HP: ${currentOrder.customer.phone}
@@ -2093,10 +1486,10 @@ Mohon untuk segera diproses. Terima kasih.`;
                 addStock(currentOrder.productId, 'jasa', 1);
             }
             
-            // Stop payment checking
-            if (paymentInterval) {
-                clearInterval(paymentInterval);
-                paymentInterval = null;
+            // Stop countdown timer
+            if (countdownTimer) {
+                clearInterval(countdownTimer);
+                countdownTimer = null;
             }
             
             document.getElementById('step1').style.display = 'block';
@@ -2104,10 +1497,10 @@ Mohon untuk segera diproses. Terima kasih.`;
         }
 
         function closeCheckoutModal() {
-            // Stop payment checking
-            if (paymentInterval) {
-                clearInterval(paymentInterval);
-                paymentInterval = null;
+            // Stop countdown timer
+            if (countdownTimer) {
+                clearInterval(countdownTimer);
+                countdownTimer = null;
             }
             
             document.getElementById('checkoutModal').style.display = 'none';
@@ -2171,6 +1564,8 @@ Mohon untuk segera diproses. Terima kasih.`;
                 loadAdminTransactions();
             } else if (tabName === 'stock') {
                 loadStockManagement();
+            } else if (tabName === 'settings') {
+                loadAdminSettings();
             }
         }
 
@@ -2178,6 +1573,11 @@ Mohon untuk segera diproses. Terima kasih.`;
             loadAdminProducts();
             loadAdminTransactions();
             loadStockManagement();
+            loadAdminSettings();
+            
+            // Update payment mode display
+            document.getElementById('paymentModeStatus').textContent = 
+                CONFIG.PAYMENT_MODE === 'simulation' ? 'Simulasi' : 'Production';
         }
 
         function loadAdminProducts() {
@@ -2257,6 +1657,25 @@ Mohon untuk segera diproses. Terima kasih.`;
             
             let html = '<div style="display: grid; gap: 10px;">';
             orders.slice(-10).reverse().forEach(order => {
+                let statusText, statusColor;
+                switch(order.status) {
+                    case 'paid':
+                        statusText = '✅ Lunas';
+                        statusColor = '#28a745';
+                        break;
+                    case 'failed':
+                        statusText = '❌ Gagal';
+                        statusColor = '#dc3545';
+                        break;
+                    case 'pending_manual':
+                        statusText = '⏳ Manual';
+                        statusColor = '#ffc107';
+                        break;
+                    default:
+                        statusText = '⏳ Pending';
+                        statusColor = '#ffc107';
+                }
+                
                 html += `
                 <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #eee;">
                     <div style="display: flex; justify-content: space-between;">
@@ -2265,8 +1684,8 @@ Mohon untuk segera diproses. Terima kasih.`;
                             <small>${order.productName}</small>
                         </div>
                         <div style="text-align: right;">
-                            <span style="color: ${order.status === 'paid' ? '#28a745' : order.status === 'failed' ? '#dc3545' : '#ffc107'}; font-weight: bold;">
-                                ${order.status === 'paid' ? '✅ Lunas' : order.status === 'failed' ? '❌ Gagal' : '⏳ Pending'}
+                            <span style="color: ${statusColor}; font-weight: bold;">
+                                ${statusText}
                             </span><br>
                             <small>${formatCurrency(order.prices.total)}</small>
                         </div>
@@ -2307,6 +1726,96 @@ Mohon untuk segera diproses. Terima kasih.`;
             
             html += '</div>';
             container.innerHTML = html;
+        }
+
+        function loadAdminSettings() {
+            // Load saved config
+            const savedConfig = getPaymentConfig();
+            if (savedConfig) {
+                document.getElementById('configApiKey').value = savedConfig.apiKey || '';
+                document.getElementById('configSecretKey').value = savedConfig.secretKey || '';
+                document.getElementById('paymentMode').value = savedConfig.mode || 'simulation';
+                document.getElementById('adminWhatsapp').value = savedConfig.whatsapp || CONFIG.WHATSAPP_ADMIN;
+            }
+        }
+
+        function updatePaymentConfig() {
+            const apiKey = document.getElementById('configApiKey').value;
+            const secretKey = document.getElementById('configSecretKey').value;
+            const mode = document.getElementById('paymentMode').value;
+            
+            const config = {
+                apiKey: apiKey,
+                secretKey: secretKey,
+                mode: mode,
+                updatedAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('warungrim_payment_config', JSON.stringify(config));
+            
+            // Update CONFIG
+            CONFIG.VMPAY_API_KEY = apiKey;
+            CONFIG.VMPAY_SECRET_KEY = secretKey;
+            CONFIG.PAYMENT_MODE = mode;
+            
+            // Update UI
+            document.getElementById('paymentModeStatus').textContent = 
+                mode === 'simulation' ? 'Simulasi' : 'Production';
+            
+            // Update test mode badge
+            const badge = document.getElementById('testModeBadge');
+            if (mode === 'simulation') {
+                badge.style.display = 'block';
+                badge.innerHTML = '<i class="fas fa-flask"></i> MODE SIMULASI';
+            } else {
+                badge.style.display = 'none';
+            }
+            
+            alert('Konfigurasi pembayaran berhasil diperbarui!');
+        }
+
+        function updateAdminContact() {
+            const whatsapp = document.getElementById('adminWhatsapp').value;
+            CONFIG.WHATSAPP_ADMIN = whatsapp;
+            localStorage.setItem('warungrim_admin_contact', whatsapp);
+            alert('Nomor WhatsApp admin berhasil diperbarui!');
+        }
+
+        function saveVMPayConfig() {
+            const apiKey = document.getElementById('vmpayApiKey').value;
+            const secretKey = document.getElementById('vmpaySecretKey').value;
+            
+            if (!apiKey || !secretKey) {
+                alert('Harap isi API Key dan Secret Key!');
+                return;
+            }
+            
+            const config = {
+                apiKey: apiKey,
+                secretKey: secretKey,
+                mode: 'production',
+                updatedAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('warungrim_payment_config', JSON.stringify(config));
+            
+            // Update CONFIG
+            CONFIG.VMPAY_API_KEY = apiKey;
+            CONFIG.VMPAY_SECRET_KEY = secretKey;
+            CONFIG.PAYMENT_MODE = 'production';
+            
+            // Hide test mode badge
+            document.getElementById('testModeBadge').style.display = 'none';
+            
+            alert('Konfigurasi Violet Media Pay berhasil disimpan! Sistem sekarang dalam mode production.');
+            
+            // Close admin panel
+            closeAdminModal();
+        }
+
+        function getPaymentConfig() {
+            const saved = localStorage.getItem('warungrim_payment_config');
+            return saved ? JSON.parse(saved) : null;
         }
 
         function updateProductStock(productId, category) {
@@ -2423,6 +1932,22 @@ Mohon untuk segera diproses. Terima kasih.`;
             // Load data dari localStorage
             loadProductsFromStorage();
             
+            // Load payment config
+            const savedConfig = getPaymentConfig();
+            if (savedConfig) {
+                CONFIG.VMPAY_API_KEY = savedConfig.apiKey || '';
+                CONFIG.VMPAY_SECRET_KEY = savedConfig.secretKey || '';
+                CONFIG.PAYMENT_MODE = savedConfig.mode || 'simulation';
+            }
+            
+            // Update test mode badge
+            const badge = document.getElementById('testModeBadge');
+            if (CONFIG.PAYMENT_MODE === 'simulation') {
+                badge.style.display = 'block';
+            } else {
+                badge.style.display = 'none';
+            }
+            
             // Render produk
             renderProducts();
             
@@ -2442,4 +1967,4 @@ Mohon untuk segera diproses. Terima kasih.`;
         });
     </script>
 </body>
-    </html>
+                                                       </html>

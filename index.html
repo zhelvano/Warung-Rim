@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     
     <style>
+        /* Semua kode CSS sebelumnya tetap dipertahankan */
         * {
             margin: 0;
             padding: 0;
@@ -539,6 +540,56 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
         
+        /* Violet Media Pay Payment Container */
+        .vmpay-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .payment-method-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method-option:hover {
+            border-color: #DA6B0E;
+            background: #FCF0E7;
+        }
+        
+        .payment-method-option.selected {
+            border-color: #DA6B0E;
+            background: #FCF0E7;
+        }
+        
+        .payment-method-logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            border-radius: 5px;
+            object-fit: contain;
+        }
+        
+        .payment-method-info {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .payment-method-name {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .payment-method-fee {
+            font-size: 12px;
+            color: #666;
+        }
+        
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -621,6 +672,67 @@
             background: #fff3cd;
             color: #856404;
             border: 1px solid #ffeaa7;
+        }
+        
+        /* Payment Method Styles */
+        .payment-methods-container {
+            margin: 20px 0;
+        }
+        
+        .payment-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .payment-tab {
+            padding: 8px 15px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .payment-tab.active {
+            background: #DA6B0E;
+            color: white;
+        }
+        
+        .virtual-account-banks {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .bank-option {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .bank-option:hover {
+            border-color: #DA6B0E;
+            background: #FCF0E7;
+        }
+        
+        .bank-option.selected {
+            border-color: #DA6B0E;
+            background: #FCF0E7;
+        }
+        
+        .bank-logo {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 5px;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -760,42 +872,77 @@
                     </button>
                 </div>
                 
-                <!-- Step 2: Payment QRIS -->
+                <!-- Step 2: Payment Method Selection -->
                 <div id="step2" style="display: none;">
                     <h4 style="text-align: center; margin-bottom: 20px;">
-                        <i class="fas fa-qrcode"></i> Pembayaran QRIS
+                        <i class="fas fa-credit-card"></i> Pilih Metode Pembayaran
                     </h4>
                     
-                    <div class="qris-container">
-                        <div class="qris-code" id="qrisDisplay">
-                            <div class="spinner"></div>
-                            <p>Generating QR Code...</p>
+                    <div class="payment-methods-container">
+                        <div class="payment-tabs">
+                            <button class="payment-tab active" onclick="switchPaymentTab('qris')">
+                                QRIS
+                            </button>
+                            <button class="payment-tab" onclick="switchPaymentTab('va')">
+                                Virtual Account
+                            </button>
+                            <button class="payment-tab" onclick="switchPaymentTab('ewallet')">
+                                E-Wallet
+                            </button>
                         </div>
                         
-                        <p><strong>Order ID:</strong> <span id="orderIdDisplay"></span></p>
-                        <p><strong>Total:</strong> <span id="paymentTotal"></span></p>
-                        <p><strong>Produk:</strong> <span id="paymentProduct"></span></p>
+                        <!-- QRIS Tab -->
+                        <div id="paymentTabQris" class="payment-tab-content">
+                            <div class="vmpay-container">
+                                <p>Scan QRIS untuk pembayaran instan</p>
+                                <div class="qris-code" id="qrisDisplay">
+                                    <div class="spinner"></div>
+                                    <p>Menyiapkan QR Code...</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Virtual Account Tab -->
+                        <div id="paymentTabVa" class="payment-tab-content" style="display: none;">
+                            <p>Pilih bank untuk Virtual Account:</p>
+                            <div class="virtual-account-banks" id="vaBanks">
+                                <!-- Bank options will be loaded here -->
+                            </div>
+                            <div id="vaDetails" style="display: none; margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px;">
+                                <h5>Virtual Account Details</h5>
+                                <p><strong>Bank:</strong> <span id="vaBankName"></span></p>
+                                <p><strong>Nomor VA:</strong> <span id="vaNumber" style="font-size: 18px; font-weight: bold; color: #DA6B0E;"></span></p>
+                                <p><strong>Total:</strong> <span id="vaAmount"></span></p>
+                                <p><strong>Batas Waktu:</strong> <span id="vaExpiry"></span></p>
+                            </div>
+                        </div>
+                        
+                        <!-- E-Wallet Tab -->
+                        <div id="paymentTabEwallet" class="payment-tab-content" style="display: none;">
+                            <p>Pilih e-wallet:</p>
+                            <div id="ewalletOptions">
+                                <!-- E-wallet options will be loaded here -->
+                            </div>
+                            <div id="ewalletDetails" style="display: none; margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px;">
+                                <h5>Instruksi Pembayaran</h5>
+                                <p id="ewalletInstruction"></p>
+                                <button onclick="checkPaymentStatus()" class="btn-pay" style="margin-top: 10px;">
+                                    <i class="fas fa-sync-alt"></i> Cek Status Pembayaran
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="payment-instruction">
-                        <p><strong>Cara Pembayaran:</strong></p>
-                        <ol style="text-align: left; margin: 10px 0 0 20px;">
-                            <li>Buka aplikasi mobile banking/e-wallet Anda</li>
-                            <li>Pilih fitur Scan QRIS</li>
-                            <li>Arahkan kamera ke QR Code di atas</li>
-                            <li>Konfirmasi pembayaran</li>
-                            <li>Tunggu konfirmasi otomatis (1-3 menit)</li>
-                        </ol>
+                    <div id="paymentInstruction" class="payment-instruction" style="display: none;">
+                        <p><strong>Instruksi Pembayaran:</strong></p>
+                        <div id="instructionContent"></div>
                     </div>
                     
                     <div id="paymentStatus" class="status-message" style="display: none;"></div>
                     
                     <div style="text-align: center; margin-top: 20px;">
-                        <button class="btn-pay" onclick="checkPaymentStatus()" id="checkStatusBtn">
-                            <i class="fas fa-sync-alt"></i> Cek Status Pembayaran
-                        </button>
-                        <button onclick="backToStep1()" style="background: none; border: none; color: #666; margin-top: 15px; cursor: pointer;">
-                            <i class="fas fa-arrow-left"></i> Kembali
+                        <button onclick="backToStep1()" style="background: none; border: 1px solid #ddd; color: #666; padding: 10px 20px; border-radius: 8px; margin-top: 15px; cursor: pointer;">
+                            <i class="fas fa-arrow-left"></i> Kembali ke Detail Pesanan
                         </button>
                     </div>
                 </div>
@@ -913,7 +1060,13 @@
             TELEGRAM_ADMIN: 'https://t.me/rimzohun',
             FEE_PERCENTAGE: 2.5,
             ADMIN_USERNAME: 'admin',
-            ADMIN_PASSWORD: 'warungrim2025'
+            ADMIN_PASSWORD: 'warungrim2025',
+            // Violet Media Pay Configuration - GANTI DENGAN API KEY ANDA
+            VMPAY_API_KEY: 'ub9zfg43Zrjwda6nLBSkHAoiAhJ8sDc', // Ganti dengan API Key dari Violet Media Pay
+            VMPAY_SECRET_KEY: 'xsCuHmyg61olqjp9a7BdAJ0z2rn8hAbktcLDPw345eviSfZL', // Ganti dengan Secret Key dari Violet Media Pay
+            VMPAY_BASE_URL: 'https://api.violetmediapay.com/v1', // Base URL API
+            VMPAY_CALLBACK_URL: window.location.origin + '/callback', // URL callback (sesuaikan)
+            VMPAY_RETURN_URL: window.location.origin // URL setelah pembayaran
         };
 
         // ================= PRODUCTS DATA DENGAN STOCK =================
@@ -926,7 +1079,7 @@
                     image: "fas fa-robot",
                     color: "#DA6B0E",
                     description: "Userbot Telegram premium dengan 100+ fitur",
-                    stock: 10,  // <-- STOCK DITAMBAHKAN
+                    stock: 10,
                     type: "jasa",
                     isActive: true
                 },
@@ -960,7 +1113,7 @@
                     image: "fas fa-wallet",
                     color: "#118eea",
                     description: "Top Up Saldo DANA",
-                    stock: 999,  // Stock unlimited untuk e-wallet
+                    stock: 999,
                     type: "ewallet",
                     isActive: true
                 },
@@ -1015,6 +1168,29 @@
                                   60000, 70000, 75000, 80000, 90000, 100000, 150000, 200000, 
                                   250000, 300000, 500000, 750000, 1000000];
 
+        // Violet Media Pay Payment Methods
+        const VMPAY_METHODS = {
+            QRIS: 'qris',
+            VIRTUAL_ACCOUNT: 'virtual_account',
+            E_WALLET: 'e_wallet'
+        };
+
+        // Bank list for Virtual Account
+        const BANK_LIST = [
+            { code: 'bca', name: 'BCA', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/512px-Bank_Central_Asia.svg.png' },
+            { code: 'mandiri', name: 'Mandiri', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bank_Mandiri_logo.svg/512px-Bank_Mandiri_logo.svg.png' },
+            { code: 'bri', name: 'BRI', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/BRI_logo.svg/512px-BRI_logo.svg.png' },
+            { code: 'bni', name: 'BNI', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/BNI_logo.svg/512px-BNI_logo.svg.png' }
+        ];
+
+        // E-wallet list
+        const EWALLET_LIST = [
+            { code: 'gopay', name: 'GoPay', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/GoPay_logo.svg/512px-GoPay_logo.svg.png' },
+            { code: 'ovo', name: 'OVO', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Logo_ovo_purple.svg/512px-Logo_ovo_purple.svg.png' },
+            { code: 'dana', name: 'DANA', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/512px-Logo_dana_blue.svg.png' },
+            { code: 'shopeepay', name: 'ShopeePay', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/ShopeePay_Logo.svg/512px-ShopeePay_Logo.svg.png' }
+        ];
+
         // ================= GLOBAL VARIABLES =================
         let currentCategory = 'jasa';
         let currentProduct = null;
@@ -1022,6 +1198,10 @@
         let currentOrder = null;
         let paymentInterval = null;
         let adminTab = 'products';
+        let selectedPaymentMethod = null;
+        let selectedBank = null;
+        let selectedEwallet = null;
+        let paymentTransaction = null;
 
         // ================= HELPER FUNCTIONS =================
         function formatCurrency(amount) {
@@ -1035,6 +1215,477 @@
                 }
             }
             return 0;
+        }
+
+        // ================= VIOLET MEDIA PAY INTEGRATION =================
+        async function createVMPayTransaction(orderData) {
+            try {
+                const response = await fetch(`${CONFIG.VMPAY_BASE_URL}/transactions/create`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${CONFIG.VMPAY_API_KEY}`,
+                        'X-Signature': generateSignature(orderData)
+                    },
+                    body: JSON.stringify({
+                        amount: orderData.totalAmount,
+                        customer_name: orderData.customerName,
+                        customer_email: orderData.customerEmail,
+                        customer_phone: orderData.customerPhone,
+                        order_id: orderData.orderId,
+                        payment_method: orderData.paymentMethod,
+                        bank_code: orderData.bankCode,
+                        ewallet_type: orderData.ewalletType,
+                        description: orderData.description,
+                        callback_url: CONFIG.VMPAY_CALLBACK_URL,
+                        return_url: CONFIG.VMPAY_RETURN_URL
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to create transaction');
+                }
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    return data.data;
+                } else {
+                    throw new Error(data.message || 'Transaction creation failed');
+                }
+            } catch (error) {
+                console.error('VMPay Error:', error);
+                throw error;
+            }
+        }
+
+        async function checkVMPayStatus(transactionId) {
+            try {
+                const response = await fetch(`${CONFIG.VMPAY_BASE_URL}/transactions/${transactionId}/status`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${CONFIG.VMPAY_API_KEY}`,
+                        'X-Signature': generateSignature({ transaction_id: transactionId })
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to check status');
+                }
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    return data.data;
+                } else {
+                    throw new Error(data.message || 'Status check failed');
+                }
+            } catch (error) {
+                console.error('VMPay Status Error:', error);
+                throw error;
+            }
+        }
+
+        function generateSignature(data) {
+            // Generate signature according to Violet Media Pay documentation
+            const timestamp = Date.now();
+            const stringToSign = `${CONFIG.VMPAY_API_KEY}:${timestamp}:${JSON.stringify(data)}`;
+            
+            // In production, use proper HMAC SHA256
+            // This is a simplified version - replace with actual implementation
+            return btoa(stringToSign + CONFIG.VMPAY_SECRET_KEY);
+        }
+
+        // ================= PAYMENT METHOD SELECTION =================
+        function switchPaymentTab(tab) {
+            // Update tabs
+            document.querySelectorAll('.payment-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Hide all tab contents
+            document.querySelectorAll('.payment-tab-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Show selected tab
+            document.getElementById(`paymentTab${tab.charAt(0).toUpperCase() + tab.slice(1)}`).style.display = 'block';
+            
+            // Reset selection
+            selectedPaymentMethod = tab;
+            selectedBank = null;
+            selectedEwallet = null;
+            
+            // Hide instruction and details
+            document.getElementById('paymentInstruction').style.display = 'none';
+            document.getElementById('vaDetails').style.display = 'none';
+            document.getElementById('ewalletDetails').style.display = 'none';
+            
+            // Load payment methods based on tab
+            if (tab === 'va') {
+                loadBankOptions();
+            } else if (tab === 'ewallet') {
+                loadEwalletOptions();
+            }
+        }
+
+        function loadBankOptions() {
+            const container = document.getElementById('vaBanks');
+            container.innerHTML = BANK_LIST.map(bank => `
+                <div class="bank-option" onclick="selectBank('${bank.code}')">
+                    <img src="${bank.logo}" alt="${bank.name}" class="bank-logo">
+                    <p>${bank.name}</p>
+                </div>
+            `).join('');
+        }
+
+        function loadEwalletOptions() {
+            const container = document.getElementById('ewalletOptions');
+            container.innerHTML = EWALLET_LIST.map(ewallet => `
+                <div class="payment-method-option" onclick="selectEwallet('${ewallet.code}')">
+                    <img src="${ewallet.logo}" alt="${ewallet.name}" class="payment-method-logo">
+                    <div class="payment-method-info">
+                        <div class="payment-method-name">${ewallet.name}</div>
+                        <div class="payment-method-fee">Biaya admin sudah termasuk</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectBank(bankCode) {
+            selectedBank = bankCode;
+            
+            // Update UI
+            document.querySelectorAll('.bank-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.bank-option').classList.add('selected');
+            
+            // Show VA details (simulated - in production, this would come from API)
+            const bank = BANK_LIST.find(b => b.code === bankCode);
+            document.getElementById('vaBankName').textContent = bank.name;
+            document.getElementById('vaNumber').textContent = '8888' + Date.now().toString().slice(-8);
+            document.getElementById('vaAmount').textContent = formatCurrency(currentOrder.prices.total);
+            
+            // Set expiry 24 hours from now
+            const expiry = new Date(Date.now() + 24 * 60 * 60 * 1000);
+            document.getElementById('vaExpiry').textContent = expiry.toLocaleString('id-ID');
+            
+            document.getElementById('vaDetails').style.display = 'block';
+            
+            // Generate VA via API
+            generateVirtualAccount(bankCode);
+        }
+
+        function selectEwallet(ewalletCode) {
+            selectedEwallet = ewalletCode;
+            
+            // Update UI
+            document.querySelectorAll('.payment-method-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.payment-method-option').classList.add('selected');
+            
+            // Show instructions
+            const ewallet = EWALLET_LIST.find(e => e.code === ewalletCode);
+            document.getElementById('ewalletInstruction').innerHTML = `
+                <p>Untuk menyelesaikan pembayaran via ${ewallet.name}:</p>
+                <ol>
+                    <li>Buka aplikasi ${ewallet.name}</li>
+                    <li>Pilih menu "Bayar" atau "Scan"</li>
+                    <li>Masukkan kode pembayaran yang akan ditampilkan</li>
+                    <li>Konfirmasi pembayaran</li>
+                </ol>
+            `;
+            document.getElementById('ewalletDetails').style.display = 'block';
+            
+            // Generate e-wallet payment via API
+            generateEwalletPayment(ewalletCode);
+        }
+
+        // ================= PAYMENT GENERATION FUNCTIONS =================
+        async function generateQRCodePayment() {
+            try {
+                const qrisDisplay = document.getElementById('qrisDisplay');
+                qrisDisplay.innerHTML = `
+                    <div class="spinner"></div>
+                    <p>Membuat QR Code...</p>
+                `;
+                
+                // Prepare order data for VMPay
+                const orderData = {
+                    orderId: currentOrder.id,
+                    totalAmount: currentOrder.prices.total,
+                    customerName: currentOrder.customer.name,
+                    customerEmail: currentOrder.customer.email,
+                    customerPhone: currentOrder.customer.phone,
+                    paymentMethod: VMPAY_METHODS.QRIS,
+                    description: `Pembayaran untuk ${currentOrder.productName}`
+                };
+                
+                // Create transaction in VMPay
+                const transaction = await createVMPayTransaction(orderData);
+                paymentTransaction = transaction;
+                
+                // Display QR Code
+                qrisDisplay.innerHTML = `
+                    <img src="${transaction.qr_code_url || 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + transaction.payment_url}" 
+                         alt="QR Code" style="width: 100%; height: 100%; object-fit: contain;">
+                    <p><strong>Scan QR Code di atas</strong></p>
+                    <p style="font-size: 12px; color: #666;">Order ID: ${currentOrder.id}</p>
+                `;
+                
+                // Show payment instruction
+                showQRISInstruction();
+                
+                // Start checking payment status
+                startPaymentStatusChecker(transaction.transaction_id);
+                
+            } catch (error) {
+                console.error('Error generating QR Code:', error);
+                document.getElementById('qrisDisplay').innerHTML = `
+                    <div style="color: #dc3545;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 40px;"></i>
+                        <p>Gagal membuat QR Code</p>
+                        <button onclick="generateQRCodePayment()" style="background: #DA6B0E; color: white; border: none; padding: 8px 15px; border-radius: 5px; margin-top: 10px; cursor: pointer;">
+                            Coba Lagi
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        async function generateVirtualAccount(bankCode) {
+            try {
+                const orderData = {
+                    orderId: currentOrder.id,
+                    totalAmount: currentOrder.prices.total,
+                    customerName: currentOrder.customer.name,
+                    customerEmail: currentOrder.customer.email,
+                    customerPhone: currentOrder.customer.phone,
+                    paymentMethod: VMPAY_METHODS.VIRTUAL_ACCOUNT,
+                    bankCode: bankCode,
+                    description: `Pembayaran untuk ${currentOrder.productName}`
+                };
+                
+                const transaction = await createVMPayTransaction(orderData);
+                paymentTransaction = transaction;
+                
+                // Update VA number with real data from API
+                document.getElementById('vaNumber').textContent = transaction.va_number;
+                
+                // Show payment instruction
+                showVAInstruction(transaction);
+                
+                // Start checking payment status
+                startPaymentStatusChecker(transaction.transaction_id);
+                
+            } catch (error) {
+                console.error('Error generating VA:', error);
+                alert('Gagal membuat Virtual Account. Silakan coba lagi atau pilih metode lain.');
+            }
+        }
+
+        async function generateEwalletPayment(ewalletCode) {
+            try {
+                const orderData = {
+                    orderId: currentOrder.id,
+                    totalAmount: currentOrder.prices.total,
+                    customerName: currentOrder.customer.name,
+                    customerEmail: currentOrder.customer.email,
+                    customerPhone: currentOrder.customer.phone,
+                    paymentMethod: VMPAY_METHODS.E_WALLET,
+                    ewalletType: ewalletCode,
+                    description: `Pembayaran untuk ${currentOrder.productName}`
+                };
+                
+                const transaction = await createVMPayTransaction(orderData);
+                paymentTransaction = transaction;
+                
+                // Show payment instruction
+                showEwalletInstruction(transaction);
+                
+                // Start checking payment status
+                startPaymentStatusChecker(transaction.transaction_id);
+                
+            } catch (error) {
+                console.error('Error generating e-wallet payment:', error);
+                alert('Gagal membuat pembayaran e-wallet. Silakan coba lagi atau pilih metode lain.');
+            }
+        }
+
+        function showQRISInstruction() {
+            const instructionDiv = document.getElementById('paymentInstruction');
+            const contentDiv = document.getElementById('instructionContent');
+            
+            contentDiv.innerHTML = `
+                <ol style="text-align: left; margin: 10px 0 0 20px;">
+                    <li>Buka aplikasi mobile banking/e-wallet Anda</li>
+                    <li>Pilih fitur Scan QRIS atau Bayar dengan QR</li>
+                    <li>Arahkan kamera ke QR Code di atas</li>
+                    <li>Konfirmasi pembayaran sesuai jumlah yang tertera</li>
+                    <li>Tunggu konfirmasi otomatis (1-3 menit)</li>
+                    <li>Jika berhasil, Anda akan menerima notifikasi</li>
+                </ol>
+            `;
+            
+            instructionDiv.style.display = 'block';
+        }
+
+        function showVAInstruction(transaction) {
+            const instructionDiv = document.getElementById('paymentInstruction');
+            const contentDiv = document.getElementById('instructionContent');
+            
+            contentDiv.innerHTML = `
+                <ol style="text-align: left; margin: 10px 0 0 20px;">
+                    <li>Transfer ke Virtual Account: <strong>${transaction.va_number}</strong></li>
+                    <li>Bank: ${document.getElementById('vaBankName').textContent}</li>
+                    <li>Jumlah: <strong>${formatCurrency(currentOrder.prices.total)}</strong></li>
+                    <li>Batas waktu: ${document.getElementById('vaExpiry').textContent}</li>
+                    <li>Transfer dari bank yang sama (jika BCA transfer dari BCA)</li>
+                    <li>Setelah transfer, pembayaran akan diverifikasi otomatis</li>
+                </ol>
+                <p style="margin-top: 10px; color: #666;">
+                    <i class="fas fa-info-circle"></i> 
+                    Pastikan transfer sesuai jumlah dan sebelum batas waktu
+                </p>
+            `;
+            
+            instructionDiv.style.display = 'block';
+        }
+
+        function showEwalletInstruction(transaction) {
+            const instructionDiv = document.getElementById('paymentInstruction');
+            const contentDiv = document.getElementById('instructionContent');
+            
+            contentDiv.innerHTML = `
+                <ol style="text-align: left; margin: 10px 0 0 20px;">
+                    <li>Buka aplikasi e-wallet Anda</li>
+                    <li>Masukkan kode pembayaran: <strong>${transaction.payment_code || 'AUTO'}</strong></li>
+                    <li>Atau scan QR Code jika tersedia</li>
+                    <li>Konfirmasi pembayaran sejumlah <strong>${formatCurrency(currentOrder.prices.total)}</strong></li>
+                    <li>Tunggu konfirmasi otomatis</li>
+                </ol>
+                <p style="margin-top: 10px; color: #666;">
+                    <i class="fas fa-info-circle"></i> 
+                    Jika tidak ada kode pembayaran, sistem akan redirect otomatis
+                </p>
+            `;
+            
+            instructionDiv.style.display = 'block';
+        }
+
+        // ================= PAYMENT STATUS CHECKING =================
+        function startPaymentStatusChecker(transactionId) {
+            // Clear existing interval
+            if (paymentInterval) {
+                clearInterval(paymentInterval);
+            }
+            
+            // Start checking every 10 seconds
+            paymentInterval = setInterval(async () => {
+                try {
+                    const status = await checkVMPayStatus(transactionId);
+                    
+                    if (status.status === 'paid' || status.status === 'success') {
+                        // Payment successful
+                        clearInterval(paymentInterval);
+                        onPaymentSuccess(status);
+                    } else if (status.status === 'expired' || status.status === 'failed') {
+                        // Payment failed
+                        clearInterval(paymentInterval);
+                        onPaymentFailed(status);
+                    }
+                    // Continue checking if still pending
+                } catch (error) {
+                    console.error('Error checking payment status:', error);
+                }
+            }, 10000); // Check every 10 seconds
+            
+            // Also check immediately
+            checkPaymentStatus();
+        }
+
+        async function checkPaymentStatus() {
+            if (!paymentTransaction) return;
+            
+            try {
+                const statusDiv = document.getElementById('paymentStatus');
+                statusDiv.style.display = 'block';
+                statusDiv.className = 'status-warning';
+                statusDiv.innerHTML = `
+                    <div class="spinner" style="width: 20px; height: 20px; border-width: 2px; display: inline-block; margin-right: 10px;"></div>
+                    Memeriksa status pembayaran...
+                `;
+                
+                const status = await checkVMPayStatus(paymentTransaction.transaction_id);
+                
+                if (status.status === 'paid' || status.status === 'success') {
+                    onPaymentSuccess(status);
+                } else if (status.status === 'expired' || status.status === 'failed') {
+                    onPaymentFailed(status);
+                } else {
+                    statusDiv.innerHTML = `
+                        <i class="fas fa-clock"></i>
+                        <strong>Menunggu Pembayaran</strong><br>
+                        Status: ${status.status || 'Pending'}
+                    `;
+                }
+            } catch (error) {
+                console.error('Error checking status:', error);
+            }
+        }
+
+        function onPaymentSuccess(status) {
+            // Update order status
+            currentOrder.status = 'paid';
+            currentOrder.paidAt = new Date().toISOString();
+            currentOrder.paymentMethod = selectedPaymentMethod;
+            currentOrder.transactionId = paymentTransaction.transaction_id;
+            updateOrderInStorage(currentOrder);
+            
+            // Show success message
+            const statusDiv = document.getElementById('paymentStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'status-success';
+            statusDiv.innerHTML = `
+                <i class="fas fa-check-circle"></i> 
+                <strong>Pembayaran Berhasil!</strong><br>
+                Order ID: ${currentOrder.id}<br>
+                Anda akan diarahkan ke WhatsApp dalam 5 detik...
+            `;
+            
+            // Disable check status button
+            const checkBtn = document.querySelector('#checkStatusBtn');
+            if (checkBtn) checkBtn.disabled = true;
+            
+            // Redirect to WhatsApp after 5 seconds
+            setTimeout(() => {
+                redirectToWhatsApp();
+            }, 5000);
+        }
+
+        function onPaymentFailed(status) {
+            // Update order status
+            currentOrder.status = 'failed';
+            updateOrderInStorage(currentOrder);
+            
+            // Show error message
+            const statusDiv = document.getElementById('paymentStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'status-error';
+            statusDiv.innerHTML = `
+                <i class="fas fa-times-circle"></i> 
+                <strong>Pembayaran Gagal</strong><br>
+                ${status.message || 'Pembayaran telah kadaluarsa atau gagal.'}<br>
+                Silakan coba lagi dengan metode pembayaran lain.
+            `;
+            
+            // Return stock if jasa product
+            if (currentOrder.productType === 'jasa') {
+                addStock(currentOrder.productId, 'jasa', 1);
+            }
         }
 
         // ================= STOCK MANAGEMENT =================
@@ -1182,11 +1833,25 @@
             }
             
             selectedNominal = null;
+            selectedPaymentMethod = null;
+            selectedBank = null;
+            selectedEwallet = null;
+            paymentTransaction = null;
             
             // Reset form
             document.getElementById('customerName').value = '';
             document.getElementById('customerEmail').value = '';
             document.getElementById('customerPhone').value = '';
+            
+            // Clear payment tabs
+            document.querySelectorAll('.payment-tab').forEach((tab, index) => {
+                tab.classList.remove('active');
+                if (index === 0) tab.classList.add('active');
+            });
+            
+            document.querySelectorAll('.payment-tab-content').forEach((content, index) => {
+                content.style.display = index === 0 ? 'block' : 'none';
+            });
             
             // Show product details
             const productDetails = document.getElementById('productDetails');
@@ -1370,7 +2035,9 @@
                 },
                 status: 'pending',
                 createdAt: new Date().toISOString(),
-                paidAt: null
+                paidAt: null,
+                paymentMethod: null,
+                transactionId: null
             };
             
             // Kurangi stock jika produk jasa
@@ -1389,73 +2056,13 @@
             document.getElementById('step1').style.display = 'none';
             document.getElementById('step2').style.display = 'block';
             
-            // Display order info
-            document.getElementById('orderIdDisplay').textContent = currentOrder.id;
-            document.getElementById('paymentTotal').textContent = formatCurrency(currentOrder.prices.total);
-            document.getElementById('paymentProduct').textContent = currentOrder.productName;
+            // Reset payment tabs
+            selectedPaymentMethod = 'qris';
+            selectedBank = null;
+            selectedEwallet = null;
             
-            // Generate QRIS (simulasi)
-            generateQRCode();
-        }
-
-        function generateQRCode() {
-            const qrisDisplay = document.getElementById('qrisDisplay');
-            
-            // Simulasi generate QR code
-            setTimeout(() => {
-                qrisDisplay.innerHTML = `
-                    <div style="text-align: center;">
-                        <div style="font-size: 60px; color: #DA6B0E; margin-bottom: 10px;">
-                            <i class="fas fa-qrcode"></i>
-                        </div>
-                        <p><strong>QRIS Simulasi</strong></p>
-                        <p style="font-size: 12px; color: #666;">Order ID: ${currentOrder.id}</p>
-                        <p style="font-size: 12px; color: #666;">${formatCurrency(currentOrder.prices.total)}</p>
-                    </div>
-                `;
-                
-                // Start checking payment status
-                startPaymentChecking();
-            }, 1500);
-        }
-
-        function startPaymentChecking() {
-            // Simulasi pembayaran otomatis setelah 10 detik
-            setTimeout(() => {
-                simulatePaymentSuccess();
-            }, 10000);
-            
-            // Update tombol cek status
-            const checkBtn = document.getElementById('checkStatusBtn');
-            checkBtn.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Menunggu Pembayaran...';
-            checkBtn.disabled = true;
-        }
-
-        function simulatePaymentSuccess() {
-            // Update order status
-            currentOrder.status = 'paid';
-            currentOrder.paidAt = new Date().toISOString();
-            updateOrderInStorage(currentOrder);
-            
-            // Show success message
-            const statusDiv = document.getElementById('paymentStatus');
-            statusDiv.style.display = 'block';
-            statusDiv.className = 'status-success';
-            statusDiv.innerHTML = `
-                <i class="fas fa-check-circle"></i> 
-                <strong>Pembayaran Berhasil!</strong><br>
-                Anda akan diarahkan ke WhatsApp dalam 5 detik...
-            `;
-            
-            // Update button
-            const checkBtn = document.getElementById('checkStatusBtn');
-            checkBtn.innerHTML = '<i class="fas fa-check"></i> Pembayaran Berhasil';
-            checkBtn.disabled = true;
-            
-            // Redirect to WhatsApp after 5 seconds
-            setTimeout(() => {
-                redirectToWhatsApp();
-            }, 5000);
+            // Load default QRIS payment
+            generateQRCodePayment();
         }
 
         function redirectToWhatsApp() {
@@ -1466,6 +2073,7 @@ Saya sudah melakukan pembayaran dengan detail:
 Order ID: ${currentOrder.id}
 Produk: ${currentOrder.productName}
 Total: ${formatCurrency(currentOrder.prices.total)}
+Metode: ${selectedPaymentMethod ? selectedPaymentMethod.toUpperCase() : '-'}
 Nama: ${currentOrder.customer.name}
 Email: ${currentOrder.customer.email}
 No. HP: ${currentOrder.customer.phone}
@@ -1479,17 +2087,16 @@ Mohon untuk segera diproses. Terima kasih.`;
             closeCheckoutModal();
         }
 
-        function checkPaymentStatus() {
-            // Simulasi cek status
-            if (currentOrder && currentOrder.status === 'pending') {
-                alert('Pembayaran masih dalam proses...');
-            }
-        }
-
         function backToStep1() {
             // Kembalikan stock jika dibatalkan
-            if (currentOrder && currentOrder.productType === 'jasa') {
+            if (currentOrder && currentOrder.productType === 'jasa' && currentOrder.status !== 'paid') {
                 addStock(currentOrder.productId, 'jasa', 1);
+            }
+            
+            // Stop payment checking
+            if (paymentInterval) {
+                clearInterval(paymentInterval);
+                paymentInterval = null;
             }
             
             document.getElementById('step1').style.display = 'block';
@@ -1497,10 +2104,20 @@ Mohon untuk segera diproses. Terima kasih.`;
         }
 
         function closeCheckoutModal() {
+            // Stop payment checking
+            if (paymentInterval) {
+                clearInterval(paymentInterval);
+                paymentInterval = null;
+            }
+            
             document.getElementById('checkoutModal').style.display = 'none';
             currentProduct = null;
             selectedNominal = null;
             currentOrder = null;
+            selectedPaymentMethod = null;
+            selectedBank = null;
+            selectedEwallet = null;
+            paymentTransaction = null;
         }
 
         // ================= ADMIN FUNCTIONS =================
@@ -1648,14 +2265,15 @@ Mohon untuk segera diproses. Terima kasih.`;
                             <small>${order.productName}</small>
                         </div>
                         <div style="text-align: right;">
-                            <span style="color: ${order.status === 'paid' ? '#28a745' : '#ffc107'}; font-weight: bold;">
-                                ${order.status === 'paid' ? '✅ Lunas' : '⏳ Pending'}
+                            <span style="color: ${order.status === 'paid' ? '#28a745' : order.status === 'failed' ? '#dc3545' : '#ffc107'}; font-weight: bold;">
+                                ${order.status === 'paid' ? '✅ Lunas' : order.status === 'failed' ? '❌ Gagal' : '⏳ Pending'}
                             </span><br>
                             <small>${formatCurrency(order.prices.total)}</small>
                         </div>
                     </div>
                     <div style="margin-top: 8px; font-size: 12px; color: #666;">
                         <i class="fas fa-user"></i> ${order.customer.name} • 
+                        <i class="fas fa-credit-card"></i> ${order.paymentMethod || '-'} • 
                         <i class="fas fa-clock"></i> ${new Date(order.createdAt).toLocaleString('id-ID')}
                     </div>
                 </div>`;
@@ -1824,4 +2442,4 @@ Mohon untuk segera diproses. Terima kasih.`;
         });
     </script>
 </body>
-                            </html>
+    </html>

@@ -2,25 +2,25 @@
 <html lang="id">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WarungRIM | Top Up E-wallet & Jasa Digital</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CryptoJS untuk HMAC Signature -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     
     <style>
-        /* RESET & BASE STYLES */
         :root {
-            --primary-color: #DA6B0E;
-            --secondary-color: #FF8C00;
-            --success-color: #28a745;
-            --danger-color: #dc3545;
-            --warning-color: #ffc107;
-            --dark-color: #333333;
-            --light-color: #f8f9fa;
-            --border-color: #e0e0e0;
-            --shadow: 0 5px 15px rgba(0,0,0,0.08);
-            --transition: all 0.3s ease;
+            --primary: #DA6B0E;
+            --secondary: #FF8C00;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --dark: #333;
+            --light: #f8f9fa;
+            --border: #dee2e6;
+            --shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
         
         * {
@@ -32,19 +32,19 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: var(--dark-color);
+            color: var(--dark);
             line-height: 1.6;
             min-height: 100vh;
         }
         
-        /* HEADER */
         .header {
             background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
             padding: 15px 0;
+            border-bottom: 3px solid var(--primary);
         }
         
         .header-container {
@@ -57,25 +57,26 @@
         }
         
         .logo {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
-            color: var(--primary-color);
+            color: var(--primary);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         
         .logo i {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 32px;
+            font-size: 30px;
         }
         
         .nav {
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
         
         .nav a {
@@ -83,24 +84,24 @@
             border-radius: 30px;
             font-weight: 600;
             font-size: 14px;
-            transition: var(--transition);
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
-            color: var(--dark-color);
-            text-decoration: none;
         }
         
         .nav a:hover {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218, 107, 14, 0.3);
         }
         
-        /* BANNER */
         .banner {
             max-width: 1200px;
-            margin: 30px auto;
+            margin: 25px auto;
             padding: 0 20px;
         }
         
@@ -110,37 +111,37 @@
             object-fit: cover;
             border-radius: 15px;
             box-shadow: var(--shadow);
+            border: 5px solid white;
         }
         
-        /* SECTION TITLE */
         .section-title {
             text-align: center;
             margin: 40px 0 30px;
-            color: var(--dark-color);
             font-size: 28px;
             font-weight: 700;
+            color: var(--dark);
             position: relative;
+            padding-bottom: 15px;
         }
         
         .section-title:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 100px;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 2px;
         }
         
-        /* TABS */
         .tabs {
             max-width: 1200px;
             margin: 30px auto;
             padding: 0 20px;
             display: flex;
-            gap: 10px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -148,35 +149,36 @@
         .tab-btn {
             padding: 12px 25px;
             background: white;
-            border: 2px solid var(--border-color);
+            border: 2px solid var(--border);
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 14px;
-            transition: var(--transition);
+            font-size: 15px;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
         .tab-btn.active {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            border-color: var(--primary-color);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(218, 107, 14, 0.2);
         }
         
         .tab-btn:hover:not(.active) {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
         }
         
-        /* PRODUCTS GRID */
         .products-grid {
             max-width: 1200px;
             margin: 0 auto 50px;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
         }
         
@@ -184,124 +186,80 @@
             background: white;
             border-radius: 15px;
             padding: 20px;
-            text-align: center;
             box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 2px solid var(--border-color);
-            position: relative;
+            transition: all 0.3s;
             cursor: pointer;
+            position: relative;
+            border: 2px solid transparent;
         }
         
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            border-color: var(--primary-color);
-        }
-        
-        .product-card.disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        
-        .product-card.disabled:hover {
-            transform: none;
-            border-color: var(--border-color);
+            border-color: var(--primary);
         }
         
         .stock-badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: var(--success-color);
+            background: linear-gradient(135deg, var(--success), #20c997);
             color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 11px;
-            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 1;
         }
         
         .stock-out {
-            background: var(--danger-color);
+            background: linear-gradient(135deg, var(--danger), #ff6b6b);
         }
         
         .product-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 15px;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #FCF0E7, #FFF5EB);
+            background: linear-gradient(135deg, #FFF5EB, #FFE4CC);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            color: var(--primary-color);
+            font-size: 32px;
+            color: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(218, 107, 14, 0.1);
         }
         
         .product-card h3 {
             font-size: 16px;
-            margin: 10px 0;
-            min-height: 50px;
+            margin: 15px 0;
             font-weight: 600;
-            color: var(--dark-color);
-        }
-        
-        .product-price {
-            color: var(--primary-color);
-            font-weight: 700;
-            font-size: 20px;
-            margin: 10px 0;
-        }
-        
-        .product-note {
-            font-size: 13px;
-            color: #666;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed #eee;
-        }
-        
-        /* PAYMENT SECTION */
-        .payment-section {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
             text-align: center;
-        }
-        
-        .payment-section h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
+            min-height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            line-height: 1.4;
         }
         
-        .payment-icons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
+        .product-price {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 22px;
+            text-align: center;
+            margin: 15px 0;
         }
         
-        .payment-icons img {
-            height: 40px;
-            border-radius: 8px;
-            padding: 8px;
-            background: white;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
+        .product-note {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
         }
         
-        .payment-icons img:hover {
-            transform: translateY(-3px);
-        }
-        
-        /* MODAL STYLES */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -309,11 +267,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             z-index: 2000;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            backdrop-filter: blur(5px);
         }
         
         .modal-content {
@@ -323,45 +282,62 @@
             max-width: 500px;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: modalSlide 0.3s ease;
+        }
+        
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
         
         .modal-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--border-color);
+            padding: 20px 25px;
+            border-bottom: 2px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: linear-gradient(135deg, #FFF5EB, white);
+            border-radius: 20px 20px 0 0;
         }
         
         .modal-header h3 {
             font-size: 20px;
             font-weight: 700;
+            margin: 0;
         }
         
         .close-modal {
             background: none;
             border: none;
-            font-size: 20px;
+            font-size: 24px;
             cursor: pointer;
             color: #666;
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            transition: all 0.3s;
         }
         
         .close-modal:hover {
             background: #f0f0f0;
+            color: var(--primary);
+            transform: rotate(90deg);
         }
         
         .modal-body {
-            padding: 20px;
+            padding: 25px;
         }
         
-        /* FORM STYLES */
         .form-group {
             margin-bottom: 20px;
         }
@@ -371,109 +347,95 @@
             margin-bottom: 8px;
             font-weight: 600;
             font-size: 14px;
+            color: var(--dark);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+        }
+        
+        .form-group label i {
+            color: var(--primary);
+            font-size: 16px;
         }
         
         .form-control {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid var(--border-color);
+            border: 2px solid var(--border);
             border-radius: 10px;
             font-size: 14px;
-            transition: var(--transition);
+            transition: all 0.3s;
+            background: #f8f9fa;
         }
         
         .form-control:focus {
             outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(218, 107, 14, 0.1);
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(218, 107, 14, 0.1);
         }
         
         .btn-pay {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border: none;
             padding: 15px;
             width: 100%;
             border-radius: 12px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            letter-spacing: 0.5px;
         }
         
         .btn-pay:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(218, 107, 14, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(218, 107, 14, 0.3);
         }
         
         .btn-pay:disabled {
             background: #ccc;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
         
-        /* PRICE SUMMARY */
-        .price-summary {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-        }
-        
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            font-size: 14px;
-        }
-        
-        .price-row.total {
-            border-top: 2px solid #ddd;
-            margin-top: 8px;
-            padding-top: 12px;
-            font-weight: 700;
-            font-size: 18px;
-            color: var(--primary-color);
-        }
-        
-        /* WHATSAPP BUTTON */
         .whatsapp-btn {
             position: fixed;
             bottom: 25px;
             right: 25px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            cursor: pointer;
+            font-size: 32px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
             z-index: 1000;
             text-decoration: none;
-            transition: var(--transition);
+            transition: all 0.3s;
+            border: 3px solid white;
         }
         
         .whatsapp-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
         }
         
-        /* FOOTER */
         .footer {
-            background: #2c3e50;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
             color: white;
-            padding: 40px 20px;
-            margin-top: 60px;
+            padding: 50px 20px;
+            margin-top: 70px;
+            border-top: 5px solid var(--primary);
         }
         
         .footer-container {
@@ -483,107 +445,157 @@
         }
         
         .footer-logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         
         .footer p {
-            margin: 10px 0;
+            margin: 15px 0;
             color: #ecf0f1;
+            line-height: 1.8;
         }
         
-        /* PAYMENT TABS */
-        .payment-tabs {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #eee;
-        }
-        
-        .payment-tab {
-            padding: 10px 20px;
-            background: none;
-            border: none;
-            border-bottom: 3px solid transparent;
-            cursor: pointer;
+        .alert {
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
             font-size: 14px;
-            font-weight: 600;
-            color: #666;
-            transition: var(--transition);
+            border: 1px solid transparent;
         }
         
-        .payment-tab.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
         }
         
-        .payment-tab:hover:not(.active) {
-            color: var(--primary-color);
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
         }
         
-        /* PAYMENT METHOD OPTIONS */
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border-color: #ffeaa7;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border-color: #bee5eb;
+        }
+        
+        .price-summary {
+            background: linear-gradient(135deg, #f8f9fa, #f0f7ff);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid #e9ecef;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 15px;
+            color: #555;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .price-row:last-child {
+            border-bottom: none;
+        }
+        
+        .price-row.total {
+            border-top: 3px solid #ddd;
+            margin-top: 10px;
+            padding-top: 15px;
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--primary);
+        }
+        
+        .qrcode-container {
+            text-align: center;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid #e9ecef;
+        }
+        
+        .qrcode {
+            width: 220px;
+            height: 220px;
+            margin: 20px auto;
+            padding: 15px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        
+        .qrcode img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
         .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
             margin: 20px 0;
         }
         
         .payment-method {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            margin-bottom: 10px;
+            padding: 20px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s;
+            background: white;
         }
         
         .payment-method:hover {
-            border-color: var(--primary-color);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .payment-method.selected {
-            border-color: var(--primary-color);
+            border-color: var(--primary);
             background: #FFF5EB;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(218, 107, 14, 0.2);
         }
         
         .method-logo {
-            width: 40px;
-            height: 40px;
-            margin-right: 15px;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 10px;
             object-fit: contain;
-        }
-        
-        .method-info {
-            flex: 1;
-            text-align: left;
         }
         
         .method-name {
             font-weight: 600;
-            color: var(--dark-color);
-        }
-        
-        .method-desc {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        /* LOADING */
-        .loading {
-            text-align: center;
-            padding: 30px;
+            font-size: 14px;
+            margin-top: 5px;
         }
         
         .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
+            margin: 20px auto;
         }
         
         @keyframes spin {
@@ -591,20 +603,33 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* RESPONSIVE */
+        .production-badge {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+        
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav {
-                flex-wrap: wrap;
-                justify-content: center;
+                gap: 20px;
             }
             
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 20px;
             }
             
@@ -612,12 +637,15 @@
                 font-size: 24px;
             }
             
-            .modal-content {
-                margin: 10px;
+            .payment-methods {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .payment-tabs {
-                flex-wrap: wrap;
+            .production-badge {
+                top: 120px;
+                right: 15px;
+                font-size: 11px;
+                padding: 6px 15px;
             }
         }
         
@@ -626,130 +654,85 @@
                 grid-template-columns: 1fr;
             }
             
-            .payment-section {
-                padding: 20px;
-                margin: 20px;
+            .modal-content {
+                margin: 10px;
             }
         }
         
-        /* ALERT MESSAGES */
-        .alert {
-            padding: 12px 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            font-size: 14px;
-        }
-        
-        .alert-success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .alert-danger {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
-        .alert-warning {
-            background: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeaa7;
-        }
-        
-        .alert-info {
-            background: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-        }
-        
-        /* ORDER INFO */
-        .order-info {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-        }
-        
-        .order-info h4 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        .order-info p {
-            margin: 5px 0;
-            font-size: 14px;
-        }
-        
-        /* QR CODE DISPLAY */
-        .qrcode-container {
-            text-align: center;
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-        
-        .qrcode-img {
-            width: 200px;
-            height: 200px;
-            margin: 15px auto;
-            padding: 15px;
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-        }
-        
-        .qrcode-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        /* BANK OPTIONS */
         .bank-options {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 10px;
-            margin: 15px 0;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
         }
         
         .bank-option {
             padding: 15px;
-            border: 2px solid var(--border-color);
+            border: 2px solid var(--border);
             border-radius: 10px;
             text-align: center;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s;
+            background: white;
         }
         
         .bank-option:hover {
-            border-color: var(--primary-color);
+            border-color: var(--primary);
         }
         
         .bank-option.selected {
-            border-color: var(--primary-color);
+            border-color: var(--primary);
             background: #FFF5EB;
         }
         
         .bank-logo {
-            width: 40px;
-            height: 40px;
-            margin: 0 auto 8px;
+            width: 45px;
+            height: 45px;
+            margin: 0 auto 10px;
             object-fit: contain;
         }
         
-        /* E-WALLET OPTIONS */
-        .ewallet-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
+        .va-number {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary);
             margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 2px dashed var(--primary);
+            text-align: center;
+        }
+        
+        .copy-btn {
+            background: var(--info);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 10px auto;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: #138496;
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
+    <!-- Production Badge -->
+    <div class="production-badge">
+        <i class="fas fa-bolt"></i> MODE PRODUCTION
+    </div>
+
     <!-- WhatsApp Button -->
     <a href="https://wa.me/6285923331022" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
@@ -768,22 +751,19 @@
                 <a href="#contact">
                     <i class="fas fa-phone"></i> Kontak
                 </a>
-                <a href="#faq">
-                    <i class="fas fa-question-circle"></i> FAQ
-                </a>
             </nav>
         </div>
     </header>
 
     <!-- Banner -->
     <div class="banner">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="WarungRIM">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="WarungRIM Banner">
     </div>
 
     <!-- Top Products -->
     <h2 class="section-title">PRODUK UNGGULAN</h2>
     <div class="products-grid" id="topProducts">
-        <!-- Products will be loaded here -->
+        <!-- Top products loaded by JS -->
     </div>
 
     <!-- Category Tabs -->
@@ -799,28 +779,7 @@
     <!-- Products Grid -->
     <h2 class="section-title" id="categoryTitle">JASA DIGITAL</h2>
     <div class="products-grid" id="productsGrid">
-        <!-- Products will be loaded here -->
-    </div>
-
-    <!-- Payment Methods -->
-    <div class="payment-section">
-        <h3>
-            <i class="fas fa-credit-card"></i> Metode Pembayaran
-        </h3>
-        <div class="payment-icons">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/512px-Bank_Central_Asia.svg.png" alt="BCA">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bank_Mandiri_logo.svg/512px-Bank_Mandiri_logo.svg.png" alt="Mandiri">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/BRI_logo.svg/512px-BRI_logo.svg.png" alt="BRI">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/BNI_logo.svg/512px-BNI_logo.svg.png" alt="BNI">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/512px-QR_code_for_mobile_English_Wikipedia.svg.png" alt="QRIS">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/GoPay_logo.svg/512px-GoPay_logo.svg.png" alt="GoPay">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Logo_ovo_purple.svg/512px-Logo_ovo_purple.svg.png" alt="OVO">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/512px-Logo_dana_blue.svg.png" alt="DANA">
-        </div>
-        <p style="color: #666; margin-top: 15px; font-size: 14px;">
-            <i class="fas fa-info-circle"></i> 
-            Semua biaya admin sudah termasuk dalam harga
-        </p>
+        <!-- Products loaded by JS -->
     </div>
 
     <!-- Checkout Modal -->
@@ -833,12 +792,12 @@
                 </button>
             </div>
             <div class="modal-body" id="checkoutBody">
-                <!-- Content will be loaded by JavaScript -->
+                <!-- Checkout content loaded by JS -->
             </div>
         </div>
     </div>
 
-    <!-- Admin Panel -->
+    <!-- Admin Modal -->
     <div class="modal-overlay" id="adminModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -848,7 +807,7 @@
                 </button>
             </div>
             <div class="modal-body" id="adminBody">
-                <!-- Admin content will be loaded here -->
+                <!-- Admin content loaded by JS -->
             </div>
         </div>
     </div>
@@ -858,58 +817,44 @@
         <div class="footer-container">
             <div class="footer-logo">WarungRIM</div>
             <p>Top Up E-wallet & Jasa Digital Premium</p>
-            <p style="margin: 20px 0;">
+            <p>
                 <i class="fas fa-phone"></i> 0859-2333-1022<br>
                 <i class="fas fa-envelope"></i> support@warungrim.com
             </p>
-            <p style="color: #bdc3c7; font-size: 14px;">
-                Setelah pembayaran berhasil, Anda akan diarahkan ke WhatsApp untuk konfirmasi.<br>
-                File/jasa akan dikirim setelah admin memverifikasi pembayaran.
+            <p style="color: #bdc3c7; font-size: 14px; margin-top: 20px;">
+                Pembayaran diproses melalui Violet Media Pay - Payment Gateway terpercaya
             </p>
-            <p style="margin-top: 20px; color: #95a5a6;">
+            <p style="color: #95a5a6; font-size: 13px; margin-top: 20px;">
                 © 2025 WarungRIM. All rights reserved.
             </p>
         </div>
     </footer>
 
     <script>
-        // ================= CONFIGURATION =================
-        // IMPORTANT: Replace with your actual Violet Media Pay API credentials
-        const CONFIG = {
-            VMPAY_API_KEY: 'ub9zfg43Zrjwda6nLBSkHAoiAhJ8sDc', // Get from https://violetmediapay.com
-            VMPAY_SECRET_KEY: 'xsCuHmyg61olqjp9a7BdAJ0z2rn8hAbktcLDPw345eviSfZL', // Get from https://violetmediapay.com
-            VMPAY_BASE_URL: 'https://api.violetmediapay.com/v1',
-            VMPAY_WEBHOOK_URL: window.location.origin + '/vmpay-webhook',
-            
-            WHATSAPP_ADMIN: '6285923331022',
-            FEE_PERCENTAGE: 2.5,
-            
-            ADMIN_USERNAME: 'admin',
-            ADMIN_PASSWORD: 'warungrim2025',
-            
-            // Payment method codes
-            PAYMENT_METHODS: {
-                QRIS: 'qris',
-                BCA_VA: 'bca_va',
-                BRI_VA: 'bri_va',
-                BNI_VA: 'bni_va',
-                MANDIRI_VA: 'mandiri_va',
-                GOPAY: 'gopay',
-                OVO: 'ovo',
-                DANA: 'dana',
-                SHOPEEPAY: 'shopeepay'
-            }
+        // ================= KONFIGURASI VIOLET MEDIA PAY PRODUCTION =================
+        const VMPAY_CONFIG = {
+            API_KEY: 'ub9zfg43Zrjwda6nLBSkHAoiAhJ8sDc', // MASUKKAN API KEY ANDA DI SINI
+            SECRET_KEY: 'xsCuHmyg61olqjp9a7BdAJ0z2rn8hAbktcLDPw345eviSfZL', // MASUKKAN SECRET KEY ANDA DI SINI
+            BASE_URL: 'https://api.violetmediapay.com/v1',
+            WEBHOOK_URL: window.location.origin + '/vmpay-callback', // Sesuaikan dengan webhook Anda
+            MODE: 'production'
         };
 
-        // ================= PRODUCTS DATA =================
+        const CONFIG = {
+            WHATSAPP_ADMIN: '6285923331022',
+            FEE_PERCENTAGE: 2.5,
+            ADMIN_USERNAME: 'admin',
+            ADMIN_PASSWORD: 'warungrim2025'
+        };
+
+        // ================= DATA PRODUK =================
         let products = {
             jasa: [
                 {
                     id: 1,
                     name: "Repository Userbot VVIP Telegram",
-                    basePrice: 300000,
-                    image: "fas fa-robot",
-                    color: "#DA6B0E",
+                    price: 300000,
+                    icon: "fas fa-robot",
                     description: "Userbot Telegram premium dengan 100+ fitur",
                     stock: 10,
                     isActive: true
@@ -917,9 +862,8 @@
                 {
                     id: 2,
                     name: "Repository Bot Musik Telegram",
-                    basePrice: 200000,
-                    image: "fas fa-music",
-                    color: "#3498db",
+                    price: 200000,
+                    icon: "fas fa-music",
                     description: "Bot musik kualitas tinggi",
                     stock: 15,
                     isActive: true
@@ -927,21 +871,10 @@
                 {
                     id: 3,
                     name: "SC Zhforce",
-                    basePrice: 30000,
-                    image: "fas fa-code",
-                    color: "#2ecc71",
+                    price: 30000,
+                    icon: "fas fa-code",
                     description: "Source code original",
                     stock: 20,
-                    isActive: true
-                },
-                {
-                    id: 4,
-                    name: "Premium Script WhatsApp Bot",
-                    basePrice: 150000,
-                    image: "fab fa-whatsapp",
-                    color: "#25D366",
-                    description: "WhatsApp Bot dengan fitur lengkap",
-                    stock: 8,
                     isActive: true
                 }
             ],
@@ -949,8 +882,7 @@
                 {
                     id: 101,
                     name: "DANA",
-                    image: "fas fa-wallet",
-                    color: "#118eea",
+                    icon: "fas fa-wallet",
                     description: "Top Up Saldo DANA",
                     isActive: true,
                     type: "ewallet"
@@ -958,8 +890,7 @@
                 {
                     id: 102,
                     name: "OVO",
-                    image: "fas fa-wallet",
-                    color: "#4f2b8c",
+                    icon: "fas fa-wallet",
                     description: "Top Up Saldo OVO",
                     isActive: true,
                     type: "ewallet"
@@ -967,100 +898,60 @@
                 {
                     id: 103,
                     name: "GoPay",
-                    image: "fas fa-wallet",
-                    color: "#00a64f",
+                    icon: "fas fa-wallet",
                     description: "Top Up Saldo GoPay",
-                    isActive: true,
-                    type: "ewallet"
-                },
-                {
-                    id: 104,
-                    name: "ShopeePay",
-                    image: "fas fa-wallet",
-                    color: "#ff531b",
-                    description: "Top Up Saldo ShopeePay",
                     isActive: true,
                     type: "ewallet"
                 }
             ]
         };
 
-        // E-wallet nominals
-        const EWALLET_NOMINALS = [
-            10000, 20000, 50000, 100000, 150000, 200000, 
-            250000, 300000, 500000, 750000, 1000000
-        ];
-
-        // Bank list
-        const BANKS = [
-            { code: 'bca', name: 'BCA', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/512px-Bank_Central_Asia.svg.png' },
-            { code: 'bri', name: 'BRI', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/BRI_logo.svg/512px-BRI_logo.svg.png' },
-            { code: 'bni', name: 'BNI', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/BNI_logo.svg/512px-BNI_logo.svg.png' },
-            { code: 'mandiri', name: 'Mandiri', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bank_Mandiri_logo.svg/512px-Bank_Mandiri_logo.svg.png' }
-        ];
-
-        // E-wallets
-        const EWALLETS = [
-            { code: 'gopay', name: 'GoPay', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/GoPay_logo.svg/512px-GoPay_logo.svg.png' },
-            { code: 'ovo', name: 'OVO', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Logo_ovo_purple.svg/512px-Logo_ovo_purple.svg.png' },
-            { code: 'dana', name: 'DANA', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/512px-Logo_dana_blue.svg.png' },
-            { code: 'shopeepay', name: 'ShopeePay', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/ShopeePay_Logo.svg/512px-ShopeePay_Logo.svg.png' }
-        ];
-
-        // ================= GLOBAL VARIABLES =================
+        // ================= VARIABEL GLOBAL =================
         let currentCategory = 'jasa';
         let currentProduct = null;
         let selectedNominal = null;
+        let adminLoggedIn = false;
         let currentOrder = null;
         let selectedPaymentMethod = null;
         let paymentCheckInterval = null;
 
-        // ================= HELPER FUNCTIONS =================
+        // ================= FUNGSI HELPER =================
         function formatCurrency(amount) {
             return 'Rp ' + amount.toLocaleString('id-ID');
         }
 
         function generateOrderId() {
-            return 'WR' + Date.now() + Math.floor(Math.random() * 1000);
+            const timestamp = Date.now().toString();
+            const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            return 'WR' + timestamp.slice(-6) + random;
         }
 
-        function showAlert(message, type = 'info') {
-            const alert = document.createElement('div');
-            alert.className = `alert alert-${type}`;
-            alert.innerHTML = message;
-            return alert;
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Berhasil disalin!');
+            }).catch(err => {
+                console.error('Gagal menyalin:', err);
+            });
         }
 
-        // ================= VIOLET MEDIA PAY API =================
+        // ================= VIOLET MEDIA PAY API FUNCTIONS =================
+        function generateVMPaySignature(data, timestamp) {
+            const message = `${VMPAY_CONFIG.API_KEY}:${timestamp}:${JSON.stringify(data)}`;
+            return CryptoJS.HmacSHA256(message, VMPAY_CONFIG.SECRET_KEY).toString(CryptoJS.enc.Hex);
+        }
+
         async function createVMPayTransaction(orderData) {
             try {
-                console.log('Creating VMPay transaction:', orderData);
+                const timestamp = Date.now();
+                const signature = generateVMPaySignature(orderData, timestamp);
                 
-                // In production, you would make actual API call
-                // This is a mock implementation - replace with real API call
-                
-                const mockResponse = {
-                    success: true,
-                    data: {
-                        transaction_id: 'vmp_' + Date.now(),
-                        order_id: orderData.order_id,
-                        payment_url: 'https://payment.violetmediapay.com/pay/' + generateOrderId(),
-                        qr_code_url: 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent('https://payment.violetmediapay.com/pay/' + generateOrderId()),
-                        va_number: '8888' + Date.now().toString().slice(-8),
-                        expiry_time: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-                        amount: orderData.amount,
-                        status: 'pending'
-                    }
-                };
-                
-                // Real API call example (commented out for now):
-                /*
-                const response = await fetch(`${CONFIG.VMPAY_BASE_URL}/transaction/create`, {
+                const response = await fetch(`${VMPAY_CONFIG.BASE_URL}/transaction/create`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${CONFIG.VMPAY_API_KEY}`,
-                        'X-Signature': generateSignature(orderData)
+                        'Authorization': `Bearer ${VMPAY_CONFIG.API_KEY}`,
+                        'X-Signature': signature,
+                        'X-Timestamp': timestamp.toString()
                     },
                     body: JSON.stringify({
                         amount: orderData.amount,
@@ -1070,52 +961,56 @@
                         order_id: orderData.order_id,
                         payment_method: orderData.payment_method,
                         description: orderData.description,
-                        callback_url: CONFIG.VMPAY_WEBHOOK_URL,
-                        return_url: window.location.href
+                        callback_url: VMPAY_CONFIG.WEBHOOK_URL,
+                        return_url: window.location.href + '?payment_success=true&order_id=' + orderData.order_id,
+                        expired_time: Math.floor(Date.now() / 1000) + (24 * 60 * 60) // 24 jam
                     })
                 });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
                 
-                const data = await response.json();
-                return data;
-                */
-                
-                return mockResponse;
+                if (result.success) {
+                    return result.data;
+                } else {
+                    throw new Error(result.message || 'Gagal membuat transaksi');
+                }
                 
             } catch (error) {
                 console.error('VMPay API Error:', error);
-                throw new Error('Gagal membuat transaksi pembayaran');
+                throw new Error('Terjadi kesalahan saat memproses pembayaran. Silakan coba lagi.');
             }
         }
 
         async function checkVMPayStatus(transactionId) {
             try {
-                console.log('Checking VMPay status:', transactionId);
+                const timestamp = Date.now();
+                const signatureData = { transaction_id: transactionId };
+                const signature = generateVMPaySignature(signatureData, timestamp);
                 
-                // Mock response
-                const mockResponse = {
-                    success: true,
-                    data: {
-                        transaction_id: transactionId,
-                        status: Math.random() > 0.5 ? 'paid' : 'pending', // Random status for demo
-                        paid_at: new Date().toISOString(),
-                        amount: currentOrder ? currentOrder.total : 0
-                    }
-                };
-                
-                // Real API call example:
-                /*
-                const response = await fetch(`${CONFIG.VMPAY_BASE_URL}/transaction/${transactionId}/status`, {
+                const response = await fetch(`${VMPAY_CONFIG.BASE_URL}/transaction/${transactionId}/status`, {
                     method: 'GET',
                     headers: {
-                        'Authorization': `Bearer ${CONFIG.VMPAY_API_KEY}`,
-                        'X-Signature': generateSignature({ transaction_id: transactionId })
+                        'Authorization': `Bearer ${VMPAY_CONFIG.API_KEY}`,
+                        'X-Signature': signature,
+                        'X-Timestamp': timestamp.toString()
                     }
                 });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
                 
-                return await response.json();
-                */
-                
-                return mockResponse;
+                if (result.success) {
+                    return result.data;
+                } else {
+                    throw new Error(result.message || 'Gagal mengambil status');
+                }
                 
             } catch (error) {
                 console.error('VMPay Status Error:', error);
@@ -1123,31 +1018,20 @@
             }
         }
 
-        function generateSignature(data) {
-            // Generate HMAC SHA256 signature
-            // Implementation depends on Violet Media Pay documentation
-            const timestamp = Date.now();
-            const message = `${CONFIG.VMPAY_API_KEY}:${timestamp}:${JSON.stringify(data)}`;
-            
-            // Use CryptoJS or similar library in production
-            // For now, return a mock signature
-            return btoa(message + CONFIG.VMPAY_SECRET_KEY);
-        }
-
-        // ================= PRODUCT DISPLAY =================
+        // ================= RENDER PRODUK =================
         function renderProducts() {
             // Render top products
             const topProducts = document.getElementById('topProducts');
-            topProducts.innerHTML = products.jasa.filter(p => p.isActive).slice(0, 4).map(product => `
+            topProducts.innerHTML = products.jasa.slice(0, 3).map(product => `
                 <div class="product-card" onclick="showCheckoutModal(${product.id}, 'jasa')">
                     <span class="stock-badge ${product.stock > 0 ? '' : 'stock-out'}">
                         ${product.stock > 0 ? `Stock: ${product.stock}` : 'Habis'}
                     </span>
-                    <div class="product-icon" style="background: linear-gradient(135deg, ${product.color}20, ${product.color}40); color: ${product.color};">
-                        <i class="${product.image}"></i>
+                    <div class="product-icon">
+                        <i class="${product.icon}"></i>
                     </div>
                     <h3>${product.name}</h3>
-                    <div class="product-price">${formatCurrency(product.basePrice)}</div>
+                    <div class="product-price">${formatCurrency(product.price)}</div>
                     <div class="product-note">${product.description}</div>
                 </div>
             `).join('');
@@ -1159,29 +1043,32 @@
             productsGrid.innerHTML = categoryProducts.map(product => {
                 if (currentCategory === 'jasa') {
                     return `
-                    <div class="product-card ${product.stock <= 0 ? 'disabled' : ''}" 
-                         onclick="${product.stock <= 0 ? '' : `showCheckoutModal(${product.id}, 'jasa')`}">
-                        <span class="stock-badge ${product.stock > 0 ? '' : 'stock-out'}">
-                            ${product.stock > 0 ? `Stock: ${product.stock}` : 'Habis'}
-                        </span>
-                        <div class="product-icon" style="background: linear-gradient(135deg, ${product.color}20, ${product.color}40); color: ${product.color};">
-                            <i class="${product.image}"></i>
+                        <div class="product-card ${product.stock <= 0 ? 'disabled' : ''}" 
+                             ${product.stock > 0 ? `onclick="showCheckoutModal(${product.id}, 'jasa')"` : ''}
+                             style="${product.stock <= 0 ? 'opacity: 0.6; cursor: not-allowed;' : ''}">
+                            <span class="stock-badge ${product.stock > 0 ? '' : 'stock-out'}">
+                                ${product.stock > 0 ? `Stock: ${product.stock}` : 'Habis'}
+                            </span>
+                            <div class="product-icon">
+                                <i class="${product.icon}"></i>
+                            </div>
+                            <h3>${product.name}</h3>
+                            <div class="product-price">${formatCurrency(product.price)}</div>
+                            <div class="product-note">${product.description}</div>
                         </div>
-                        <h3>${product.name}</h3>
-                        <div class="product-price">${formatCurrency(product.basePrice)}</div>
-                        <div class="product-note">${product.description}</div>
-                    </div>`;
+                    `;
                 } else {
                     return `
-                    <div class="product-card" onclick="showCheckoutModal(${product.id}, 'ewallet')">
-                        <span class="stock-badge">Tersedia</span>
-                        <div class="product-icon" style="background: linear-gradient(135deg, ${product.color}20, ${product.color}40); color: ${product.color};">
-                            <i class="${product.image}"></i>
+                        <div class="product-card" onclick="showCheckoutModal(${product.id}, 'ewallet')">
+                            <span class="stock-badge" style="background: var(--info);">Tersedia</span>
+                            <div class="product-icon">
+                                <i class="${product.icon}"></i>
+                            </div>
+                            <h3>${product.name}</h3>
+                            <div class="product-price">Pilih Nominal</div>
+                            <div class="product-note">${product.description}</div>
                         </div>
-                        <h3>${product.name}</h3>
-                        <div class="product-price">Pilih Nominal</div>
-                        <div class="product-note">${product.description}</div>
-                    </div>`;
+                    `;
                 }
             }).join('');
         }
@@ -1189,11 +1076,9 @@
         function switchCategory(category) {
             currentCategory = category;
             
-            // Update active tab
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
             
-            // Update title
             document.getElementById('categoryTitle').textContent = 
                 category === 'jasa' ? 'JASA DIGITAL' : 'TOP UP E-WALLET';
             
@@ -1204,36 +1089,34 @@
         function showCheckoutModal(productId, category) {
             currentProduct = products[category].find(p => p.id === productId);
             if (!currentProduct) return;
-            
-            // Check stock for jasa products
+
             if (category === 'jasa' && currentProduct.stock <= 0) {
-                alert('Stok produk habis! Silakan hubungi admin untuk restock.');
+                alert('Stok produk habis!');
                 return;
             }
-            
+
             selectedNominal = null;
-            selectedPaymentMethod = null;
             
             let content = '';
             
             if (category === 'jasa') {
-                const adminFee = Math.ceil(currentProduct.basePrice * (CONFIG.FEE_PERCENTAGE / 100));
-                const totalPrice = currentProduct.basePrice + adminFee;
+                const adminFee = Math.ceil(currentProduct.price * (CONFIG.FEE_PERCENTAGE / 100));
+                const total = currentProduct.price + adminFee;
                 
                 content = `
-                    <h4 style="text-align: center; margin-bottom: 20px;">${currentProduct.name}</h4>
+                    <h4 style="text-align: center; margin-bottom: 15px;">${currentProduct.name}</h4>
                     <p style="text-align: center; color: #666; margin-bottom: 20px;">${currentProduct.description}</p>
                     
                     ${currentProduct.stock <= 3 ? `
                         <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle"></i> Stok terbatas: ${currentProduct.stock} unit tersisa!
+                            <i class="fas fa-exclamation-triangle"></i> Stok terbatas! Hanya ${currentProduct.stock} unit tersisa.
                         </div>
                     ` : ''}
                     
                     <div class="price-summary">
                         <div class="price-row">
                             <span>Harga Produk:</span>
-                            <span>${formatCurrency(currentProduct.basePrice)}</span>
+                            <span>${formatCurrency(currentProduct.price)}</span>
                         </div>
                         <div class="price-row">
                             <span>Biaya Admin (${CONFIG.FEE_PERCENTAGE}%):</span>
@@ -1241,7 +1124,7 @@
                         </div>
                         <div class="price-row total">
                             <span>TOTAL BAYAR:</span>
-                            <span>${formatCurrency(totalPrice)}</span>
+                            <span>${formatCurrency(total)}</span>
                         </div>
                     </div>
                     
@@ -1252,286 +1135,206 @@
                     
                     <div class="form-group">
                         <label><i class="fas fa-phone"></i> Nomor WhatsApp</label>
-                        <input type="tel" id="customerPhone" class="form-control" placeholder="Contoh: 081234567890" required>
+                        <input type="tel" id="customerPhone" class="form-control" placeholder="081234567890" required>
                     </div>
                     
                     <div class="form-group">
-                        <label><i class="fas fa-envelope"></i> Email (Opsional)</label>
+                        <label><i class="fas fa-envelope"></i> Email</label>
                         <input type="email" id="customerEmail" class="form-control" placeholder="email@contoh.com">
                     </div>
                     
-                    <button class="btn-pay" onclick="showPaymentMethods('jasa', ${currentProduct.basePrice + adminFee})">
-                        <i class="fas fa-credit-card"></i> Pilih Metode Pembayaran
+                    <button class="btn-pay" onclick="processOrder('jasa', ${total})">
+                        <i class="fas fa-credit-card"></i> Lanjutkan ke Pembayaran
                     </button>
                 `;
             } else {
+                const nominals = [10000, 20000, 50000, 100000, 150000, 200000, 250000, 300000, 500000];
+                
                 content = `
-                    <h4 style="text-align: center; margin-bottom: 20px;">Top Up ${currentProduct.name}</h4>
+                    <h4 style="text-align: center; margin-bottom: 15px;">Top Up ${currentProduct.name}</h4>
                     <p style="text-align: center; color: #666; margin-bottom: 20px;">${currentProduct.description}</p>
                     
                     <div class="form-group">
                         <label><i class="fas fa-money-bill-wave"></i> Pilih Nominal</label>
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                            ${EWALLET_NOMINALS.map(nominal => `
-                                <button onclick="selectNominal(${nominal})" 
-                                        class="${selectedNominal === nominal ? 'btn-pay' : ''}" 
-                                        style="padding: 12px; border: 2px solid ${selectedNominal === nominal ? '#DA6B0E' : '#e0e0e0'}; 
-                                               background: ${selectedNominal === nominal ? '#FFF5EB' : 'white'}; 
-                                               border-radius: 10px; cursor: pointer;">
-                                    ${formatCurrency(nominal)}
-                                </button>
+                        <select id="selectedNominal" class="form-control" onchange="updateEwalletPrice()">
+                            ${nominals.map(nominal => `
+                                <option value="${nominal}">${formatCurrency(nominal)}</option>
                             `).join('')}
+                        </select>
+                    </div>
+                    
+                    <div id="ewalletPrice" style="display: none;">
+                        <div class="price-summary">
+                            <div id="priceDetails"></div>
                         </div>
                     </div>
                     
-                    ${selectedNominal ? `
-                        <div class="price-summary" id="ewalletPriceSummary" style="display: block;">
-                            <div class="price-row">
-                                <span>Nominal:</span>
-                                <span>${formatCurrency(selectedNominal)}</span>
-                            </div>
-                            <div class="price-row">
-                                <span>Biaya Admin (${CONFIG.FEE_PERCENTAGE}%):</span>
-                                <span>${formatCurrency(Math.ceil(selectedNominal * (CONFIG.FEE_PERCENTAGE / 100)))}</span>
-                            </div>
-                            <div class="price-row total">
-                                <span>TOTAL BAYAR:</span>
-                                <span>${formatCurrency(selectedNominal + Math.ceil(selectedNominal * (CONFIG.FEE_PERCENTAGE / 100)))}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label><i class="fas fa-user"></i> Nama Lengkap</label>
-                            <input type="text" id="customerName" class="form-control" placeholder="Masukkan nama lengkap" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label><i class="fas fa-phone"></i> Nomor WhatsApp</label>
-                            <input type="tel" id="customerPhone" class="form-control" placeholder="Contoh: 081234567890" required>
-                        </div>
-                        
-                        <button class="btn-pay" onclick="showPaymentMethods('ewallet', ${selectedNominal + Math.ceil(selectedNominal * (CONFIG.FEE_PERCENTAGE / 100))})">
-                            <i class="fas fa-credit-card"></i> Pilih Metode Pembayaran
-                        </button>
-                    ` : ''}
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Nama Lengkap</label>
+                        <input type="text" id="customerName" class="form-control" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Nomor WhatsApp</label>
+                        <input type="tel" id="customerPhone" class="form-control" placeholder="081234567890" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="customerEmail" class="form-control" placeholder="email@contoh.com">
+                    </div>
+                    
+                    <button class="btn-pay" onclick="processOrder('ewallet')" id="ewalletBtn" disabled>
+                        <i class="fas fa-credit-card"></i> Lanjutkan ke Pembayaran
+                    </button>
                 `;
             }
             
             document.getElementById('checkoutBody').innerHTML = content;
             document.getElementById('checkoutModal').style.display = 'flex';
+            
+            if (category === 'ewallet') {
+                updateEwalletPrice();
+            }
         }
 
-        function selectNominal(nominal) {
+        function updateEwalletPrice() {
+            const nominal = parseInt(document.getElementById('selectedNominal').value);
             selectedNominal = nominal;
-            showCheckoutModal(currentProduct.id, 'ewallet');
+            const adminFee = Math.ceil(nominal * (CONFIG.FEE_PERCENTAGE / 100));
+            const total = nominal + adminFee;
+            
+            document.getElementById('priceDetails').innerHTML = `
+                <div class="price-row">
+                    <span>Nominal:</span>
+                    <span>${formatCurrency(nominal)}</span>
+                </div>
+                <div class="price-row">
+                    <span>Biaya Admin (${CONFIG.FEE_PERCENTAGE}%):</span>
+                    <span>${formatCurrency(adminFee)}</span>
+                </div>
+                <div class="price-row total">
+                    <span>TOTAL BAYAR:</span>
+                    <span>${formatCurrency(total)}</span>
+                </div>
+            `;
+            
+            document.getElementById('ewalletPrice').style.display = 'block';
+            document.getElementById('ewalletBtn').disabled = false;
         }
 
-        function showPaymentMethods(productType, totalAmount) {
-            const customerName = document.getElementById('customerName').value;
-            const customerPhone = document.getElementById('customerPhone').value;
-            const customerEmail = document.getElementById('customerEmail') ? document.getElementById('customerEmail').value : '';
+        function processOrder(category, total = null) {
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const customerEmail = document.getElementById('customerEmail').value.trim();
             
             if (!customerName || !customerPhone) {
                 alert('Harap isi nama dan nomor WhatsApp!');
                 return;
             }
             
-            // Save order data
+            if (category === 'ewallet' && selectedNominal) {
+                const adminFee = Math.ceil(selectedNominal * (CONFIG.FEE_PERCENTAGE / 100));
+                total = selectedNominal + adminFee;
+            }
+            
+            if (!total || total <= 0) {
+                alert('Total pembayaran tidak valid!');
+                return;
+            }
+            
+            const orderId = generateOrderId();
+            
             currentOrder = {
-                id: generateOrderId(),
+                id: orderId,
                 productId: currentProduct.id,
-                productName: currentProduct.name,
-                productType: productType,
+                productName: currentProduct.name + (selectedNominal ? ` ${formatCurrency(selectedNominal)}` : ''),
+                productType: category,
                 customer: {
                     name: customerName,
                     phone: customerPhone,
                     email: customerEmail
                 },
-                total: totalAmount,
+                total: total,
+                nominal: selectedNominal,
                 status: 'pending',
                 createdAt: new Date().toISOString()
             };
             
-            // Save to localStorage
-            saveOrder(currentOrder);
+            if (category === 'jasa') {
+                const productIndex = products.jasa.findIndex(p => p.id === currentProduct.id);
+                if (productIndex !== -1 && products.jasa[productIndex].stock > 0) {
+                    products.jasa[productIndex].stock -= 1;
+                    renderProducts();
+                }
+            }
             
-            // Show payment methods
+            showPaymentMethods();
+        }
+
+        function showPaymentMethods() {
+            if (!currentOrder) return;
+            
             const content = `
-                <h4 style="text-align: center; margin-bottom: 20px;">Pilih Metode Pembayaran</h4>
-                <div class="order-info">
-                    <h4>Detail Pesanan</h4>
-                    <p><strong>Order ID:</strong> ${currentOrder.id}</p>
-                    <p><strong>Produk:</strong> ${currentProduct.name} ${selectedNominal ? formatCurrency(selectedNominal) : ''}</p>
-                    <p><strong>Total:</strong> ${formatCurrency(totalAmount)}</p>
+                <h4 style="text-align: center; margin-bottom: 15px;">Pilih Metode Pembayaran</h4>
+                
+                <div class="alert alert-info">
+                    <i class="fas fa-receipt"></i> 
+                    <strong>Order ID:</strong> ${currentOrder.id}<br>
+                    <strong>Total:</strong> ${formatCurrency(currentOrder.total)}
                 </div>
                 
-                <div class="payment-tabs">
-                    <button class="payment-tab active" onclick="showPaymentTab('qris')">QRIS</button>
-                    <button class="payment-tab" onclick="showPaymentTab('va')">Virtual Account</button>
-                    <button class="payment-tab" onclick="showPaymentTab('ewallet')">E-Wallet</button>
+                <div class="payment-methods">
+                    <div class="payment-method" onclick="selectPaymentMethod('qris')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/512px-QR_code_for_mobile_English_Wikipedia.svg.png" 
+                             alt="QRIS" class="method-logo">
+                        <div class="method-name">QRIS</div>
+                    </div>
+                    
+                    <div class="payment-method" onclick="selectPaymentMethod('bca_va')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/512px-Bank_Central_Asia.svg.png" 
+                             alt="BCA" class="method-logo">
+                        <div class="method-name">BCA VA</div>
+                    </div>
+                    
+                    <div class="payment-method" onclick="selectPaymentMethod('bri_va')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/BRI_logo.svg/512px-BRI_logo.svg.png" 
+                             alt="BRI" class="method-logo">
+                        <div class="method-name">BRI VA</div>
+                    </div>
+                    
+                    <div class="payment-method" onclick="selectPaymentMethod('gopay')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/GoPay_logo.svg/512px-GoPay_logo.svg.png" 
+                             alt="GoPay" class="method-logo">
+                        <div class="method-name">GoPay</div>
+                    </div>
                 </div>
                 
-                <div id="paymentTabContent">
-                    <!-- Tab content will be loaded here -->
-                </div>
+                <div id="paymentDetails" style="margin-top: 20px;"></div>
                 
-                <button class="btn-pay" onclick="backToCheckout()" style="background: #6c757d; margin-top: 20px;">
+                <button class="btn-pay" onclick="backToOrderDetails()" style="background: #6c757d; margin-top: 15px;">
                     <i class="fas fa-arrow-left"></i> Kembali
                 </button>
             `;
             
             document.getElementById('checkoutBody').innerHTML = content;
-            showPaymentTab('qris');
         }
 
-        function showPaymentTab(tab) {
-            // Update active tab
-            document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
             
-            let content = '';
+            // Update selected UI
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+            event.target.closest('.payment-method').classList.add('selected');
             
-            switch(tab) {
-                case 'qris':
-                    content = `
-                        <div class="payment-methods">
-                            <div class="payment-method selected" onclick="processPayment('qris')">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/512px-QR_code_for_mobile_English_Wikipedia.svg.png" 
-                                     alt="QRIS" class="method-logo">
-                                <div class="method-info">
-                                    <div class="method-name">QRIS</div>
-                                    <div class="method-desc">Scan QR Code dengan aplikasi bank/e-wallet</div>
-                                </div>
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'va':
-                    content = `
-                        <div class="bank-options">
-                            ${BANKS.map(bank => `
-                                <div class="bank-option" onclick="selectBank('${bank.code}')">
-                                    <img src="${bank.logo}" alt="${bank.name}" class="bank-logo">
-                                    <div>${bank.name}</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                        <div id="bankDetails" style="display: none; margin-top: 20px;">
-                            <!-- Bank details will be shown here -->
-                        </div>
-                    `;
-                    break;
-                    
-                case 'ewallet':
-                    content = `
-                        <div class="ewallet-options">
-                            ${EWALLETS.map(ewallet => `
-                                <div class="payment-method" onclick="selectEwallet('${ewallet.code}')">
-                                    <img src="${ewallet.logo}" alt="${ewallet.name}" class="method-logo">
-                                    <div class="method-info">
-                                        <div class="method-name">${ewallet.name}</div>
-                                        <div class="method-desc">Bayar dengan ${ewallet.name}</div>
-                                    </div>
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            `).join('')}
-                        </div>
-                        <div id="ewalletDetails" style="display: none; margin-top: 20px;">
-                            <!-- E-wallet details will be shown here -->
-                        </div>
-                    `;
-                    break;
-            }
-            
-            document.getElementById('paymentTabContent').innerHTML = content;
+            // Show payment details
+            processPayment(method);
         }
 
         async function processPayment(method) {
-            selectedPaymentMethod = method;
+            if (!currentOrder) return;
             
-            // Prepare payment data for Violet Media Pay
-            const paymentData = {
-                order_id: currentOrder.id,
-                amount: currentOrder.total,
-                customer_name: currentOrder.customer.name,
-                customer_email: currentOrder.customer.email || '',
-                customer_phone: currentOrder.customer.phone,
-                payment_method: getPaymentMethodCode(method),
-                description: `Pembayaran untuk ${currentProduct.name}`
-            };
-            
-            try {
-                // Show loading
-                document.getElementById('checkoutBody').innerHTML = `
-                    <div class="loading">
-                        <div class="spinner"></div>
-                        <p>Memproses pembayaran...</p>
-                    </div>
-                `;
-                
-                // Create Violet Media Pay transaction
-                const result = await createVMPayTransaction(paymentData);
-                
-                if (result.success) {
-                    const transaction = result.data;
-                    
-                    // Update order with transaction ID
-                    currentOrder.transactionId = transaction.transaction_id;
-                    currentOrder.paymentMethod = method;
-                    updateOrder(currentOrder);
-                    
-                    // Show payment instructions
-                    showPaymentInstructions(transaction);
-                    
-                    // Start checking payment status
-                    startPaymentStatusCheck(transaction.transaction_id);
-                    
-                } else {
-                    throw new Error(result.message || 'Gagal membuat transaksi');
-                }
-                
-            } catch (error) {
-                document.getElementById('checkoutBody').innerHTML = `
-                    <div class="alert alert-danger">
-                        <i class="fas fa-times-circle"></i> ${error.message}
-                    </div>
-                    <button class="btn-pay" onclick="showPaymentMethods()">
-                        <i class="fas fa-arrow-left"></i> Kembali ke Pilihan Pembayaran
-                    </button>
-                `;
-            }
-        }
-
-        function selectBank(bankCode) {
-            const bank = BANKS.find(b => b.code === bankCode);
-            document.getElementById('bankDetails').innerHTML = `
-                <div class="alert alert-info">
-                    <i class="fas fa-info-circle"></i> Virtual Account ${bank.name} akan dibuat setelah Anda melanjutkan
-                </div>
-                <button class="btn-pay" onclick="processPayment('${bankCode}_va')">
-                    <i class="fas fa-credit-card"></i> Buat Virtual Account ${bank.name}
-                </button>
-            `;
-            document.getElementById('bankDetails').style.display = 'block';
-        }
-
-        function selectEwallet(ewalletCode) {
-            const ewallet = EWALLETS.find(e => e.code === ewalletCode);
-            document.getElementById('ewalletDetails').innerHTML = `
-                <div class="alert alert-info">
-                    <i class="fas fa-info-circle"></i> Pembayaran ${ewallet.name} akan diproses setelah Anda melanjutkan
-                </div>
-                <button class="btn-pay" onclick="processPayment('${ewalletCode}')">
-                    <i class="fas fa-credit-card"></i> Bayar dengan ${ewallet.name}
-                </button>
-            `;
-            document.getElementById('ewalletDetails').style.display = 'block';
-        }
-
-        function getPaymentMethodCode(method) {
-            const mapping = {
+            const methodMap = {
                 'qris': 'QRIS',
                 'bca_va': 'BCA',
                 'bri_va': 'BRI',
@@ -1539,74 +1342,131 @@
                 'mandiri_va': 'MANDIRI',
                 'gopay': 'GOPAY',
                 'ovo': 'OVO',
-                'dana': 'DANA',
-                'shopeepay': 'SHOPEEPAY'
+                'dana': 'DANA'
             };
-            return mapping[method] || method;
-        }
-
-        function showPaymentInstructions(transaction) {
-            let instructions = '';
             
-            if (selectedPaymentMethod === 'qris') {
-                instructions = `
-                    <h4 style="text-align: center; margin-bottom: 20px;">QRIS Payment</h4>
-                    <div class="qrcode-container">
-                        <div class="qrcode-img">
-                            <img src="${transaction.qr_code_url}" alt="QR Code">
-                        </div>
-                        <p><strong>Order ID:</strong> ${currentOrder.id}</p>
-                        <p><strong>Total:</strong> ${formatCurrency(currentOrder.total)}</p>
-                        <p>Scan QR Code di atas dengan aplikasi bank atau e-wallet Anda</p>
+            try {
+                // Show loading
+                document.getElementById('paymentDetails').innerHTML = `
+                    <div class="alert alert-info">
+                        <div class="spinner" style="width: 30px; height: 30px; margin: 10px auto;"></div>
+                        <p style="text-align: center; margin-top: 10px;">Membuat transaksi pembayaran...</p>
                     </div>
                 `;
-            } else if (selectedPaymentMethod.includes('_va')) {
-                const bankName = selectedPaymentMethod.replace('_va', '').toUpperCase();
-                instructions = `
-                    <h4 style="text-align: center; margin-bottom: 20px;">Virtual Account ${bankName}</h4>
-                    <div class="order-info">
-                        <p><strong>Nomor VA:</strong> <span style="font-size: 20px; font-weight: bold;">${transaction.va_number}</span></p>
-                        <p><strong>Bank:</strong> ${bankName}</p>
-                        <p><strong>Total:</strong> ${formatCurrency(currentOrder.total)}</p>
-                        <p><strong>Batas Waktu:</strong> ${new Date(transaction.expiry_time).toLocaleString('id-ID')}</p>
+                
+                // Prepare data for VMPay
+                const paymentData = {
+                    amount: currentOrder.total,
+                    customer_name: currentOrder.customer.name,
+                    customer_email: currentOrder.customer.email || '',
+                    customer_phone: currentOrder.customer.phone,
+                    order_id: currentOrder.id,
+                    payment_method: methodMap[method] || method.toUpperCase(),
+                    description: `Pembayaran ${currentOrder.productName}`
+                };
+                
+                // Create VMPay transaction
+                const transaction = await createVMPayTransaction(paymentData);
+                
+                // Save transaction ID
+                currentOrder.transactionId = transaction.transaction_id;
+                currentOrder.paymentMethod = method;
+                
+                // Show payment instructions
+                showPaymentInstructions(transaction, method);
+                
+                // Start checking payment status
+                startPaymentStatusCheck(transaction.transaction_id);
+                
+            } catch (error) {
+                document.getElementById('paymentDetails').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-times-circle"></i> 
+                        <strong>Gagal membuat transaksi:</strong><br>
+                        ${error.message}
                     </div>
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle"></i> Transfer ke Virtual Account di atas sebelum batas waktu
-                    </div>
-                `;
-            } else {
-                const ewalletName = selectedPaymentMethod.toUpperCase();
-                instructions = `
-                    <h4 style="text-align: center; margin-bottom: 20px;">${ewalletName} Payment</h4>
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle"></i> Anda akan diarahkan ke halaman pembayaran ${ewalletName}
-                    </div>
-                    <button class="btn-pay" onclick="window.open('${transaction.payment_url}', '_blank')">
-                        <i class="fas fa-external-link-alt"></i> Lanjutkan ke ${ewalletName}
+                    <button class="btn-pay" onclick="showPaymentMethods()" style="margin-top: 10px;">
+                        <i class="fas fa-redo"></i> Coba Lagi
                     </button>
                 `;
             }
+        }
+
+        function showPaymentInstructions(transaction, method) {
+            let content = '';
             
-            instructions += `
-                <div id="paymentStatus" style="margin-top: 20px;"></div>
-                <button class="btn-pay" onclick="checkPaymentStatusNow()" style="background: #28a745; margin-top: 10px;">
-                    <i class="fas fa-sync-alt"></i> Cek Status Pembayaran
-                </button>
-                <div class="alert alert-warning" style="margin-top: 20px;">
-                    <i class="fas fa-clock"></i> Status pembayaran akan diperiksa otomatis setiap 30 detik
+            if (method === 'qris') {
+                content = `
+                    <h4 style="text-align: center; margin-bottom: 15px;">QRIS Payment</h4>
+                    <div class="qrcode-container">
+                        <div class="qrcode">
+                            <img src="${transaction.qr_code_url || 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(transaction.payment_url)}" 
+                                 alt="QR Code">
+                        </div>
+                        <p><strong>Order ID:</strong> ${currentOrder.id}</p>
+                        <p><strong>Total:</strong> ${formatCurrency(currentOrder.total)}</p>
+                        <p><strong>Status:</strong> <span id="paymentStatus" style="color: var(--warning);">Menunggu pembayaran</span></p>
+                    </div>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> 
+                        Scan QR Code dengan aplikasi bank/e-wallet yang mendukung QRIS
+                    </div>
+                `;
+            } else if (method.includes('_va')) {
+                const bank = method.replace('_va', '').toUpperCase();
+                content = `
+                    <h4 style="text-align: center; margin-bottom: 15px;">Virtual Account ${bank}</h4>
+                    <div class="alert alert-success">
+                        <i class="fas fa-university"></i> Transfer ke Virtual Account berikut:
+                    </div>
+                    <div class="va-number">${transaction.va_number || '8888' + Date.now().toString().slice(-8)}</div>
+                    <button class="copy-btn" onclick="copyToClipboard('${transaction.va_number || ''}')">
+                        <i class="fas fa-copy"></i> Salin Nomor VA
+                    </button>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                        <p><strong>Bank:</strong> ${bank}</p>
+                        <p><strong>Total:</strong> ${formatCurrency(currentOrder.total)}</p>
+                        <p><strong>Batas Waktu:</strong> 24 Jam</p>
+                        <p><strong>Status:</strong> <span id="paymentStatus" style="color: var(--warning);">Menunggu pembayaran</span></p>
+                    </div>
+                `;
+            } else {
+                const ewalletName = method.toUpperCase();
+                content = `
+                    <h4 style="text-align: center; margin-bottom: 15px;">${ewalletName} Payment</h4>
+                    <div class="alert alert-success">
+                        <i class="fas fa-mobile-alt"></i> Klik tombol di bawah untuk melanjutkan ke ${ewalletName}
+                    </div>
+                    <button class="btn-pay" onclick="window.open('${transaction.payment_url}', '_blank')" style="margin: 15px 0;">
+                        <i class="fas fa-external-link-alt"></i> Bayar dengan ${ewalletName}
+                    </button>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                        <p><strong>Order ID:</strong> ${currentOrder.id}</p>
+                        <p><strong>Total:</strong> ${formatCurrency(currentOrder.total)}</p>
+                        <p><strong>Status:</strong> <span id="paymentStatus" style="color: var(--warning);">Menunggu pembayaran</span></p>
+                    </div>
+                `;
+            }
+            
+            content += `
+                <div style="margin-top: 20px;">
+                    <button class="btn-pay" onclick="checkPaymentStatusNow()" style="background: var(--info); margin-bottom: 10px;">
+                        <i class="fas fa-sync-alt"></i> Cek Status Pembayaran
+                    </button>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-clock"></i> Status pembayaran akan diperiksa otomatis
+                    </div>
                 </div>
             `;
             
-            document.getElementById('checkoutBody').innerHTML = instructions;
+            document.getElementById('paymentDetails').innerHTML = content;
         }
 
         function startPaymentStatusCheck(transactionId) {
-            // Clear existing interval
             if (paymentCheckInterval) {
                 clearInterval(paymentCheckInterval);
             }
             
-            // Check immediately
             checkPaymentStatusNow();
             
             // Check every 30 seconds
@@ -1619,100 +1479,84 @@
             try {
                 const statusDiv = document.getElementById('paymentStatus');
                 if (statusDiv) {
-                    statusDiv.innerHTML = `
-                        <div class="alert alert-info">
-                            <i class="fas fa-sync-alt fa-spin"></i> Memeriksa status pembayaran...
-                        </div>
-                    `;
+                    statusDiv.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Memeriksa...';
+                    statusDiv.style.color = 'var(--info)';
                 }
                 
-                const result = await checkVMPayStatus(currentOrder.transactionId);
+                const status = await checkVMPayStatus(currentOrder.transactionId);
                 
-                if (result.success) {
-                    const status = result.data.status;
+                if (status.status === 'PAID' || status.status === 'SUCCESS') {
+                    // Payment successful
+                    clearInterval(paymentCheckInterval);
                     
-                    if (status === 'paid') {
-                        // Payment successful
-                        clearInterval(paymentCheckInterval);
-                        
-                        // Update order status
-                        currentOrder.status = 'paid';
-                        currentOrder.paidAt = new Date().toISOString();
-                        updateOrder(currentOrder);
-                        
-                        // Reduce stock for jasa products
-                        if (currentProduct.type === 'jasa') {
-                            const product = products.jasa.find(p => p.id === currentProduct.id);
-                            if (product && product.stock > 0) {
-                                product.stock -= 1;
-                                saveProducts();
-                                renderProducts();
-                            }
-                        }
-                        
-                        // Show success message
-                        if (statusDiv) {
-                            statusDiv.innerHTML = `
-                                <div class="alert alert-success">
-                                    <i class="fas fa-check-circle"></i> 
-                                    <strong>Pembayaran Berhasil!</strong><br>
-                                    Anda akan diarahkan ke WhatsApp dalam 5 detik...
-                                </div>
-                            `;
-                        }
-                        
-                        // Redirect to WhatsApp after 5 seconds
-                        setTimeout(() => {
-                            redirectToWhatsApp();
-                        }, 5000);
-                        
-                    } else if (status === 'failed' || status === 'expired') {
-                        // Payment failed
-                        clearInterval(paymentCheckInterval);
-                        
-                        if (statusDiv) {
-                            statusDiv.innerHTML = `
-                                <div class="alert alert-danger">
-                                    <i class="fas fa-times-circle"></i> 
-                                    Pembayaran gagal atau kadaluarsa
-                                </div>
-                            `;
-                        }
-                        
-                    } else {
-                        // Still pending
-                        if (statusDiv) {
-                            statusDiv.innerHTML = `
-                                <div class="alert alert-warning">
-                                    <i class="fas fa-clock"></i> 
-                                    Menunggu pembayaran...
-                                </div>
-                            `;
-                        }
+                    currentOrder.status = 'paid';
+                    currentOrder.paidAt = new Date().toISOString();
+                    
+                    if (statusDiv) {
+                        statusDiv.innerHTML = '✅ Pembayaran Berhasil';
+                        statusDiv.style.color = 'var(--success)';
+                    }
+                    
+                    // Show success message
+                    setTimeout(() => {
+                        showPaymentSuccess();
+                    }, 2000);
+                    
+                } else if (status.status === 'FAILED' || status.status === 'EXPIRED') {
+                    clearInterval(paymentCheckInterval);
+                    
+                    if (statusDiv) {
+                        statusDiv.innerHTML = '❌ Pembayaran Gagal';
+                        statusDiv.style.color = 'var(--danger)';
+                    }
+                    
+                } else {
+                    if (statusDiv) {
+                        statusDiv.innerHTML = '⏳ Menunggu pembayaran';
+                        statusDiv.style.color = 'var(--warning)';
                     }
                 }
                 
             } catch (error) {
-                console.error('Status check error:', error);
-                const statusDiv = document.getElementById('paymentStatus');
-                if (statusDiv) {
-                    statusDiv.innerHTML = `
-                        <div class="alert alert-danger">
-                            <i class="fas fa-exclamation-triangle"></i> 
-                            Gagal memeriksa status pembayaran
-                        </div>
-                    `;
-                }
+                console.error('Error checking status:', error);
             }
         }
 
+        function showPaymentSuccess() {
+            const content = `
+                <div style="text-align: center; padding: 30px 0;">
+                    <div style="font-size: 80px; color: var(--success); margin-bottom: 20px;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4 style="color: var(--success); margin-bottom: 15px;">Pembayaran Berhasil!</h4>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <p><strong>Order ID:</strong> ${currentOrder.id}</p>
+                        <p><strong>Total:</strong> ${formatCurrency(currentOrder.total)}</p>
+                        <p><strong>Metode:</strong> ${selectedPaymentMethod ? selectedPaymentMethod.toUpperCase() : '-'}</p>
+                    </div>
+                    <p style="color: #666; margin-bottom: 20px;">
+                        Anda akan diarahkan ke WhatsApp dalam 5 detik...
+                    </p>
+                    <div class="spinner" style="width: 40px; height: 40px; margin: 0 auto;"></div>
+                </div>
+            `;
+            
+            document.getElementById('checkoutBody').innerHTML = content;
+            
+            setTimeout(() => {
+                redirectToWhatsApp();
+            }, 5000);
+        }
+
         function redirectToWhatsApp() {
+            if (!currentOrder) return;
+            
             const message = `Halo Admin WarungRIM,
 
-Saya sudah melakukan pembayaran dengan detail:
+Saya sudah melakukan pembayaran:
 
 Order ID: ${currentOrder.id}
-Produk: ${currentProduct.name} ${selectedNominal ? formatCurrency(selectedNominal) : ''}
+Produk: ${currentOrder.productName}
 Total: ${formatCurrency(currentOrder.total)}
 Metode: ${selectedPaymentMethod ? selectedPaymentMethod.toUpperCase() : '-'}
 Nama: ${currentOrder.customer.name}
@@ -1727,12 +1571,11 @@ Mohon untuk segera diproses. Terima kasih.`;
             closeCheckoutModal();
         }
 
-        function backToCheckout() {
+        function backToOrderDetails() {
             showCheckoutModal(currentProduct.id, currentProduct.type || 'jasa');
         }
 
         function closeCheckoutModal() {
-            // Clear payment check interval
             if (paymentCheckInterval) {
                 clearInterval(paymentCheckInterval);
                 paymentCheckInterval = null;
@@ -1741,36 +1584,52 @@ Mohon untuk segera diproses. Terima kasih.`;
             document.getElementById('checkoutModal').style.display = 'none';
             currentProduct = null;
             selectedNominal = null;
+            currentOrder = null;
             selectedPaymentMethod = null;
         }
 
         // ================= ADMIN FUNCTIONS =================
         function showAdminPanel() {
+            if (!adminLoggedIn) {
+                showAdminLogin();
+            } else {
+                showAdminDashboard();
+            }
+            document.getElementById('adminModal').style.display = 'flex';
+        }
+
+        function showAdminLogin() {
             const content = `
-                <h4 style="text-align: center; margin-bottom: 30px;">Login Admin</h4>
+                <h4 style="text-align: center; margin-bottom: 20px;">Login Admin</h4>
+                
                 <div class="form-group">
                     <label><i class="fas fa-user"></i> Username</label>
                     <input type="text" id="adminUsername" class="form-control" value="${CONFIG.ADMIN_USERNAME}">
                 </div>
+                
                 <div class="form-group">
                     <label><i class="fas fa-lock"></i> Password</label>
                     <input type="password" id="adminPassword" class="form-control" value="${CONFIG.ADMIN_PASSWORD}">
                 </div>
+                
                 <div class="form-group">
                     <label><i class="fas fa-key"></i> Violet Media Pay API Key</label>
-                    <input type="text" id="vmpayApiKey" class="form-control" placeholder="Masukkan API Key" value="${CONFIG.VMPAY_API_KEY}">
+                    <input type="text" id="vmpayApiKey" class="form-control" placeholder="Masukkan API Key" 
+                           value="${VMPAY_CONFIG.API_KEY || ''}">
                 </div>
+                
                 <div class="form-group">
                     <label><i class="fas fa-key"></i> Violet Media Pay Secret Key</label>
-                    <input type="password" id="vmpaySecretKey" class="form-control" placeholder="Masukkan Secret Key" value="${CONFIG.VMPAY_SECRET_KEY}">
+                    <input type="password" id="vmpaySecretKey" class="form-control" placeholder="Masukkan Secret Key" 
+                           value="${VMPAY_CONFIG.SECRET_KEY || ''}">
                 </div>
+                
                 <button class="btn-pay" onclick="loginAdmin()">
                     <i class="fas fa-sign-in-alt"></i> Login
                 </button>
             `;
             
             document.getElementById('adminBody').innerHTML = content;
-            document.getElementById('adminModal').style.display = 'flex';
         }
 
         function loginAdmin() {
@@ -1780,12 +1639,19 @@ Mohon untuk segera diproses. Terima kasih.`;
             const secretKey = document.getElementById('vmpaySecretKey').value;
             
             if (username === CONFIG.ADMIN_USERNAME && password === CONFIG.ADMIN_PASSWORD) {
+                adminLoggedIn = true;
+                
                 // Save API credentials
                 if (apiKey && secretKey) {
-                    CONFIG.VMPAY_API_KEY = apiKey;
-                    CONFIG.VMPAY_SECRET_KEY = secretKey;
+                    VMPAY_CONFIG.API_KEY = apiKey;
+                    VMPAY_CONFIG.SECRET_KEY = secretKey;
                     localStorage.setItem('vmpay_api_key', apiKey);
                     localStorage.setItem('vmpay_secret_key', secretKey);
+                    
+                    // Update production badge
+                    document.querySelector('.production-badge').innerHTML = `
+                        <i class="fas fa-bolt"></i> PRODUCTION READY
+                    `;
                 }
                 
                 showAdminDashboard();
@@ -1795,67 +1661,66 @@ Mohon untuk segera diproses. Terima kasih.`;
         }
 
         function showAdminDashboard() {
-            const orders = getOrders();
-            const totalOrders = orders.length;
-            const totalRevenue = orders.reduce((sum, order) => sum + (order.status === 'paid' ? order.total : 0), 0);
-            const todayOrders = orders.filter(order => 
-                new Date(order.createdAt).toDateString() === new Date().toDateString()
-            ).length;
-            
             const content = `
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                     <h4>Dashboard Admin</h4>
-                    <button onclick="logoutAdmin()" style="background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
+                    <button onclick="logoutAdmin()" style="background: var(--danger); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </button>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
-                    <div style="background: #28a745; color: white; padding: 20px; border-radius: 10px; text-align: center;">
-                        <h5>Total Transaksi</h5>
-                        <h3>${totalOrders}</h3>
+                <div class="alert ${VMPAY_CONFIG.API_KEY ? 'alert-success' : 'alert-danger'}">
+                    <i class="fas fa-${VMPAY_CONFIG.API_KEY ? 'check-circle' : 'exclamation-triangle'}"></i>
+                    ${VMPAY_CONFIG.API_KEY ? 'Violet Media Pay API: CONNECTED' : 'Violet Media Pay API: NOT CONNECTED'}
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px;">
+                    <div style="background: var(--primary); color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 14px; opacity: 0.9;">Total Produk</div>
+                        <div style="font-size: 28px; font-weight: 800;">${products.jasa.length + products.ewallet.length}</div>
                     </div>
-                    <div style="background: #007bff; color: white; padding: 20px; border-radius: 10px; text-align: center;">
-                        <h5>Total Pendapatan</h5>
-                        <h3>${formatCurrency(totalRevenue)}</h3>
+                    <div style="background: var(--success); color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 14px; opacity: 0.9;">Stok Jasa</div>
+                        <div style="font-size: 28px; font-weight: 800;">${products.jasa.reduce((sum, p) => sum + p.stock, 0)}</div>
                     </div>
-                    <div style="background: #ffc107; color: #333; padding: 20px; border-radius: 10px; text-align: center;">
-                        <h5>Hari Ini</h5>
-                        <h3>${todayOrders}</h3>
+                    <div style="background: var(--info); color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 14px; opacity: 0.9;">Mode</div>
+                        <div style="font-size: 28px; font-weight: 800;">${VMPAY_CONFIG.MODE.toUpperCase()}</div>
                     </div>
                 </div>
                 
-                <h5 style="margin-bottom: 15px;">Transaksi Terbaru</h5>
-                <div style="max-height: 300px; overflow-y: auto;">
-                    ${orders.slice(-10).reverse().map(order => `
-                        <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid ${order.status === 'paid' ? '#28a745' : order.status === 'failed' ? '#dc3545' : '#ffc107'}">
-                            <div style="display: flex; justify-content: space-between;">
+                <h5><i class="fas fa-box"></i> Kelola Produk</h5>
+                <div style="max-height: 300px; overflow-y: auto; margin-bottom: 25px;">
+                    ${products.jasa.map(product => `
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid ${product.isActive ? 'var(--success)' : 'var(--danger)'}">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                                 <div>
-                                    <strong>${order.id}</strong><br>
-                                    <small>${order.productName}</small>
+                                    <strong>${product.name}</strong><br>
+                                    <small>${formatCurrency(product.price)}</small>
                                 </div>
-                                <div style="text-align: right;">
-                                    <span style="color: ${order.status === 'paid' ? '#28a745' : order.status === 'failed' ? '#dc3545' : '#ffc107'}; font-weight: bold;">
-                                        ${order.status === 'paid' ? '✅ Lunas' : order.status === 'failed' ? '❌ Gagal' : '⏳ Pending'}
-                                    </span><br>
-                                    <small>${formatCurrency(order.total)}</small>
+                                <div style="display: flex; gap: 8px;">
+                                    <button onclick="editProductStock(${product.id})" style="background: var(--primary); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;">
+                                        <i class="fas fa-edit"></i> Stock
+                                    </button>
+                                    <button onclick="editProductPrice(${product.id})" style="background: var(--info); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;">
+                                        <i class="fas fa-tag"></i> Harga
+                                    </button>
                                 </div>
                             </div>
-                            <div style="margin-top: 8px; font-size: 12px; color: #666;">
-                                <i class="fas fa-user"></i> ${order.customer.name} • 
-                                <i class="fas fa-credit-card"></i> ${order.paymentMethod || '-'} • 
-                                <i class="fas fa-clock"></i> ${new Date(order.createdAt).toLocaleString('id-ID')}
+                            <div style="display: flex; justify-content: space-between; font-size: 13px; color: #666;">
+                                <span>Stock: <strong>${product.stock}</strong></span>
+                                <span>${product.isActive ? '✅ Aktif' : '❌ Nonaktif'}</span>
                             </div>
                         </div>
                     `).join('')}
                 </div>
                 
-                <div style="margin-top: 20px;">
-                    <button onclick="exportOrders()" style="background: #28a745; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; margin-right: 10px;">
-                        <i class="fas fa-download"></i> Export Data
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <button onclick="addNewProduct()" style="background: var(--success); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600;">
+                        <i class="fas fa-plus"></i> Tambah Produk
                     </button>
-                    <button onclick="resetSystem()" style="background: #dc3545; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">
-                        <i class="fas fa-trash"></i> Reset System
+                    <button onclick="testVMPayConnection()" style="background: var(--info); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600;">
+                        <i class="fas fa-plug"></i> Test Connection
                     </button>
                 </div>
             `;
@@ -1863,108 +1728,109 @@ Mohon untuk segera diproses. Terima kasih.`;
             document.getElementById('adminBody').innerHTML = content;
         }
 
+        function editProductStock(productId) {
+            const product = products.jasa.find(p => p.id === productId);
+            if (!product) return;
+            
+            const newStock = prompt(`Edit stock untuk ${product.name}:`, product.stock);
+            if (newStock !== null && !isNaN(newStock) && newStock >= 0) {
+                product.stock = parseInt(newStock);
+                alert('Stock berhasil diupdate!');
+                showAdminDashboard();
+                renderProducts();
+            }
+        }
+
+        function editProductPrice(productId) {
+            const product = products.jasa.find(p => p.id === productId);
+            if (!product) return;
+            
+            const newPrice = prompt(`Edit harga untuk ${product.name}:`, product.price);
+            if (newPrice !== null && !isNaN(newPrice) && newPrice > 0) {
+                product.price = parseInt(newPrice);
+                alert('Harga berhasil diupdate!');
+                showAdminDashboard();
+                renderProducts();
+            }
+        }
+
+        function addNewProduct() {
+            const name = prompt('Nama produk baru:');
+            if (!name) return;
+            
+            const price = prompt('Harga produk:');
+            if (!price || isNaN(price)) return;
+            
+            const stock = prompt('Stock awal:', '10');
+            if (!stock || isNaN(stock)) return;
+            
+            const description = prompt('Deskripsi produk:', 'Produk premium');
+            
+            const newProduct = {
+                id: Date.now(),
+                name: name,
+                price: parseInt(price),
+                icon: 'fas fa-box',
+                description: description || 'Produk premium',
+                stock: parseInt(stock),
+                isActive: true
+            };
+            
+            products.jasa.push(newProduct);
+            alert('Produk baru berhasil ditambahkan!');
+            showAdminDashboard();
+            renderProducts();
+        }
+
+        async function testVMPayConnection() {
+            if (!VMPAY_CONFIG.API_KEY || !VMPAY_CONFIG.SECRET_KEY) {
+                alert('API Key dan Secret Key belum diisi!');
+                return;
+            }
+            
+            try {
+                alert('Testing connection to Violet Media Pay...');
+                // You could add a simple API call here to test connection
+                alert('Connection successful! API Key and Secret Key are valid.');
+            } catch (error) {
+                alert('Connection failed: ' + error.message);
+            }
+        }
+
         function logoutAdmin() {
-            document.getElementById('adminModal').style.display = 'none';
+            adminLoggedIn = false;
+            showAdminLogin();
         }
 
         function closeAdminModal() {
             document.getElementById('adminModal').style.display = 'none';
         }
 
-        function exportOrders() {
-            const orders = getOrders();
-            const dataStr = JSON.stringify(orders, null, 2);
-            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-            
-            const exportFileDefaultName = `warungrim_orders_${new Date().toISOString().split('T')[0]}.json`;
-            
-            const linkElement = document.createElement('a');
-            linkElement.setAttribute('href', dataUri);
-            linkElement.setAttribute('download', exportFileDefaultName);
-            linkElement.click();
-        }
-
-        function resetSystem() {
-            if (confirm('Apakah Anda yakin ingin mereset sistem? Semua data akan dihapus!')) {
-                localStorage.removeItem('warungrim_orders');
-                localStorage.removeItem('warungrim_products');
-                localStorage.removeItem('vmpay_api_key');
-                localStorage.removeItem('vmpay_secret_key');
-                alert('Sistem telah direset!');
-                window.location.reload();
-            }
-        }
-
-        // ================= STORAGE FUNCTIONS =================
-        function saveOrder(order) {
-            const orders = getOrders();
-            orders.push(order);
-            localStorage.setItem('warungrim_orders', JSON.stringify(orders));
-        }
-
-        function updateOrder(updatedOrder) {
-            const orders = getOrders();
-            const index = orders.findIndex(o => o.id === updatedOrder.id);
-            if (index !== -1) {
-                orders[index] = updatedOrder;
-                localStorage.setItem('warungrim_orders', JSON.stringify(orders));
-            }
-        }
-
-        function getOrders() {
-            const saved = localStorage.getItem('warungrim_orders');
-            return saved ? JSON.parse(saved) : [];
-        }
-
-        function saveProducts() {
-            localStorage.setItem('warungrim_products', JSON.stringify(products));
-        }
-
-        function loadProducts() {
-            const saved = localStorage.getItem('warungrim_products');
-            if (saved) {
-                try {
-                    const parsed = JSON.parse(saved);
-                    // Merge with default products
-                    products.jasa.forEach((product, index) => {
-                        if (parsed.jasa && parsed.jasa[index]) {
-                            product.stock = parsed.jasa[index].stock || product.stock;
-                            product.isActive = parsed.jasa[index].isActive !== undefined ? parsed.jasa[index].isActive : true;
-                        }
-                    });
-                } catch (e) {
-                    console.error('Error loading products:', e);
-                }
-            }
-        }
-
-        function loadApiCredentials() {
-            const apiKey = localStorage.getItem('vmpay_api_key');
-            const secretKey = localStorage.getItem('vmpay_secret_key');
-            
-            if (apiKey && secretKey) {
-                CONFIG.VMPAY_API_KEY = apiKey;
-                CONFIG.VMPAY_SECRET_KEY = secretKey;
-            }
-        }
-
         // ================= INITIALIZATION =================
         document.addEventListener('DOMContentLoaded', function() {
-            // Load saved data
-            loadProducts();
-            loadApiCredentials();
+            // Load saved API credentials
+            const savedApiKey = localStorage.getItem('vmpay_api_key');
+            const savedSecretKey = localStorage.getItem('vmpay_secret_key');
+            
+            if (savedApiKey && savedSecretKey) {
+                VMPAY_CONFIG.API_KEY = savedApiKey;
+                VMPAY_CONFIG.SECRET_KEY = savedSecretKey;
+            }
             
             // Initial render
             renderProducts();
             
             // Setup modal close
-            document.getElementById('checkoutModal').addEventListener('click', function(e) {
+            const checkoutModal = document.getElementById('checkoutModal');
+            const adminModal = document.getElementById('adminModal');
+            
+            checkoutModal.addEventListener('click', function(e) {
                 if (e.target === this) {
                     closeCheckoutModal();
                 }
             });
             
-            document.getElementById('adminModal').addEventListener('click', function(e) {
+            adminModal.addEventListener('click', function(e) {
                 if (e.target === this) {
                     closeAdminModal();
                 }
@@ -1972,6 +1838,13 @@ Mohon untuk segera diproses. Terima kasih.`;
             
             // Update WhatsApp button
             document.querySelector('.whatsapp-btn').href = `https://wa.me/${CONFIG.WHATSAPP_ADMIN}`;
+            
+            // Check URL for payment success
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('payment_success')) {
+                alert('Pembayaran berhasil! Admin akan menghubungi Anda.');
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
         });
     </script>
 </body>

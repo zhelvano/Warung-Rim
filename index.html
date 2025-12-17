@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WarungRIM | Top Up E-wallet & Jasa Digital</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* Semua CSS tetap sama seperti sebelumnya */
         :root {
             --primary: #DA6B0E;
             --secondary: #FF8C00;
@@ -543,49 +544,6 @@
             object-fit: contain;
         }
         
-        .payment-methods {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .payment-method {
-            padding: 20px;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: white;
-        }
-        
-        .payment-method:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .payment-method.selected {
-            border-color: var(--primary);
-            background: #FFF5EB;
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(218, 107, 14, 0.2);
-        }
-        
-        .method-logo {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 10px;
-            object-fit: contain;
-        }
-        
-        .method-name {
-            font-weight: 600;
-            font-size: 14px;
-            margin-top: 5px;
-        }
-        
         .spinner {
             width: 50px;
             height: 50px;
@@ -635,10 +593,6 @@
                 font-size: 24px;
             }
             
-            .payment-methods {
-                grid-template-columns: 1fr;
-            }
-            
             .production-badge {
                 top: 120px;
                 right: 15px;
@@ -655,27 +609,6 @@
             .modal-content {
                 margin: 10px;
             }
-        }
-        
-        .copy-btn {
-            background: var(--info);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 10px auto;
-            transition: all 0.3s;
-        }
-        
-        .copy-btn:hover {
-            background: #138496;
-            transform: translateY(-2px);
         }
         
         .success-screen {
@@ -741,30 +674,6 @@
             word-break: break-all;
             max-height: 100px;
             overflow-y: auto;
-        }
-        
-        .payment-guide {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-left: 4px solid var(--info);
-        }
-        
-        .payment-guide h5 {
-            margin-top: 0;
-            color: var(--info);
-        }
-        
-        .payment-guide ol {
-            margin: 10px 0 0 20px;
-            padding: 0;
-        }
-        
-        .payment-guide li {
-            margin-bottom: 8px;
-            font-size: 13px;
-            color: #555;
         }
     </style>
 </head>
@@ -875,8 +784,7 @@
         // ================= KONFIGURASI VIOLET MEDIA PAY PRODUCTION =================
         const VMPAY_CONFIG = {
             API_KEY: 'ub9zfg43Zrjwda6nLBSkHAoiAhJ8sDc',
-            SECRET_KEY: 'xsCuHmyg61olqjp9a7BdAJ0z2rn8hAbktcLDPw345eviSfZL',
-            BASE_URL: 'https://violetmediapay.com/api/live', // ENDPOINT YANG BENAR!
+            BASE_URL: 'https://violetmediapay.com/api/live',
             MODE: 'production'
         };
 
@@ -953,9 +861,7 @@
         let selectedNominal = null;
         let adminLoggedIn = false;
         let currentOrder = null;
-        let selectedPaymentMethod = 'qris';
         let paymentCheckInterval = null;
-        let debugMode = true;
 
         // ================= FUNGSI HELPER =================
         function formatCurrency(amount) {
@@ -966,14 +872,6 @@
             const timestamp = Date.now().toString();
             const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
             return 'WR' + timestamp.slice(-6) + random;
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Berhasil disalin!');
-            }).catch(err => {
-                console.error('Gagal menyalin:', err);
-            });
         }
 
         // ================= VIOLET MEDIA PAY API FUNCTIONS =================
@@ -989,7 +887,7 @@
                     email: orderData.customer_email || 'customer@example.com',
                     phone: orderData.customer_phone,
                     produk: orderData.description,
-                    code_payment: 'QRISC' // Menggunakan QRISC bukan QRIS
+                    code_payment: 'QRISC'
                 };
                 
                 console.log('Sending request to:', `${VMPAY_CONFIG.BASE_URL}/create`);
@@ -1284,7 +1182,6 @@
                 return;
             }
             
-            // Validasi nomor telepon
             const phoneRegex = /^[0-9]{10,13}$/;
             const cleanedPhone = customerPhone.replace(/\D/g, '');
             if (!phoneRegex.test(cleanedPhone)) {
@@ -1335,24 +1232,13 @@
             if (!currentOrder) return;
             
             try {
-                // Show loading
                 document.getElementById('checkoutBody').innerHTML = `
                     <div style="text-align: center; padding: 30px 0;">
                         <div class="spinner" style="width: 50px; height: 50px; margin: 20px auto;"></div>
                         <p style="margin-top: 15px;">Memproses pembayaran...</p>
-                        ${debugMode ? `
-                            <div class="debug-info">
-                                <strong>Debug Info:</strong><br>
-                                Order ID: ${currentOrder.id}<br>
-                                Total: ${formatCurrency(currentOrder.total)}<br>
-                                Customer: ${currentOrder.customer.name}<br>
-                                Phone: ${currentOrder.customer.phone}
-                            </div>
-                        ` : ''}
                     </div>
                 `;
                 
-                // Prepare data for VMPay sesuai dengan dokumentasi
                 const paymentData = {
                     amount: currentOrder.total,
                     customer_name: currentOrder.customer.name,
@@ -1363,20 +1249,13 @@
                     description: `Pembayaran ${currentOrder.productName}`
                 };
                 
-                console.log('Payment Data:', paymentData);
-                
-                // Create VMPay transaction
                 const transaction = await createVMPayTransaction(paymentData);
                 
-                // Save transaction data
                 currentOrder.vmReferenceId = transaction.id_reference;
-                currentOrder.paymentMethod = 'qris';
                 currentOrder.vmData = transaction;
                 
-                // Show QR Code
                 showQRCode(transaction);
                 
-                // Start checking payment status
                 startPaymentStatusCheck(transaction.id_reference);
                 
             } catch (error) {
@@ -1386,15 +1265,6 @@
                         <i class="fas fa-times-circle"></i> 
                         <strong>Gagal membuat transaksi:</strong><br>
                         ${error.message}
-                        ${debugMode ? `
-                            <br><br>
-                            <div class="debug-info">
-                                <strong>Debug Details:</strong><br>
-                                API Key: ${VMPAY_CONFIG.API_KEY.substring(0, 10)}...<br>
-                                Endpoint: ${VMPAY_CONFIG.BASE_URL}/create<br>
-                                Error: ${error.toString()}
-                            </div>
-                        ` : ''}
                     </div>
                     <button class="btn-pay" onclick="processPayment()" style="margin-top: 10px;">
                         <i class="fas fa-redo"></i> Coba Lagi
@@ -1407,7 +1277,6 @@
         }
 
         function showQRCode(transaction) {
-            // Cek apakah ada QR code URL atau checkout URL
             const qrCodeUrl = transaction.target || 
                              (transaction.checkout_url ? `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(transaction.checkout_url)}` : '');
             
@@ -1446,18 +1315,6 @@
                     </div>
                 ` : ''}
                 
-                ${debugMode ? `
-                    <div class="alert alert-warning">
-                        <i class="fas fa-bug"></i> 
-                        <strong>Debug Mode Aktif:</strong><br>
-                        Reference ID: ${transaction.id_reference || 'N/A'}<br>
-                        Ref Kode: ${transaction.ref_kode || 'N/A'}<br>
-                        Payment Status: ${transaction.payment_status || 'N/A'}<br>
-                        Target: ${transaction.target ? '✅ Tersedia' : '❌ Tidak tersedia'}<br>
-                        Checkout URL: ${transaction.checkout_url ? '✅ Tersedia' : '❌ Tidak tersedia'}
-                    </div>
-                ` : ''}
-                
                 <div style="margin-top: 20px;">
                     <button class="btn-pay" onclick="checkPaymentStatusNow()" style="background: var(--info); margin-bottom: 10px;">
                         <i class="fas fa-sync-alt"></i> Cek Status Pembayaran
@@ -1482,7 +1339,6 @@
             
             checkPaymentStatusNow();
             
-            // Check every 30 seconds
             paymentCheckInterval = setInterval(checkPaymentStatusNow, 30000);
         }
 
@@ -1497,10 +1353,8 @@
                 }
                 
                 const status = await checkVMPayStatus(currentOrder.vmReferenceId);
-                console.log('Payment Status Update:', status);
                 
                 if (status.payment_status === 'Lunas' || status.payment_status === 'Success' || status.payment_status === 'Paid') {
-                    // Payment successful
                     clearInterval(paymentCheckInterval);
                     
                     currentOrder.status = 'paid';
@@ -1511,7 +1365,6 @@
                         statusDiv.style.color = 'var(--success)';
                     }
                     
-                    // Show success message
                     setTimeout(() => {
                         showPaymentSuccess();
                     }, 1000);
@@ -1533,9 +1386,6 @@
                 
             } catch (error) {
                 console.error('Error checking status:', error);
-                if (debugMode) {
-                    console.log('Status check error:', error);
-                }
             }
         }
 
@@ -1607,7 +1457,6 @@ Mohon untuk segera diproses. Terima kasih.`;
             currentProduct = null;
             selectedNominal = null;
             currentOrder = null;
-            selectedPaymentMethod = 'qris';
         }
 
         // ================= ADMIN FUNCTIONS =================
@@ -1640,19 +1489,6 @@ Mohon untuk segera diproses. Terima kasih.`;
                            value="${VMPAY_CONFIG.API_KEY || ''}">
                 </div>
                 
-                <div class="form-group">
-                    <label><i class="fas fa-key"></i> Violet Media Pay Secret Key</label>
-                    <input type="password" id="vmpaySecretKey" class="form-control" placeholder="Masukkan Secret Key" 
-                           value="${VMPAY_CONFIG.SECRET_KEY || ''}">
-                </div>
-                
-                <div class="form-group">
-                    <label>
-                        <input type="checkbox" id="debugMode" ${debugMode ? 'checked' : ''} onchange="toggleDebugMode()">
-                        <i class="fas fa-bug"></i> Debug Mode
-                    </label>
-                </div>
-                
                 <button class="btn-pay" onclick="loginAdmin()">
                     <i class="fas fa-sign-in-alt"></i> Login
                 </button>
@@ -1661,27 +1497,18 @@ Mohon untuk segera diproses. Terima kasih.`;
             document.getElementById('adminBody').innerHTML = content;
         }
 
-        function toggleDebugMode() {
-            debugMode = document.getElementById('debugMode').checked;
-        }
-
         function loginAdmin() {
             const username = document.getElementById('adminUsername').value;
             const password = document.getElementById('adminPassword').value;
             const apiKey = document.getElementById('vmpayApiKey').value;
-            const secretKey = document.getElementById('vmpaySecretKey').value;
             
             if (username === CONFIG.ADMIN_USERNAME && password === CONFIG.ADMIN_PASSWORD) {
                 adminLoggedIn = true;
                 
-                // Save API credentials
-                if (apiKey && secretKey) {
+                if (apiKey) {
                     VMPAY_CONFIG.API_KEY = apiKey;
-                    VMPAY_CONFIG.SECRET_KEY = secretKey;
                     localStorage.setItem('vmpay_api_key', apiKey);
-                    localStorage.setItem('vmpay_secret_key', secretKey);
                     
-                    // Update production badge
                     document.querySelector('.production-badge').innerHTML = `
                         <i class="fas fa-bolt"></i> PRODUCTION READY
                     `;
@@ -1822,7 +1649,6 @@ Mohon untuk segera diproses. Terima kasih.`;
             }
             
             try {
-                // Test dengan membuat transaksi kecil
                 const testData = {
                     api_key: VMPAY_CONFIG.API_KEY,
                     nominal: 1000,
@@ -1844,7 +1670,6 @@ Mohon untuk segera diproses. Terima kasih.`;
                 });
                 
                 const responseText = await response.text();
-                console.log('Test Response:', responseText);
                 
                 let result;
                 try {
@@ -1876,19 +1701,14 @@ Mohon untuk segera diproses. Terima kasih.`;
 
         // ================= INITIALIZATION =================
         document.addEventListener('DOMContentLoaded', function() {
-            // Load saved API credentials
             const savedApiKey = localStorage.getItem('vmpay_api_key');
-            const savedSecretKey = localStorage.getItem('vmpay_secret_key');
             
-            if (savedApiKey && savedSecretKey) {
+            if (savedApiKey) {
                 VMPAY_CONFIG.API_KEY = savedApiKey;
-                VMPAY_CONFIG.SECRET_KEY = savedSecretKey;
             }
             
-            // Initial render
             renderProducts();
             
-            // Setup modal close
             const checkoutModal = document.getElementById('checkoutModal');
             const adminModal = document.getElementById('adminModal');
             
@@ -1904,24 +1724,20 @@ Mohon untuk segera diproses. Terima kasih.`;
                 }
             });
             
-            // Update WhatsApp button
             document.querySelector('.whatsapp-btn').href = `https://wa.me/${CONFIG.WHATSAPP_ADMIN}`;
             
-            // Check URL for payment success
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('payment_success')) {
                 alert('Pembayaran berhasil! Silakan hubungi admin untuk mendapatkan produk Anda.');
                 window.history.replaceState({}, document.title, window.location.pathname);
             }
             
-            // Enable console logging for debugging
             console.log('WarungRIM loaded with config:', {
                 apiKey: VMPAY_CONFIG.API_KEY ? VMPAY_CONFIG.API_KEY.substring(0, 10) + '...' : 'Not set',
                 endpoint: VMPAY_CONFIG.BASE_URL,
-                mode: VMPAY_CONFIG.MODE,
-                debug: debugMode
+                mode: VMPAY_CONFIG.MODE
             });
         });
     </script>
 </body>
-  </html>
+    </html>

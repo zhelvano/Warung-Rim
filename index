@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WarungRIM | Top Up E-wallet & Jasa Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #DA6B0E;
+            --secondary: #FF8C00;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --dark: #333;
+            --light: #f8f9fa;
+            --border: #dee2e6;
+            --shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .logo i {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 30px;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav a {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav a:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218, 107, 14, 0.3);
+        }
+        
+        .banner {
+            max-width: 1200px;
+            margin: 25px auto;
+            padding: 0 20px;
+        }
+        
+        .banner img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 5px solid white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .tabs {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(218, 107, 14, 0.2);
+        }
+        
+        .tab-btn:hover:not(.active) {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            border: 2px solid transparent;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: var(--primary);
+        }
+        
+        .stock-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--success), #20c997);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 1;
+        }
+        
+        .stock-out {
+            background: linear-gradient(135deg, var(--danger), #ff6b6b);
+        }
+        
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFF5EB, #FFE4CC);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(218, 107, 14, 0.1);
+        }
+        
+        .product-card h3 {
+            font-size: 16px;
+            margin: 15px 0;
+            font-weight: 600;
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+        }
+        
+        .product-price {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 22px;
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .product-note {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: modalSlide 0.3s ease;
+        }
+        
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .modal-header {
+            padding: 20px 25px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #FFF5EB, white);
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .modal-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: #f0f0f0;
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group label i {
+            color: var(--primary);
+            font-size: 16px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(218, 107, 14, 0.1);
+        }
+        
+        .btn-pay {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-pay:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(218, 107, 14, 0.3);
+        }
+        
+        .btn-pay:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 3px solid white;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 50px 20px;
+            margin-top: 70px;
+            border-top: 5px solid var(--primary);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .footer p {
+            margin: 15px 0;
+            color: #ecf0f1;
+            line-height: 1.8;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 14px;
+            border: 1px solid transparent;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+        
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border-color: #ffeaa7;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border-color: #bee5eb;
+        }
+        
+        .price-summary {
+            background: linear-gradient(135deg, #f8f9fa, #f0f7ff);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid #e9ecef;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 15px;
+            color: #555;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .price-row:last-child {
+            border-bottom: none;
+        }
+        
+        .price-row.total {
+            border-top: 3px solid #ddd;
+            margin-top: 10px;
+            padding-top: 15px;
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--primary);
+        }
+        
+        .qrcode-container {
+            text-align: center;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid #e9ecef;
+        }
+        
+        .qrcode {
+            width: 220px;
+            height: 220px;
+            margin: 20px auto;
+            padding: 15px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        
+        .qrcode img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .payment-method {
+            padding: 20px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .payment-method.selected {
+            border-color: var(--primary);
+            background: #FFF5EB;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(218, 107, 14, 0.2);
+        }
+        
+        .method-logo {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 10px;
+            object-fit: contain;
+        }
+        
+        .method-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .production-badge {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .production-badge {
+                top: 120px;
+                right: 15px;
+                font-size: 11px;
+                padding: 6px 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 10px;
+            }
+        }
+        
+        .copy-btn {
+            background: var(--info);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 10px auto;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: #138496;
+            transform: translateY(-2px);
+        }
+        
+        .success-screen {
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            color: var(--success);
+            margin-bottom: 20px;
+            animation: bounce 1s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .redirect-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        
+        .redirect-btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .whatsapp-redirect {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+        }
+        
+        .telegram-redirect {
+            background: linear-gradient(135deg, #0088cc, #24A1DE);
+            color: white;
+        }
+        
+        .redirect-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .debug-info {
+            font-family: monospace;
+            font-size: 12px;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            word-break: break-all;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+        
+        .payment-guide {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--info);
+        }
+        
+        .payment-guide h5 {
+            margin-top: 0;
+            color: var(--info);
+        }
+        
+        .payment-guide ol {
+            margin: 10px 0 0 20px;
+            padding: 0;
+        }
+        
+        .payment-guide li {
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Production Badge -->
+    <div class="production-badge">
+        <i class="fas fa-bolt"></i> MODE PRODUCTION
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/6282227043263" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-store"></i> WarungRIM
+            </a>
+            <nav class="nav">
+                <a href="#" onclick="showAdminPanel()">
+                    <i class="fas fa-user-shield"></i> Admin
+                </a>
+                <a href="#contact">
+                    <i class="fas fa-phone"></i> Kontak
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <div class="banner">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="WarungRIM Banner">
+    </div>
+
+    <!-- Top Products -->
+    <h2 class="section-title">PRODUK UNGGULAN</h2>
+    <div class="products-grid" id="topProducts">
+        <!-- Top products loaded by JS -->
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchCategory('jasa')">
+            <i class="fas fa-code"></i> Jasa Digital
+        </button>
+        <button class="tab-btn" onclick="switchCategory('ewallet')">
+            <i class="fas fa-wallet"></i> Top Up E-wallet
+        </button>
+    </div>
+
+    <!-- Products Grid -->
+    <h2 class="section-title" id="categoryTitle">JASA DIGITAL</h2>
+    <div class="products-grid" id="productsGrid">
+        <!-- Products loaded by JS -->
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Checkout Produk</h3>
+                <button class="close-modal" onclick="closeCheckoutModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="checkoutBody">
+                <!-- Checkout content loaded by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Panel Admin WarungRIM</h3>
+                <button class="close-modal" onclick="closeAdminModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="adminBody">
+                <!-- Admin content loaded by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-logo">WarungRIM</div>
+            <p>Top Up E-wallet & Jasa Digital Premium</p>
+            <p>
+                <i class="fas fa-phone"></i> 0822-2704-3263<br>
+                <i class="fas fa-envelope"></i> support@warungrim.com
+            </p>
+            <p style="color: #bdc3c7; font-size: 14px; margin-top: 20px;">
+                Pembayaran diproses melalui Violet Media Pay - Payment Gateway terpercaya
+            </p>
+            <p style="color: #95a5a6; font-size: 13px; margin-top: 20px;">
+                © 2025 WarungRIM. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // ================= KONFIGURASI VIOLET MEDIA PAY PRODUCTION =================
+        const VMPAY_CONFIG = {
+            API_KEY: 'ub9zfg43Zrjwda6nLBSkHAoiAhJ8sDc',
+            SECRET_KEY: 'xsCuHmyg61olqjp9a7BdAJ0z2rn8hAbktcLDPw345eviSfZL',
+            BASE_URL: 'https://violetmediapay.com/api/live', // ENDPOINT YANG BENAR!
+            MODE: 'production'
+        };
+
+        const CONFIG = {
+            WHATSAPP_ADMIN: '6282227043263',
+            TELEGRAM_ADMIN: 'https://t.me/RimZoHun',
+            FEE_PERCENTAGE: 2.5,
+            ADMIN_USERNAME: 'admin',
+            ADMIN_PASSWORD: 'warungrim2025'
+        };
+
+        // ================= DATA PRODUK =================
+        let products = {
+            jasa: [
+                {
+                    id: 1,
+                    name: "Repository Userbot VVIP Telegram",
+                    price: 300000,
+                    icon: "fas fa-robot",
+                    description: "Userbot Telegram premium dengan 100+ fitur",
+                    stock: 10,
+                    isActive: true
+                },
+                {
+                    id: 2,
+                    name: "Repository Bot Musik Telegram",
+                    price: 200000,
+                    icon: "fas fa-music",
+                    description: "Bot musik kualitas tinggi",
+                    stock: 15,
+                    isActive: true
+                },
+                {
+                    id: 3,
+                    name: "SC Zhforce",
+                    price: 30000,
+                    icon: "fas fa-code",
+                    description: "Source code original",
+                    stock: 20,
+                    isActive: true
+                }
+            ],
+            ewallet: [
+                {
+                    id: 101,
+                    name: "DANA",
+                    icon: "fas fa-wallet",
+                    description: "Top Up Saldo DANA",
+                    isActive: true,
+                    type: "ewallet"
+                },
+                {
+                    id: 102,
+                    name: "OVO",
+                    icon: "fas fa-wallet",
+                    description: "Top Up Saldo OVO",
+                    isActive: true,
+                    type: "ewallet"
+                },
+                {
+                    id: 103,
+                    name: "GoPay",
+                    icon: "fas fa-wallet",
+                    description: "Top Up Saldo GoPay",
+                    isActive: true,
+                    type: "ewallet"
+                }
+            ]
+        };
+
+        // ================= VARIABEL GLOBAL =================
+        let currentCategory = 'jasa';
+        let currentProduct = null;
+        let selectedNominal = null;
+        let adminLoggedIn = false;
+        let currentOrder = null;
+        let selectedPaymentMethod = 'qris';
+        let paymentCheckInterval = null;
+        let debugMode = true;
+
+        // ================= FUNGSI HELPER =================
+        function formatCurrency(amount) {
+            return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+
+        function generateOrderId() {
+            const timestamp = Date.now().toString();
+            const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            return 'WR' + timestamp.slice(-6) + random;
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Berhasil disalin!');
+            }).catch(err => {
+                console.error('Gagal menyalin:', err);
+            });
+        }
+
+        // ================= VIOLET MEDIA PAY API FUNCTIONS =================
+        async function createVMPayTransaction(orderData) {
+            try {
+                console.log('Creating VMPay transaction with data:', orderData);
+                
+                // Format data sesuai dengan dokumentasi
+                const requestData = {
+                    api_key: VMPAY_CONFIG.API_KEY,
+                    nominal: orderData.amount,
+                    nama: orderData.customer_name,
+                    email: orderData.customer_email || 'customer@example.com',
+                    phone: orderData.customer_phone,
+                    produk: orderData.description,
+                    code_payment: 'QRISC' // Menggunakan QRISC bukan QRIS
+                };
+                
+                console.log('Sending request to:', `${VMPAY_CONFIG.BASE_URL}/create`);
+                console.log('Request data:', requestData);
+
+                const response = await fetch(`${VMPAY_CONFIG.BASE_URL}/create`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+
+                console.log('API Response Status:', response.status);
+                
+                const responseText = await response.text();
+                console.log('API Response Text:', responseText);
+
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                } catch (e) {
+                    console.error('Failed to parse JSON response:', e);
+                    throw new Error('Invalid response from server: ' + responseText.substring(0, 100));
+                }
+
+                if (!response.ok) {
+                    console.error('API Error Response:', result);
+                    throw new Error(result.message || `HTTP error! status: ${response.status}`);
+                }
+
+                console.log('VMPay Response:', result);
+                
+                if (result.status === true && result.data && result.data[0]) {
+                    return result.data[0];
+                } else {
+                    throw new Error(result.message || 'Gagal membuat transaksi');
+                }
+                
+            } catch (error) {
+                console.error('VMPay API Error:', error);
+                throw new Error('Terjadi kesalahan saat memproses pembayaran: ' + error.message);
+            }
+        }
+
+        async function checkVMPayStatus(referenceId) {
+            try {
+                console.log('Checking status for reference:', referenceId);
+                
+                const requestData = {
+                    api_key: VMPAY_CONFIG.API_KEY,
+                    id_reference: referenceId
+                };
+                
+                const response = await fetch(`${VMPAY_CONFIG.BASE_URL}/status`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+
+                const result = await response.json();
+                console.log('Status Check Response:', result);
+                
+                if (!response.ok) {
+                    throw new Error(result.message || `HTTP error! status: ${response.status}`);
+                }
+
+                if (result.status === true && result.data && result.data[0]) {
+                    return result.data[0];
+                } else {
+                    throw new Error(result.message || 'Gagal mengambil status');
+                }
+                
+            } catch (error) {
+                console.error('VMPay Status Error:', error);
+                throw error;
+            }
+        }
+
+        // ================= RENDER PRODUK =================
+        function renderProducts() {
+            const topProducts = document.getElementById('topProducts');
+            topProducts.innerHTML = products.jasa.slice(0, 3).map(product => `
+                <div class="product-card" onclick="showCheckoutModal(${product.id}, 'jasa')">
+                    <span class="stock-badge ${product.stock > 0 ? '' : 'stock-out'}">
+                        ${product.stock > 0 ? `Stock: ${product.stock}` : 'Habis'}
+                    </span>
+                    <div class="product-icon">
+                        <i class="${product.icon}"></i>
+                    </div>
+                    <h3>${product.name}</h3>
+                    <div class="product-price">${formatCurrency(product.price)}</div>
+                    <div class="product-note">${product.description}</div>
+                </div>
+            `).join('');
+
+            const productsGrid = document.getElementById('productsGrid');
+            const categoryProducts = products[currentCategory].filter(p => p.isActive);
+            
+            productsGrid.innerHTML = categoryProducts.map(product => {
+                if (currentCategory === 'jasa') {
+                    return `
+                        <div class="product-card ${product.stock <= 0 ? 'disabled' : ''}" 
+                             ${product.stock > 0 ? `onclick="showCheckoutModal(${product.id}, 'jasa')"` : ''}
+                             style="${product.stock <= 0 ? 'opacity: 0.6; cursor: not-allowed;' : ''}">
+                            <span class="stock-badge ${product.stock > 0 ? '' : 'stock-out'}">
+                                ${product.stock > 0 ? `Stock: ${product.stock}` : 'Habis'}
+                            </span>
+                            <div class="product-icon">
+                                <i class="${product.icon}"></i>
+                            </div>
+                            <h3>${product.name}</h3>
+                            <div class="product-price">${formatCurrency(product.price)}</div>
+                            <div class="product-note">${product.description}</div>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div class="product-card" onclick="showCheckoutModal(${product.id}, 'ewallet')">
+                            <span class="stock-badge" style="background: var(--info);">Tersedia</span>
+                            <div class="product-icon">
+                                <i class="${product.icon}"></i>
+                            </div>
+                            <h3>${product.name}</h3>
+                            <div class="product-price">Pilih Nominal</div>
+                            <div class="product-note">${product.description}</div>
+                        </div>
+                    `;
+                }
+            }).join('');
+        }
+
+        function switchCategory(category) {
+            currentCategory = category;
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.getElementById('categoryTitle').textContent = 
+                category === 'jasa' ? 'JASA DIGITAL' : 'TOP UP E-WALLET';
+            
+            renderProducts();
+        }
+
+        // ================= CHECKOUT PROCESS =================
+        function showCheckoutModal(productId, category) {
+            currentProduct = products[category].find(p => p.id === productId);
+            if (!currentProduct) return;
+
+            if (category === 'jasa' && currentProduct.stock <= 0) {
+                alert('Stok produk habis!');
+                return;
+            }
+
+            selectedNominal = null;
+            
+            let content = '';
+            
+            if (category === 'jasa') {
+                const adminFee = Math.ceil(currentProduct.price * (CONFIG.FEE_PERCENTAGE / 100));
+                const total = currentProduct.price + adminFee;
+                
+                content = `
+                    <h4 style="text-align: center; margin-bottom: 15px;">${currentProduct.name}</h4>
+                    <p style="text-align: center; color: #666; margin-bottom: 20px;">${currentProduct.description}</p>
+                    
+                    ${currentProduct.stock <= 3 ? `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle"></i> Stok terbatas! Hanya ${currentProduct.stock} unit tersisa.
+                        </div>
+                    ` : ''}
+                    
+                    <div class="price-summary">
+                        <div class="price-row">
+                            <span>Harga Produk:</span>
+                            <span>${formatCurrency(currentProduct.price)}</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Biaya Admin (${CONFIG.FEE_PERCENTAGE}%):</span>
+                            <span>${formatCurrency(adminFee)}</span>
+                        </div>
+                        <div class="price-row total">
+                            <span>TOTAL BAYAR:</span>
+                            <span>${formatCurrency(total)}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Nama Lengkap</label>
+                        <input type="text" id="customerName" class="form-control" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Nomor WhatsApp</label>
+                        <input type="tel" id="customerPhone" class="form-control" placeholder="081234567890" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="customerEmail" class="form-control" placeholder="email@contoh.com">
+                    </div>
+                    
+                    <button class="btn-pay" onclick="processOrder('jasa', ${total})">
+                        <i class="fas fa-qrcode"></i> Bayar dengan QRISC
+                    </button>
+                `;
+            } else {
+                const nominals = [10000, 20000, 50000, 100000, 150000, 200000, 250000, 300000, 500000];
+                
+                content = `
+                    <h4 style="text-align: center; margin-bottom: 15px;">Top Up ${currentProduct.name}</h4>
+                    <p style="text-align: center; color: #666; margin-bottom: 20px;">${currentProduct.description}</p>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-money-bill-wave"></i> Pilih Nominal</label>
+                        <select id="selectedNominal" class="form-control" onchange="updateEwalletPrice()">
+                            ${nominals.map(nominal => `
+                                <option value="${nominal}">${formatCurrency(nominal)}</option>
+                            `).join('')}
+                        </select>
+                    </div>
+                    
+                    <div id="ewalletPrice" style="display: none;">
+                        <div class="price-summary">
+                            <div id="priceDetails"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Nama Lengkap</label>
+                        <input type="text" id="customerName" class="form-control" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Nomor WhatsApp</label>
+                        <input type="tel" id="customerPhone" class="form-control" placeholder="081234567890" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="customerEmail" class="form-control" placeholder="email@contoh.com">
+                    </div>
+                    
+                    <button class="btn-pay" onclick="processOrder('ewallet')" id="ewalletBtn" disabled>
+                        <i class="fas fa-qrcode"></i> Bayar dengan QRISC
+                    </button>
+                `;
+            }
+            
+            document.getElementById('checkoutBody').innerHTML = content;
+            document.getElementById('checkoutModal').style.display = 'flex';
+            
+            if (category === 'ewallet') {
+                updateEwalletPrice();
+            }
+        }
+
+        function updateEwalletPrice() {
+            const nominal = parseInt(document.getElementById('selectedNominal').value);
+            selectedNominal = nominal;
+            const adminFee = Math.ceil(nominal * (CONFIG.FEE_PERCENTAGE / 100));
+            const total = nominal + adminFee;
+            
+            document.getElementById('priceDetails').innerHTML = `
+                <div class="price-row">
+                    <span>Nominal:</span>
+                    <span>${formatCurrency(nominal)}</span>
+                </div>
+                <div class="price-row">
+                    <span>Biaya Admin (${CONFIG.FEE_PERCENTAGE}%):</span>
+                    <span>${formatCurrency(adminFee)}</span>
+                </div>
+                <div class="price-row total">
+                    <span>TOTAL BAYAR:</span>
+                    <span>${formatCurrency(total)}</span>
+                </div>
+            `;
+            
+            document.getElementById('ewalletPrice').style.display = 'block';
+            document.getElementById('ewalletBtn').disabled = false;
+        }
+
+        function processOrder(category, total = null) {
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const customerEmail = document.getElementById('customerEmail').value.trim();
+            
+            if (!customerName || !customerPhone) {
+                alert('Harap isi nama dan nomor WhatsApp!');
+                return;
+            }
+            
+            // Validasi nomor telepon
+            const phoneRegex = /^[0-9]{10,13}$/;
+            const cleanedPhone = customerPhone.replace(/\D/g, '');
+            if (!phoneRegex.test(cleanedPhone)) {
+                alert('Format nomor WhatsApp tidak valid! Gunakan format 081234567890');
+                return;
+            }
+            
+            if (category === 'ewallet' && selectedNominal) {
+                const adminFee = Math.ceil(selectedNominal * (CONFIG.FEE_PERCENTAGE / 100));
+                total = selectedNominal + adminFee;
+            }
+            
+            if (!total || total <= 0) {
+                alert('Total pembayaran tidak valid!');
+                return;
+            }
+            
+            const orderId = generateOrderId();
+            
+            currentOrder = {
+                id: orderId,
+                productId: currentProduct.id,
+                productName: currentProduct.name + (selectedNominal ? ` ${formatCurrency(selectedNominal)}` : ''),
+                productType: category,
+                customer: {
+                    name: customerName,
+                    phone: cleanedPhone,
+                    email: customerEmail || 'customer@example.com'
+                },
+                total: total,
+                nominal: selectedNominal,
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            };
+            
+            if (category === 'jasa') {
+                const productIndex = products.jasa.findIndex(p => p.id === currentProduct.id);
+                if (productIndex !== -1 && products.jasa[productIndex].stock > 0) {
+                    products.jasa[productIndex].stock -= 1;
+                    renderProducts();
+                }
+            }
+            
+            processPayment();
+        }
+
+        async function processPayment() {
+            if (!currentOrder) return;
+            
+            try {
+                // Show loading
+                document.getElementById('checkoutBody').innerHTML = `
+                    <div style="text-align: center; padding: 30px 0;">
+                        <div class="spinner" style="width: 50px; height: 50px; margin: 20px auto;"></div>
+                        <p style="margin-top: 15px;">Memproses pembayaran...</p>
+                        ${debugMode ? `
+                            <div class="debug-info">
+                                <strong>Debug Info:</strong><br>
+                                Order ID: ${currentOrder.id}<br>
+                                Total: ${formatCurrency(currentOrder.total)}<br>
+                                Customer: ${currentOrder.customer.name}<br>
+                                Phone: ${currentOrder.customer.phone}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+                
+                // Prepare data for VMPay sesuai dengan dokumentasi
+                const paymentData = {
+                    amount: currentOrder.total,
+                    customer_name: currentOrder.customer.name,
+                    customer_email: currentOrder.customer.email,
+                    customer_phone: currentOrder.customer.phone,
+                    order_id: currentOrder.id,
+                    payment_method: 'QRISC',
+                    description: `Pembayaran ${currentOrder.productName}`
+                };
+                
+                console.log('Payment Data:', paymentData);
+                
+                // Create VMPay transaction
+                const transaction = await createVMPayTransaction(paymentData);
+                
+                // Save transaction data
+                currentOrder.vmReferenceId = transaction.id_reference;
+                currentOrder.paymentMethod = 'qris';
+                currentOrder.vmData = transaction;
+                
+                // Show QR Code
+                showQRCode(transaction);
+                
+                // Start checking payment status
+                startPaymentStatusCheck(transaction.id_reference);
+                
+            } catch (error) {
+                console.error('Payment Error:', error);
+                document.getElementById('checkoutBody').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-times-circle"></i> 
+                        <strong>Gagal membuat transaksi:</strong><br>
+                        ${error.message}
+                        ${debugMode ? `
+                            <br><br>
+                            <div class="debug-info">
+                                <strong>Debug Details:</strong><br>
+                                API Key: ${VMPAY_CONFIG.API_KEY.substring(0, 10)}...<br>
+                                Endpoint: ${VMPAY_CONFIG.BASE_URL}/create<br>
+                                Error: ${error.toString()}
+                            </div>
+                        ` : ''}
+                    </div>
+                    <button class="btn-pay" onclick="processPayment()" style="margin-top: 10px;">
+                        <i class="fas fa-redo"></i> Coba Lagi
+                    </button>
+                    <button class="btn-pay" onclick="showCheckoutModal(currentProduct.id, currentProduct.type || 'jasa')" style="background: #6c757d; margin-top: 10px;">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </button>
+                `;
+            }
+        }
+
+        function showQRCode(transaction) {
+            // Cek apakah ada QR code URL atau checkout URL
+            const qrCodeUrl = transaction.target || 
+                             (transaction.checkout_url ? `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(transaction.checkout_url)}` : '');
+            
+            const content = `
+                <h4 style="text-align: center; margin-bottom: 15px;">Scan QR Code</h4>
+                
+                <div class="qrcode-container">
+                    ${qrCodeUrl ? `
+                        <div class="qrcode">
+                            <img src="${qrCodeUrl}" alt="QR Code">
+                        </div>
+                    ` : `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle"></i> 
+                            QR Code tidak tersedia. Silakan gunakan link pembayaran di bawah.
+                        </div>
+                    `}
+                    
+                    <p><strong>Order ID:</strong> ${currentOrder.id}</p>
+                    <p><strong>Total:</strong> ${formatCurrency(currentOrder.total)}</p>
+                    <p><strong>Status:</strong> <span id="paymentStatus" style="color: var(--warning);">${transaction.payment_status || 'Menunggu pembayaran'}</span></p>
+                    
+                    ${transaction.checkout_url ? `
+                        <div style="margin-top: 15px;">
+                            <a href="${transaction.checkout_url}" target="_blank" class="btn-pay" style="text-decoration: none;">
+                                <i class="fas fa-external-link-alt"></i> Buka Halaman Pembayaran
+                            </a>
+                        </div>
+                    ` : ''}
+                </div>
+                
+                ${transaction.expired_time ? `
+                    <div class="alert alert-info">
+                        <i class="fas fa-clock"></i> 
+                        <strong>Batas Waktu:</strong> ${transaction.expired_time}
+                    </div>
+                ` : ''}
+                
+                ${debugMode ? `
+                    <div class="alert alert-warning">
+                        <i class="fas fa-bug"></i> 
+                        <strong>Debug Mode Aktif:</strong><br>
+                        Reference ID: ${transaction.id_reference || 'N/A'}<br>
+                        Ref Kode: ${transaction.ref_kode || 'N/A'}<br>
+                        Payment Status: ${transaction.payment_status || 'N/A'}<br>
+                        Target: ${transaction.target ? '✅ Tersedia' : '❌ Tidak tersedia'}<br>
+                        Checkout URL: ${transaction.checkout_url ? '✅ Tersedia' : '❌ Tidak tersedia'}
+                    </div>
+                ` : ''}
+                
+                <div style="margin-top: 20px;">
+                    <button class="btn-pay" onclick="checkPaymentStatusNow()" style="background: var(--info); margin-bottom: 10px;">
+                        <i class="fas fa-sync-alt"></i> Cek Status Pembayaran
+                    </button>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-clock"></i> Status pembayaran akan diperiksa otomatis setiap 30 detik
+                    </div>
+                </div>
+                
+                <button class="btn-pay" onclick="closeCheckoutModal()" style="background: #6c757d; margin-top: 15px;">
+                    <i class="fas fa-times"></i> Tutup
+                </button>
+            `;
+            
+            document.getElementById('checkoutBody').innerHTML = content;
+        }
+
+        function startPaymentStatusCheck(referenceId) {
+            if (paymentCheckInterval) {
+                clearInterval(paymentCheckInterval);
+            }
+            
+            checkPaymentStatusNow();
+            
+            // Check every 30 seconds
+            paymentCheckInterval = setInterval(checkPaymentStatusNow, 30000);
+        }
+
+        async function checkPaymentStatusNow() {
+            if (!currentOrder || !currentOrder.vmReferenceId) return;
+            
+            try {
+                const statusDiv = document.getElementById('paymentStatus');
+                if (statusDiv) {
+                    statusDiv.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Memeriksa...';
+                    statusDiv.style.color = 'var(--info)';
+                }
+                
+                const status = await checkVMPayStatus(currentOrder.vmReferenceId);
+                console.log('Payment Status Update:', status);
+                
+                if (status.payment_status === 'Lunas' || status.payment_status === 'Success' || status.payment_status === 'Paid') {
+                    // Payment successful
+                    clearInterval(paymentCheckInterval);
+                    
+                    currentOrder.status = 'paid';
+                    currentOrder.paidAt = new Date().toISOString();
+                    
+                    if (statusDiv) {
+                        statusDiv.innerHTML = '✅ Pembayaran Berhasil';
+                        statusDiv.style.color = 'var(--success)';
+                    }
+                    
+                    // Show success message
+                    setTimeout(() => {
+                        showPaymentSuccess();
+                    }, 1000);
+                    
+                } else if (status.payment_status === 'Gagal' || status.payment_status === 'Failed' || status.payment_status === 'Expired') {
+                    clearInterval(paymentCheckInterval);
+                    
+                    if (statusDiv) {
+                        statusDiv.innerHTML = '❌ Pembayaran Gagal';
+                        statusDiv.style.color = 'var(--danger)';
+                    }
+                    
+                } else {
+                    if (statusDiv) {
+                        statusDiv.innerHTML = status.payment_status || '⏳ Menunggu pembayaran';
+                        statusDiv.style.color = 'var(--warning)';
+                    }
+                }
+                
+            } catch (error) {
+                console.error('Error checking status:', error);
+                if (debugMode) {
+                    console.log('Status check error:', error);
+                }
+            }
+        }
+
+        function showPaymentSuccess() {
+            const content = `
+                <div class="success-screen">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4 style="color: var(--success); margin-bottom: 15px;">Pembayaran Berhasil!</h4>
+                    
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0; text-align: left;">
+                        <p><strong>Order ID:</strong> ${currentOrder.id}</p>
+                        <p><strong>Produk:</strong> ${currentOrder.productName}</p>
+                        <p><strong>Total:</strong> ${formatCurrency(currentOrder.total)}</p>
+                        <p><strong>Metode:</strong> QRISC</p>
+                        <p><strong>Nama:</strong> ${currentOrder.customer.name}</p>
+                        <p><strong>Waktu:</strong> ${new Date().toLocaleString('id-ID')}</p>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i> 
+                        Pembayaran Anda telah berhasil diverifikasi. Silakan hubungi admin untuk mendapatkan produk Anda.
+                    </div>
+                    
+                    <div class="redirect-options">
+                        <a href="https://wa.me/${CONFIG.WHATSAPP_ADMIN}?text=${encodeURIComponent(getWhatsAppMessage())}" 
+                           class="redirect-btn whatsapp-redirect" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Admin
+                        </a>
+                        <a href="${CONFIG.TELEGRAM_ADMIN}" 
+                           class="redirect-btn telegram-redirect" target="_blank">
+                            <i class="fab fa-telegram"></i> Telegram Admin
+                        </a>
+                    </div>
+                    
+                    <button class="btn-pay" onclick="closeCheckoutModal()" style="margin-top: 20px;">
+                        <i class="fas fa-times"></i> Tutup
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('checkoutBody').innerHTML = content;
+        }
+
+        function getWhatsAppMessage() {
+            return `Halo Admin WarungRIM,
+
+Saya sudah melakukan pembayaran:
+
+Order ID: ${currentOrder.id}
+Produk: ${currentOrder.productName}
+Total: ${formatCurrency(currentOrder.total)}
+Metode: QRISC
+Nama: ${currentOrder.customer.name}
+Email: ${currentOrder.customer.email || '-'}
+No. HP: ${currentOrder.customer.phone}
+
+Mohon untuk segera diproses. Terima kasih.`;
+        }
+
+        function closeCheckoutModal() {
+            if (paymentCheckInterval) {
+                clearInterval(paymentCheckInterval);
+                paymentCheckInterval = null;
+            }
+            
+            document.getElementById('checkoutModal').style.display = 'none';
+            currentProduct = null;
+            selectedNominal = null;
+            currentOrder = null;
+            selectedPaymentMethod = 'qris';
+        }
+
+        // ================= ADMIN FUNCTIONS =================
+        function showAdminPanel() {
+            if (!adminLoggedIn) {
+                showAdminLogin();
+            } else {
+                showAdminDashboard();
+            }
+            document.getElementById('adminModal').style.display = 'flex';
+        }
+
+        function showAdminLogin() {
+            const content = `
+                <h4 style="text-align: center; margin-bottom: 20px;">Login Admin</h4>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="adminUsername" class="form-control" value="${CONFIG.ADMIN_USERNAME}">
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="adminPassword" class="form-control" value="${CONFIG.ADMIN_PASSWORD}">
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-key"></i> Violet Media Pay API Key</label>
+                    <input type="text" id="vmpayApiKey" class="form-control" placeholder="Masukkan API Key" 
+                           value="${VMPAY_CONFIG.API_KEY || ''}">
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-key"></i> Violet Media Pay Secret Key</label>
+                    <input type="password" id="vmpaySecretKey" class="form-control" placeholder="Masukkan Secret Key" 
+                           value="${VMPAY_CONFIG.SECRET_KEY || ''}">
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="debugMode" ${debugMode ? 'checked' : ''} onchange="toggleDebugMode()">
+                        <i class="fas fa-bug"></i> Debug Mode
+                    </label>
+                </div>
+                
+                <button class="btn-pay" onclick="loginAdmin()">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            `;
+            
+            document.getElementById('adminBody').innerHTML = content;
+        }
+
+        function toggleDebugMode() {
+            debugMode = document.getElementById('debugMode').checked;
+        }
+
+        function loginAdmin() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            const apiKey = document.getElementById('vmpayApiKey').value;
+            const secretKey = document.getElementById('vmpaySecretKey').value;
+            
+            if (username === CONFIG.ADMIN_USERNAME && password === CONFIG.ADMIN_PASSWORD) {
+                adminLoggedIn = true;
+                
+                // Save API credentials
+                if (apiKey && secretKey) {
+                    VMPAY_CONFIG.API_KEY = apiKey;
+                    VMPAY_CONFIG.SECRET_KEY = secretKey;
+                    localStorage.setItem('vmpay_api_key', apiKey);
+                    localStorage.setItem('vmpay_secret_key', secretKey);
+                    
+                    // Update production badge
+                    document.querySelector('.production-badge').innerHTML = `
+                        <i class="fas fa-bolt"></i> PRODUCTION READY
+                    `;
+                }
+                
+                showAdminDashboard();
+            } else {
+                alert('Username atau password salah!');
+            }
+        }
+
+        function showAdminDashboard() {
+            const content = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h4>Dashboard Admin</h4>
+                    <button onclick="logoutAdmin()" style="background: var(--danger); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+                
+                <div class="alert ${VMPAY_CONFIG.API_KEY ? 'alert-success' : 'alert-danger'}">
+                    <i class="fas fa-${VMPAY_CONFIG.API_KEY ? 'check-circle' : 'exclamation-triangle'}"></i>
+                    ${VMPAY_CONFIG.API_KEY ? 'Violet Media Pay API: CONNECTED' : 'Violet Media Pay API: NOT CONNECTED'}
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px;">
+                    <div style="background: var(--primary); color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 14px; opacity: 0.9;">Total Produk</div>
+                        <div style="font-size: 28px; font-weight: 800;">${products.jasa.length + products.ewallet.length}</div>
+                    </div>
+                    <div style="background: var(--success); color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 14px; opacity: 0.9;">Stok Jasa</div>
+                        <div style="font-size: 28px; font-weight: 800;">${products.jasa.reduce((sum, p) => sum + p.stock, 0)}</div>
+                    </div>
+                    <div style="background: var(--info); color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 14px; opacity: 0.9;">Mode</div>
+                        <div style="font-size: 28px; font-weight: 800;">${VMPAY_CONFIG.MODE.toUpperCase()}</div>
+                    </div>
+                </div>
+                
+                <h5><i class="fas fa-box"></i> Kelola Produk</h5>
+                <div style="max-height: 300px; overflow-y: auto; margin-bottom: 25px;">
+                    ${products.jasa.map(product => `
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid ${product.isActive ? 'var(--success)' : 'var(--danger)'}">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <div>
+                                    <strong>${product.name}</strong><br>
+                                    <small>${formatCurrency(product.price)}</small>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button onclick="editProductStock(${product.id})" style="background: var(--primary); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;">
+                                        <i class="fas fa-edit"></i> Stock
+                                    </button>
+                                    <button onclick="editProductPrice(${product.id})" style="background: var(--info); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;">
+                                        <i class="fas fa-tag"></i> Harga
+                                    </button>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 13px; color: #666;">
+                                <span>Stock: <strong>${product.stock}</strong></span>
+                                <span>${product.isActive ? '✅ Aktif' : '❌ Nonaktif'}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <button onclick="addNewProduct()" style="background: var(--success); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600;">
+                        <i class="fas fa-plus"></i> Tambah Produk
+                    </button>
+                    <button onclick="testVMPayConnection()" style="background: var(--info); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600;">
+                        <i class="fas fa-plug"></i> Test Connection
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('adminBody').innerHTML = content;
+        }
+
+        function editProductStock(productId) {
+            const product = products.jasa.find(p => p.id === productId);
+            if (!product) return;
+            
+            const newStock = prompt(`Edit stock untuk ${product.name}:`, product.stock);
+            if (newStock !== null && !isNaN(newStock) && newStock >= 0) {
+                product.stock = parseInt(newStock);
+                alert('Stock berhasil diupdate!');
+                showAdminDashboard();
+                renderProducts();
+            }
+        }
+
+        function editProductPrice(productId) {
+            const product = products.jasa.find(p => p.id === productId);
+            if (!product) return;
+            
+            const newPrice = prompt(`Edit harga untuk ${product.name}:`, product.price);
+            if (newPrice !== null && !isNaN(newPrice) && newPrice > 0) {
+                product.price = parseInt(newPrice);
+                alert('Harga berhasil diupdate!');
+                showAdminDashboard();
+                renderProducts();
+            }
+        }
+
+        function addNewProduct() {
+            const name = prompt('Nama produk baru:');
+            if (!name) return;
+            
+            const price = prompt('Harga produk:');
+            if (!price || isNaN(price)) return;
+            
+            const stock = prompt('Stock awal:', '10');
+            if (!stock || isNaN(stock)) return;
+            
+            const description = prompt('Deskripsi produk:', 'Produk premium');
+            
+            const newProduct = {
+                id: Date.now(),
+                name: name,
+                price: parseInt(price),
+                icon: 'fas fa-box',
+                description: description || 'Produk premium',
+                stock: parseInt(stock),
+                isActive: true
+            };
+            
+            products.jasa.push(newProduct);
+            alert('Produk baru berhasil ditambahkan!');
+            showAdminDashboard();
+            renderProducts();
+        }
+
+        async function testVMPayConnection() {
+            if (!VMPAY_CONFIG.API_KEY) {
+                alert('API Key belum diisi!');
+                return;
+            }
+            
+            try {
+                // Test dengan membuat transaksi kecil
+                const testData = {
+                    api_key: VMPAY_CONFIG.API_KEY,
+                    nominal: 1000,
+                    nama: "Test Connection",
+                    email: "test@test.com",
+                    phone: "081234567890",
+                    produk: "Test Connection to VMPay",
+                    code_payment: "QRISC"
+                };
+                
+                alert('Menguji koneksi ke Violet Media Pay...');
+                
+                const response = await fetch(`${VMPAY_CONFIG.BASE_URL}/create`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(testData)
+                });
+                
+                const responseText = await response.text();
+                console.log('Test Response:', responseText);
+                
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                } catch (e) {
+                    alert('❌ Response tidak valid: ' + responseText.substring(0, 100));
+                    return;
+                }
+                
+                if (result.status === true) {
+                    alert('✅ Koneksi berhasil! API Key valid.\n\nReference ID: ' + 
+                          (result.data && result.data[0] ? result.data[0].id_reference : 'N/A'));
+                } else {
+                    alert('❌ Koneksi gagal. Status: ' + (result.message || 'Unknown error'));
+                }
+            } catch (error) {
+                alert('❌ Koneksi gagal: ' + error.message);
+            }
+        }
+
+        function logoutAdmin() {
+            adminLoggedIn = false;
+            showAdminLogin();
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        // ================= INITIALIZATION =================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved API credentials
+            const savedApiKey = localStorage.getItem('vmpay_api_key');
+            const savedSecretKey = localStorage.getItem('vmpay_secret_key');
+            
+            if (savedApiKey && savedSecretKey) {
+                VMPAY_CONFIG.API_KEY = savedApiKey;
+                VMPAY_CONFIG.SECRET_KEY = savedSecretKey;
+            }
+            
+            // Initial render
+            renderProducts();
+            
+            // Setup modal close
+            const checkoutModal = document.getElementById('checkoutModal');
+            const adminModal = document.getElementById('adminModal');
+            
+            checkoutModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeCheckoutModal();
+                }
+            });
+            
+            adminModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeAdminModal();
+                }
+            });
+            
+            // Update WhatsApp button
+            document.querySelector('.whatsapp-btn').href = `https://wa.me/${CONFIG.WHATSAPP_ADMIN}`;
+            
+            // Check URL for payment success
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('payment_success')) {
+                alert('Pembayaran berhasil! Silakan hubungi admin untuk mendapatkan produk Anda.');
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+            
+            // Enable console logging for debugging
+            console.log('WarungRIM loaded with config:', {
+                apiKey: VMPAY_CONFIG.API_KEY ? VMPAY_CONFIG.API_KEY.substring(0, 10) + '...' : 'Not set',
+                endpoint: VMPAY_CONFIG.BASE_URL,
+                mode: VMPAY_CONFIG.MODE,
+                debug: debugMode
+            });
+        });
+    </script>
+</body>
+</html>

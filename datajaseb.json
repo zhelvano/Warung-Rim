@@ -1,4 +1,19 @@
 {
-  "users": [],
+  "users": [
+    {
+      "userId": 1087968824,
+      "username": "GroupAnonymousBot",
+      "firstName": "Group",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-15T15:55:19.319Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-15T15:55:19.320Z"
+      }
+    }
+  ],
   "groups": []
 }

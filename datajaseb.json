@@ -52,6 +52,20 @@
       "lastActive": {
         "$date": "2026-02-15T15:58:05.798Z"
       }
+    },
+    {
+      "userId": 7598865957,
+      "username": "RimuruNew",
+      "firstName": "𝚁𝙸𝙼𝚄𝚁𝚄 𝚃𝙴𝙼𝙿𝙴𝚂𝚃",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-15T15:58:39.106Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-15T15:58:45.881Z"
+      }
     }
   ],
   "groups": [

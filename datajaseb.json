@@ -18,16 +18,23 @@
       "userId": 8105447127,
       "username": "RIMZOHUN",
       "firstName": "𝚁𝚒𝚖 乂 𝚉𝚘𝚑𝚞𝚗",
-      "isPremium": false,
+      "isPremium": true,
       "isAdmin": false,
       "groupsAdded": [
-        -1002694293151
+        -1002694293151,
+        -1003482156792
       ],
       "joinedAt": {
         "$date": "2026-02-15T15:56:06.043Z"
       },
       "lastActive": {
-        "$date": "2026-02-15T15:56:43.048Z"
+        "$date": "2026-02-15T15:57:15.920Z"
+      },
+      "premiumSince": {
+        "$date": "2026-02-15T15:57:15.920Z"
+      },
+      "premiumExpiry": {
+        "$date": "2026-02-17T15:57:15.920Z"
       }
     }
   ],
@@ -40,6 +47,15 @@
         "$date": "2026-02-15T15:56:41.174Z"
       },
       "memberCount": 5363
+    },
+    {
+      "groupId": -1003482156792,
+      "title": ",,",
+      "addedBy": 8105447127,
+      "addedAt": {
+        "$date": "2026-02-15T15:57:15.434Z"
+      },
+      "memberCount": 20
     }
   ]
 }

@@ -11,7 +11,21 @@
         "$date": "2026-02-15T15:55:19.319Z"
       },
       "lastActive": {
-        "$date": "2026-02-15T15:55:19.320Z"
+        "$date": "2026-02-15T15:55:50.169Z"
+      }
+    },
+    {
+      "userId": 8105447127,
+      "username": "RIMZOHUN",
+      "firstName": "𝚁𝚒𝚖 乂 𝚉𝚘𝚑𝚞𝚗",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-15T15:56:06.043Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-15T15:56:06.043Z"
       }
     }
   ],

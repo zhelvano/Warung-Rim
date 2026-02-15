@@ -43,12 +43,14 @@
       "firstName": "Tasya Syanita",
       "isPremium": false,
       "isAdmin": false,
-      "groupsAdded": [],
+      "groupsAdded": [
+        -1003139815134
+      ],
       "joinedAt": {
         "$date": "2026-02-15T15:57:43.496Z"
       },
       "lastActive": {
-        "$date": "2026-02-15T15:57:43.764Z"
+        "$date": "2026-02-15T15:58:05.798Z"
       }
     }
   ],
@@ -70,6 +72,15 @@
         "$date": "2026-02-15T15:57:15.434Z"
       },
       "memberCount": 20
+    },
+    {
+      "groupId": -1003139815134,
+      "title": "Murbug Gratis",
+      "addedBy": 6449298691,
+      "addedAt": {
+        "$date": "2026-02-15T15:57:56.030Z"
+      },
+      "memberCount": 117
     }
   ]
 }

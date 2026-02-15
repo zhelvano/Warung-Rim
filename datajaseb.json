@@ -20,14 +20,26 @@
       "firstName": "𝚁𝚒𝚖 乂 𝚉𝚘𝚑𝚞𝚗",
       "isPremium": false,
       "isAdmin": false,
-      "groupsAdded": [],
+      "groupsAdded": [
+        -1002694293151
+      ],
       "joinedAt": {
         "$date": "2026-02-15T15:56:06.043Z"
       },
       "lastActive": {
-        "$date": "2026-02-15T15:56:06.043Z"
+        "$date": "2026-02-15T15:56:43.048Z"
       }
     }
   ],
-  "groups": []
+  "groups": [
+    {
+      "groupId": -1002694293151,
+      "title": "𝐙𝐎𝐍𝐀 𝐇𝐔𝐍𝐓𝐄𝐑",
+      "addedBy": 8105447127,
+      "addedAt": {
+        "$date": "2026-02-15T15:56:41.174Z"
+      },
+      "memberCount": 5363
+    }
+  ]
 }

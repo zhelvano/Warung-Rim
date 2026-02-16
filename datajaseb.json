@@ -94,6 +94,20 @@
       "lastActive": {
         "$date": "2026-02-16T08:25:57.251Z"
       }
+    },
+    {
+      "userId": 8482674264,
+      "username": "Lowsxc",
+      "firstName": "⏤͟͟͞͞ 𝗘͢𝘁𝗲𝗿𝗻𝗮𝗹 𝟰𝟬𝟰 メ ☇ FARISXC",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-16T08:28:17.319Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-16T08:28:31.200Z"
+      }
     }
   ],
   "groups": [

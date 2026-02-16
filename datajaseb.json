@@ -80,6 +80,20 @@
       "lastActive": {
         "$date": "2026-02-16T08:20:55.670Z"
       }
+    },
+    {
+      "userId": 8544808273,
+      "username": "davidofficial6",
+      "firstName": "𝘿𝘼𝙑𝙄𝘿 𝙊𝙁𝙁𝙄𝘾𝙄𝘼𝙇",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-16T08:25:20.278Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-16T08:25:30.598Z"
+      }
     }
   ],
   "groups": [

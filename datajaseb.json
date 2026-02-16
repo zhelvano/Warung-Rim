@@ -166,6 +166,35 @@
       "lastActive": {
         "$date": "2026-02-16T22:49:19.413Z"
       }
+    },
+    {
+      "userId": 8028905787,
+      "firstName": "Daniel",
+      "lastName": "Harlan",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-16T23:05:08.063Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-16T23:05:08.063Z"
+      }
+    },
+    {
+      "userId": 8556868319,
+      "username": "legendheavenbot",
+      "firstName": "Eddie",
+      "lastName": "Conner",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-16T23:05:12.765Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-16T23:05:12.765Z"
+      }
     }
   ],
   "groups": [

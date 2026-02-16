@@ -150,7 +150,21 @@
         "$date": "2026-02-16T22:43:00.338Z"
       },
       "lastActive": {
-        "$date": "2026-02-16T22:43:10.383Z"
+        "$date": "2026-02-16T22:49:36.309Z"
+      }
+    },
+    {
+      "userId": 8487175322,
+      "username": "Saikilabndp",
+      "firstName": "kilaaa",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-16T22:49:19.413Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-16T22:49:19.413Z"
       }
     }
   ],

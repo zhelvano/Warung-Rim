@@ -66,6 +66,20 @@
       "lastActive": {
         "$date": "2026-02-15T15:59:03.478Z"
       }
+    },
+    {
+      "userId": 7277298521,
+      "username": "dongo1234567",
+      "firstName": "Donghae",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-16T08:20:07.376Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-16T08:20:25.845Z"
+      }
     }
   ],
   "groups": [

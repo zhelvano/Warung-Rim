@@ -238,6 +238,21 @@
       "lastActive": {
         "$date": "2026-02-17T13:04:12.091Z"
       }
+    },
+    {
+      "userId": 7769312604,
+      "username": "wilzaristos",
+      "firstName": "威尔兹 🇨🇳",
+      "lastName": "[ 𝐖𝐒 ]",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-17T13:11:38.958Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-17T13:11:38.958Z"
+      }
     }
   ],
   "groups": [

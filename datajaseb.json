@@ -295,6 +295,21 @@
       "lastActive": {
         "$date": "2026-02-17T19:20:11.452Z"
       }
+    },
+    {
+      "userId": 7514841787,
+      "username": "ramzzstorereall",
+      "firstName": "RAMZZ",
+      "lastName": "STORE",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-17T21:07:47.963Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-17T21:08:02.167Z"
+      }
     }
   ],
   "groups": [

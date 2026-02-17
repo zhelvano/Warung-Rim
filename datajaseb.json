@@ -267,6 +267,20 @@
       "lastActive": {
         "$date": "2026-02-17T13:15:50.001Z"
       }
+    },
+    {
+      "userId": 7847247357,
+      "username": "nakllq",
+      "firstName": "Apalah",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-17T14:14:44.968Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-17T14:14:44.968Z"
+      }
     }
   ],
   "groups": [

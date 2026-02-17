@@ -195,6 +195,21 @@
       "lastActive": {
         "$date": "2026-02-16T23:05:12.765Z"
       }
+    },
+    {
+      "userId": 8569730819,
+      "username": "Kekasihmalam77",
+      "firstName": "Botak",
+      "lastName": "Gilaaa",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-17T11:06:32.862Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-17T11:06:32.862Z"
+      }
     }
   ],
   "groups": [

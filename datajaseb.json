@@ -281,6 +281,20 @@
       "lastActive": {
         "$date": "2026-02-17T14:14:44.968Z"
       }
+    },
+    {
+      "userId": 8100399804,
+      "username": "sepzstecu",
+      "firstName": "𝗕𝗖𝗫 ϟ 𝙎𝙀𝙋𝙕 [𝙎𝘾𝘼𝙈]",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-17T19:20:11.452Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-17T19:20:11.452Z"
+      }
     }
   ],
   "groups": [

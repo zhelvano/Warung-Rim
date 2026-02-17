@@ -224,6 +224,20 @@
       "lastActive": {
         "$date": "2026-02-17T12:40:45.222Z"
       }
+    },
+    {
+      "userId": 7905062871,
+      "username": "yainsss",
+      "firstName": "捲曲的陰毛",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-17T13:03:31.305Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-17T13:03:33.536Z"
+      }
     }
   ],
   "groups": [

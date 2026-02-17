@@ -210,6 +210,20 @@
       "lastActive": {
         "$date": "2026-02-17T11:06:32.862Z"
       }
+    },
+    {
+      "userId": 8307115677,
+      "username": "deviazzcll",
+      "firstName": "yyy",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-17T12:40:45.222Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-17T12:40:45.222Z"
+      }
     }
   ],
   "groups": [

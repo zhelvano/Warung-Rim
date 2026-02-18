@@ -352,6 +352,20 @@
       "lastActive": {
         "$date": "2026-02-18T08:23:32.405Z"
       }
+    },
+    {
+      "userId": 1978326210,
+      "username": "Prili189",
+      "firstName": "𝙼𝙾𝙼𝚈 𝚈𝚄𝙻𝙸 𝙾𝙼𝚂",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-18T09:04:15.831Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-18T09:04:15.831Z"
+      }
     }
   ],
   "groups": [

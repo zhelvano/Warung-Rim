@@ -410,6 +410,19 @@
       "lastActive": {
         "$date": "2026-02-18T11:29:52.583Z"
       }
+    },
+    {
+      "userId": 8295197690,
+      "firstName": "𝖀𝖈𝖔𝐤",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-18T11:49:30.743Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-18T11:49:30.743Z"
+      }
     }
   ],
   "groups": [

@@ -437,6 +437,19 @@
       "lastActive": {
         "$date": "2026-02-18T12:12:48.762Z"
       }
+    },
+    {
+      "userId": 8387076136,
+      "firstName": "iyanz Abysz",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-18T16:03:48.368Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-18T16:03:48.368Z"
+      }
     }
   ],
   "groups": [

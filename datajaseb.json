@@ -423,6 +423,20 @@
       "lastActive": {
         "$date": "2026-02-18T11:49:30.743Z"
       }
+    },
+    {
+      "userId": 7971108301,
+      "username": "pull39",
+      "firstName": "𝘱𝘶𝘭𝘭𝘤𝘶𝘰y",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-18T12:12:48.762Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-18T12:12:48.762Z"
+      }
     }
   ],
   "groups": [

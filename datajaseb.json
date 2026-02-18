@@ -450,6 +450,20 @@
       "lastActive": {
         "$date": "2026-02-18T16:03:48.368Z"
       }
+    },
+    {
+      "userId": 8506115353,
+      "username": "Rakaaa192",
+      "firstName": "𝗥𝗮𝗸𝘇𝘇𝟰𝗬𝗼𝘂 👑",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-18T23:00:57.666Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-18T23:01:07.059Z"
+      }
     }
   ],
   "groups": [

@@ -366,6 +366,21 @@
       "lastActive": {
         "$date": "2026-02-18T09:04:15.831Z"
       }
+    },
+    {
+      "userId": 8357465029,
+      "username": "zannoii",
+      "firstName": "zann",
+      "lastName": "here",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-18T09:09:02.182Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-18T09:09:02.182Z"
+      }
     }
   ],
   "groups": [

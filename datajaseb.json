@@ -381,6 +381,21 @@
       "lastActive": {
         "$date": "2026-02-18T09:09:02.182Z"
       }
+    },
+    {
+      "userId": 8020040645,
+      "username": "Samyyy69",
+      "firstName": "i𝙶𝙾𝚈𝚈 𝙾𝙼𝚂",
+      "lastName": "°",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-18T10:27:00.027Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-18T10:27:00.027Z"
+      }
     }
   ],
   "groups": [

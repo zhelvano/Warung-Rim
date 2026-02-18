@@ -324,6 +324,20 @@
       "lastActive": {
         "$date": "2026-02-18T07:22:40.219Z"
       }
+    },
+    {
+      "userId": 8381309827,
+      "username": "Sanzsnixy",
+      "firstName": "Snixy 4kg",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-18T08:08:23.854Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-18T08:08:31.123Z"
+      }
     }
   ],
   "groups": [

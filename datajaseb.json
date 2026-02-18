@@ -338,6 +338,20 @@
       "lastActive": {
         "$date": "2026-02-18T08:08:31.123Z"
       }
+    },
+    {
+      "userId": 5826892538,
+      "username": "BOSMUDAX1",
+      "firstName": "BOS MUDA",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-18T08:23:32.405Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-18T08:23:32.405Z"
+      }
     }
   ],
   "groups": [

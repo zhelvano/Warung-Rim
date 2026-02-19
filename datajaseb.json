@@ -522,6 +522,20 @@
       "lastActive": {
         "$date": "2026-02-19T10:50:50.851Z"
       }
+    },
+    {
+      "userId": 6388172812,
+      "username": "Lucifer3092",
+      "firstName": "ㅤㅤ ㅤㅤㅤㅤㅤㅤㅤ",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-19T15:07:10.763Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-19T15:07:10.763Z"
+      }
     }
   ],
   "groups": [

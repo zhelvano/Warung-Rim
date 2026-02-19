@@ -536,6 +536,21 @@
       "lastActive": {
         "$date": "2026-02-19T15:07:10.763Z"
       }
+    },
+    {
+      "userId": 6398348225,
+      "username": "Wak_epen",
+      "firstName": "Bang",
+      "lastName": "Andre",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-19T18:09:13.747Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-19T18:09:13.747Z"
+      }
     }
   ],
   "groups": [

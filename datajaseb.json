@@ -493,6 +493,20 @@
       "lastActive": {
         "$date": "2026-02-19T08:31:55.279Z"
       }
+    },
+    {
+      "userId": 8262414513,
+      "username": "Fck087",
+      "firstName": "Oktzx",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-19T10:09:08.002Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-19T10:09:08.002Z"
+      }
     }
   ],
   "groups": [

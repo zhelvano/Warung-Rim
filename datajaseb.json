@@ -479,6 +479,20 @@
       "lastActive": {
         "$date": "2026-02-19T05:35:17.466Z"
       }
+    },
+    {
+      "userId": 5172385488,
+      "username": "bacotku",
+      "firstName": "SAYANGGGG",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-19T08:31:55.279Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-19T08:31:55.279Z"
+      }
     }
   ],
   "groups": [

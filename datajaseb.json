@@ -636,6 +636,20 @@
       "lastActive": {
         "$date": "2026-02-20T11:53:28.348Z"
       }
+    },
+    {
+      "userId": 1940139130,
+      "username": "zavenndra",
+      "firstName": "ᴢᴀᴠᴇɴɴᴅʀᴀ",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-20T14:44:23.146Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-20T14:44:23.146Z"
+      }
     }
   ],
   "groups": [

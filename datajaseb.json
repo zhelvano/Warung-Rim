@@ -608,6 +608,20 @@
       "lastActive": {
         "$date": "2026-02-20T10:39:34.210Z"
       }
+    },
+    {
+      "userId": 6569458046,
+      "username": "VanzFastBangett",
+      "firstName": "kontol",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-20T11:23:58.697Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-20T11:23:58.697Z"
+      }
     }
   ],
   "groups": [

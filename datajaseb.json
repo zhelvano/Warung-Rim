@@ -622,6 +622,20 @@
       "lastActive": {
         "$date": "2026-02-20T11:23:58.697Z"
       }
+    },
+    {
+      "userId": 6543762390,
+      "username": "Zahradelaa",
+      "firstName": "𝐙𝐀𝐇𝐑𝐀 𝐅𝐔𝐉𝐈𝐆𝐀𝐌𝐈𝐍𝐆",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-20T11:53:28.347Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-20T11:53:28.348Z"
+      }
     }
   ],
   "groups": [

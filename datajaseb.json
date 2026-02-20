@@ -580,6 +580,20 @@
       "lastActive": {
         "$date": "2026-02-20T06:39:23.808Z"
       }
+    },
+    {
+      "userId": 5687081151,
+      "username": "Upinjosss",
+      "firstName": "ᴜᴘɪɴ ᴘᴇᴍʙᴀɴᴛᴀɪ ɴᴀɢᴀ",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-20T06:43:37.471Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-20T06:43:37.471Z"
+      }
     }
   ],
   "groups": [

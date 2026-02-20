@@ -551,6 +551,21 @@
       "lastActive": {
         "$date": "2026-02-19T18:09:13.747Z"
       }
+    },
+    {
+      "userId": 8067585195,
+      "username": "NoxxJB",
+      "firstName": "Noxx",
+      "lastName": "Jb",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-20T06:31:36.153Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-20T06:31:36.153Z"
+      }
     }
   ],
   "groups": [

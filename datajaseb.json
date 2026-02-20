@@ -650,6 +650,21 @@
       "lastActive": {
         "$date": "2026-02-20T14:44:23.146Z"
       }
+    },
+    {
+      "userId": 8433866114,
+      "username": "orynpmbru",
+      "firstName": "Oryn",
+      "lastName": "Vallestar",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-20T19:43:59.894Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-20T19:43:59.894Z"
+      }
     }
   ],
   "groups": [

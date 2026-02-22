@@ -875,6 +875,21 @@
       "lastActive": {
         "$date": "2026-02-22T18:10:02.440Z"
       }
+    },
+    {
+      "userId": 6079845854,
+      "username": "Zona_Birahi",
+      "firstName": "Can",
+      "lastName": "Can",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-22T19:49:41.572Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-22T19:49:41.572Z"
+      }
     }
   ],
   "groups": [

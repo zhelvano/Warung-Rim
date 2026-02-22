@@ -735,6 +735,20 @@
       "lastActive": {
         "$date": "2026-02-22T16:13:38.082Z"
       }
+    },
+    {
+      "userId": 7630022423,
+      "username": "Palakustoree",
+      "firstName": "RehanzzzzAnakBaik",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-22T16:14:23.092Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-22T16:14:23.092Z"
+      }
     }
   ],
   "groups": [

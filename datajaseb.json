@@ -819,6 +819,20 @@
       "lastActive": {
         "$date": "2026-02-22T17:35:35.753Z"
       }
+    },
+    {
+      "userId": 8286565716,
+      "username": "siapaajagwmah",
+      "firstName": "gatau siapa",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-22T17:38:36.215Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-22T17:38:36.215Z"
+      }
     }
   ],
   "groups": [

@@ -749,6 +749,20 @@
       "lastActive": {
         "$date": "2026-02-22T16:14:23.092Z"
       }
+    },
+    {
+      "userId": 7707567220,
+      "username": "YuzzCpanel",
+      "firstName": "☞𖤛⫷꥟⟬YuzzCpanel⟭꥟⫸𖤛☜",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-22T16:16:32.971Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-22T16:16:32.971Z"
+      }
     }
   ],
   "groups": [

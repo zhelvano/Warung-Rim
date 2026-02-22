@@ -680,6 +680,20 @@
       "lastActive": {
         "$date": "2026-02-21T08:38:35.447Z"
       }
+    },
+    {
+      "userId": 8091476823,
+      "username": "Carldave_08",
+      "firstName": "ᴄᴀʀʟᴡᴏᴛ✧",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-22T07:21:32.947Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-22T07:21:32.947Z"
+      }
     }
   ],
   "groups": [

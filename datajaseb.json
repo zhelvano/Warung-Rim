@@ -763,6 +763,20 @@
       "lastActive": {
         "$date": "2026-02-22T16:16:32.971Z"
       }
+    },
+    {
+      "userId": 7752163965,
+      "username": "vinzxoffcl",
+      "firstName": "𝐯𝐢𝐧𝐳𝐱 𝟒𝟕%",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-22T16:20:48.727Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-22T16:20:48.727Z"
+      }
     }
   ],
   "groups": [

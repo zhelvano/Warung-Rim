@@ -847,6 +847,20 @@
       "lastActive": {
         "$date": "2026-02-22T17:38:47.452Z"
       }
+    },
+    {
+      "userId": 8253425931,
+      "username": "Massajiiii00",
+      "firstName": "Mass ajii",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-22T17:44:28.048Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-22T17:44:28.048Z"
+      }
     }
   ],
   "groups": [

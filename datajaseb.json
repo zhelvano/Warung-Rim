@@ -777,6 +777,34 @@
       "lastActive": {
         "$date": "2026-02-22T16:20:48.727Z"
       }
+    },
+    {
+      "userId": 2092671294,
+      "username": "thisisAcee",
+      "firstName": ".𝐀𝐜𝐞 ʀᴀJɪɴ ᴍᴇɴᴀʙᴜɴɢ",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-22T17:34:58.341Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-22T17:34:58.341Z"
+      }
+    },
+    {
+      "userId": 8218089869,
+      "username": "Jalakvn23",
+      "firstName": "Leo♌",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-22T17:35:01.416Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-22T17:35:01.416Z"
+      }
     }
   ],
   "groups": [

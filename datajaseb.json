@@ -861,6 +861,20 @@
       "lastActive": {
         "$date": "2026-02-22T17:44:28.048Z"
       }
+    },
+    {
+      "userId": 8583988666,
+      "username": "yanxx97",
+      "firstName": "YANXX.OWN.@agusmd",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-22T18:10:02.440Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-22T18:10:02.440Z"
+      }
     }
   ],
   "groups": [

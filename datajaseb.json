@@ -919,6 +919,20 @@
       "lastActive": {
         "$date": "2026-02-22T20:44:27.813Z"
       }
+    },
+    {
+      "userId": 8152216319,
+      "firstName": "ajes",
+      "lastName": "penghianat",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-22T22:46:29.239Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-22T22:46:29.239Z"
+      }
     }
   ],
   "groups": [

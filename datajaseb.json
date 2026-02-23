@@ -933,6 +933,19 @@
       "lastActive": {
         "$date": "2026-02-22T22:46:29.239Z"
       }
+    },
+    {
+      "userId": 8315880948,
+      "firstName": "Zee",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-23T00:42:08.614Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-23T00:42:08.614Z"
+      }
     }
   ],
   "groups": [

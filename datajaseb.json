@@ -1087,6 +1087,20 @@
       "lastActive": {
         "$date": "2026-02-23T16:59:03.416Z"
       }
+    },
+    {
+      "userId": 5402555025,
+      "username": "sendirivsduniaxyz",
+      "firstName": "𝕿𝖍𝖎𝖘 𝕴𝖘 𝕵𝖚𝖑𝖎𝖆𝖆𝖓",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-23T17:52:33.635Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-23T17:52:33.635Z"
+      }
     }
   ],
   "groups": [

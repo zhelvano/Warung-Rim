@@ -1018,6 +1018,20 @@
       "lastActive": {
         "$date": "2026-02-23T15:40:38.109Z"
       }
+    },
+    {
+      "userId": 1353262920,
+      "username": "Yanzzstexu0",
+      "firstName": "Yanzzstecu08",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-23T15:41:22.144Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-23T15:41:22.144Z"
+      }
     }
   ],
   "groups": [

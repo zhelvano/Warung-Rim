@@ -1130,6 +1130,21 @@
       "lastActive": {
         "$date": "2026-02-23T22:11:26.445Z"
       }
+    },
+    {
+      "userId": 6940000856,
+      "username": "adamzstoree2",
+      "firstName": "⟨⟨ 𝚽𝐢𝐳𝐳 ꕥ 𝕲𝖔𝖉𝕸𝖔𝖉𝖊 ⟩⟩",
+      "lastName": "𝕯𝖆𝖓𝖟𝖟",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-23T23:09:32.755Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-23T23:09:32.755Z"
+      }
     }
   ],
   "groups": [

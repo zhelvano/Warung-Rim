@@ -1004,6 +1004,20 @@
       "lastActive": {
         "$date": "2026-02-23T03:38:33.287Z"
       }
+    },
+    {
+      "userId": 7601763184,
+      "username": "Callbyreal22",
+      "firstName": "𝕮𝖆𝖑𝖑𝖇𝖞 𝕽𝖊𝖆𝖑",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-23T15:40:38.109Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-23T15:40:38.109Z"
+      }
     }
   ],
   "groups": [

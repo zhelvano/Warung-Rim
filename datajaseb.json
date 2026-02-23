@@ -1047,6 +1047,20 @@
       "lastActive": {
         "$date": "2026-02-23T15:47:44.437Z"
       }
+    },
+    {
+      "userId": 8250808002,
+      "username": "Raffznew",
+      "firstName": "Raffznew [ Open Ubot ]",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-23T15:56:01.251Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-23T15:56:01.251Z"
+      }
     }
   ],
   "groups": [

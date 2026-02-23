@@ -93,7 +93,7 @@
         "$date": "2026-02-16T08:25:20.278Z"
       },
       "lastActive": {
-        "$date": "2026-02-16T08:25:57.251Z"
+        "$date": "2026-02-23T22:11:34.146Z"
       }
     },
     {
@@ -1115,6 +1115,20 @@
       },
       "lastActive": {
         "$date": "2026-02-23T20:35:51.034Z"
+      }
+    },
+    {
+      "userId": 6817703075,
+      "username": "whossjikk",
+      "firstName": "555 Zikkk-",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-23T22:11:26.445Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-23T22:11:26.445Z"
       }
     }
   ],

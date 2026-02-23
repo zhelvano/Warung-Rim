@@ -1101,6 +1101,21 @@
       "lastActive": {
         "$date": "2026-02-23T17:52:33.635Z"
       }
+    },
+    {
+      "userId": 1078967270,
+      "username": "Wanzz32",
+      "firstName": "✘ 𝙒𝙖𝙣𝙯𝙯 ᯓ𖤓 𝖱𝖾𝖺𝖽𝗒 𝖵𝖯𝖲 & 𝖣.𝖮",
+      "lastName": "𒁍",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-23T20:35:51.034Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-23T20:35:51.034Z"
+      }
     }
   ],
   "groups": [

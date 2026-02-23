@@ -991,6 +991,19 @@
       "lastActive": {
         "$date": "2026-02-23T02:36:52.342Z"
       }
+    },
+    {
+      "userId": 7981995519,
+      "firstName": "JOB GMAILL",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-23T03:38:33.287Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-23T03:38:33.287Z"
+      }
     }
   ],
   "groups": [

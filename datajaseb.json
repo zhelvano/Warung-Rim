@@ -976,6 +976,21 @@
       "lastActive": {
         "$date": "2026-02-23T02:35:22.681Z"
       }
+    },
+    {
+      "userId": 8238551374,
+      "username": "maoxasai",
+      "firstName": "A",
+      "lastName": "Ryu",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-23T02:36:52.342Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-23T02:36:52.342Z"
+      }
     }
   ],
   "groups": [

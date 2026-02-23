@@ -1061,6 +1061,19 @@
       "lastActive": {
         "$date": "2026-02-23T15:56:01.251Z"
       }
+    },
+    {
+      "userId": 8399570755,
+      "firstName": "mail",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-23T16:56:14.096Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-23T16:56:14.096Z"
+      }
     }
   ],
   "groups": [

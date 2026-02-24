@@ -1215,6 +1215,19 @@
       "lastActive": {
         "$date": "2026-02-24T09:50:10.763Z"
       }
+    },
+    {
+      "userId": 1925339133,
+      "firstName": "Denirealofficial bot",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T10:25:02.244Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T10:25:02.244Z"
+      }
     }
   ],
   "groups": [

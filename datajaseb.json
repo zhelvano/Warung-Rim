@@ -1160,6 +1160,20 @@
       "lastActive": {
         "$date": "2026-02-24T03:06:14.621Z"
       }
+    },
+    {
+      "userId": 7888018385,
+      "username": "Ferdy05019",
+      "firstName": "༄ᶦFℰℛdƴ ❂࿐",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T05:49:18.549Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T05:49:18.549Z"
+      }
     }
   ],
   "groups": [

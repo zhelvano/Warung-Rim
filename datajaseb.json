@@ -1314,6 +1314,20 @@
       "lastActive": {
         "$date": "2026-02-24T15:53:24.951Z"
       }
+    },
+    {
+      "userId": 7560545866,
+      "username": "kravczee",
+      "firstName": "kravnoisye",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T15:54:47.553Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T15:54:47.553Z"
+      }
     }
   ],
   "groups": [

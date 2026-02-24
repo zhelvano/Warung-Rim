@@ -1342,6 +1342,20 @@
       "lastActive": {
         "$date": "2026-02-24T21:23:29.077Z"
       }
+    },
+    {
+      "userId": 7819753289,
+      "username": "panjull3",
+      "firstName": "jokowi",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T22:05:06.731Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T22:05:19.613Z"
+      }
     }
   ],
   "groups": [

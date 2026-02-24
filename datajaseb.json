@@ -1145,6 +1145,21 @@
       "lastActive": {
         "$date": "2026-02-23T23:09:32.755Z"
       }
+    },
+    {
+      "userId": 7258597169,
+      "username": "jajavierrGv",
+      "firstName": "𝐉𝐚𝐯𝐢𝐞𝐫𝐫𝐆𝐨𝐯𝐬",
+      "lastName": "𝐀𝐆𝐓",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T03:06:14.621Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T03:06:14.621Z"
+      }
     }
   ],
   "groups": [

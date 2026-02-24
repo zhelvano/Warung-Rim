@@ -1284,6 +1284,21 @@
       "lastActive": {
         "$date": "2026-02-24T15:26:34.111Z"
       }
+    },
+    {
+      "userId": 1783682424,
+      "username": "clipstore17",
+      "firstName": "Reya",
+      "lastName": "Ly",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T15:52:00.290Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T15:52:00.290Z"
+      }
     }
   ],
   "groups": [

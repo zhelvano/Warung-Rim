@@ -1256,6 +1256,20 @@
       "lastActive": {
         "$date": "2026-02-24T10:58:01.339Z"
       }
+    },
+    {
+      "userId": 7681352008,
+      "username": "Mousezs989",
+      "firstName": "Resions",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T11:17:51.232Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T11:17:51.232Z"
+      }
     }
   ],
   "groups": [

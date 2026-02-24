@@ -1187,6 +1187,21 @@
       "lastActive": {
         "$date": "2026-02-24T05:54:55.411Z"
       }
+    },
+    {
+      "userId": 7043723333,
+      "username": "Yourname_164",
+      "firstName": "Vinzzxx",
+      "lastName": "Market",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T07:00:10.196Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T07:00:10.196Z"
+      }
     }
   ],
   "groups": [

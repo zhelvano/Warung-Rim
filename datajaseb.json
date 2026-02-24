@@ -1356,6 +1356,20 @@
       "lastActive": {
         "$date": "2026-02-24T22:05:40.879Z"
       }
+    },
+    {
+      "userId": 6989003486,
+      "username": "ItsZyuu",
+      "firstName": "𝙕𝙮𝙪𝙡𝙪𝙫𝙡𝙪𝙫",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T23:24:53.543Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T23:24:53.543Z"
+      }
     }
   ],
   "groups": [

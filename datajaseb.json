@@ -1174,6 +1174,19 @@
       "lastActive": {
         "$date": "2026-02-24T05:49:18.549Z"
       }
+    },
+    {
+      "userId": 8028791897,
+      "firstName": "Cupang😈",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T05:54:55.411Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T05:54:55.411Z"
+      }
     }
   ],
   "groups": [

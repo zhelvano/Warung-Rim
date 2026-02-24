@@ -1202,6 +1202,19 @@
       "lastActive": {
         "$date": "2026-02-24T07:00:10.196Z"
       }
+    },
+    {
+      "userId": 8448186357,
+      "firstName": "JON BEKAS",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T09:50:10.763Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T09:50:10.763Z"
+      }
     }
   ],
   "groups": [

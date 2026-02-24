@@ -1328,6 +1328,20 @@
       "lastActive": {
         "$date": "2026-02-24T15:54:47.553Z"
       }
+    },
+    {
+      "userId": 8220507256,
+      "username": "Mudzxz_md",
+      "firstName": "𝘿𝙓 ϟ 𝙈𝙪𝙙𝙯𝙭𝙯𝙈𝘿 ♞ ( 𝘾𝙀𝙊 𝘽𝘼𝙏𝙐 𝙂𝙄𝙊𝙆𝙆 𝙍𝙀𝘼𝙇𝙇 )",
+      "isPremium": false,
+      "isAdmin": false,
+      "groupsAdded": [],
+      "joinedAt": {
+        "$date": "2026-02-24T21:23:29.077Z"
+      },
+      "lastActive": {
+        "$date": "2026-02-24T21:23:29.077Z"
+      }
     }
   ],
   "groups": [
